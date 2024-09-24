@@ -1,0 +1,49 @@
+[%notitle.columns.is-vcentered.transparency]
+== Présentation
+
+[.column.is-one-third]
+--
+image::jta.png[]
+--
+
+[.column.is-3.has-text-left.medium]
+--
+Jérôme
+
+Tech Lead, Architecte, Compagnon du devoir
+
+Maintainer de l'extension `quarkus-minio`
+--
+
+[.column]
+--
+[.vertical-align-middle]
+image:logo_onepoint.jpeg[width=50]
+onepoint BDX
+
+[.vertical-align-middle]
+icon:github[] @jtama image:avatar.png[width=100]
+--
+
+[.notes]
+--
+
+Rappel rapide de ce qu'est quarkus et en quoi il est fondamentalement différent par exemple de spring.
+
+--
+
+=== Openrewrite
+
+== Exécution d'une recette
+
+== Anatomie d'une recette
+
+== Catalogue de recette
+
+== Customisation de recette déclarative
+
+== Composition de recette
+
+== Ecrire sa propre recette
+
+== Point d'attention

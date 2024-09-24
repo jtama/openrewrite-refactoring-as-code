@@ -1,0 +1,28 @@
+[.conclusion.transparency]]
+== !
+
+[.fragment.important-text]
+--
+Openrewrite c'est le plus fort !
+--
+
+[.transparency]
+[.columns]
+=== Merci !
+
+[.column]
+--
+[.important-text.has-text-left.vertical-align-middle]
+Le dépôt github :
+
+image:extension-demo-repo.png[width=400]
+--
+
+[.column]
+--
+
+[.important-text.has-text-left.vertical-align-middle]
+Feedback :
+
+image:qrcode.png[width=400]
+--

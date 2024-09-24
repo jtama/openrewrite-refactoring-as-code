@@ -1,0 +1,13 @@
+= Openrewrite: Refactoring as code
+
+Readable version available on https://jtama.github.io/refactoring-as-code/#/[Github Pages -> ici]
+
+== Generate
+
+[source,bash]
+----
+jbang qrcode@xam.dk -i qr_inlay.png <open feedback url> --qr-colo="linear-gradient(90deg, rgba(36,14,0,1) 0%, rgba(9,121,105,1) 35%, rgba(0,212,255,1) 100%);"
+docker container run --rm -v $(pwd):/documents -w /documents asciidoctor/docker-asciidoctor:1.72 asciidoctor-revealjs -r asciidoctor-diagram index.adoc
+----
+
+
