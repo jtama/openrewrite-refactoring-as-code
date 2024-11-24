@@ -1,18 +1,61 @@
+[%notitle]
+== Openrewrite
+
+image::upside_down.png[background, size=contain]
+
+[%notitle,transition=none]
+=== Chercher / Remplacer
+
+image::upside_down.png[background, size=contain]
+image::chercher_remplacer.png[role=chercher_remplacer]
+
+[%notitle,transition=none]
+=== Regexp
+
+image::upside_down.png[background, size=contain]
+image::chercher_remplacer.png[role=chercher_remplacer]
+image::regexp.png[role=regexp]
+
+[%notitle,transition=none]
+=== Click droit
+
+image::upside_down.png[background, size=contain]
+image::chercher_remplacer.png[role=chercher_remplacer]
+image::regexp.png[role=regexp]
+image::click_droit.png[role=click_droit]
+
+[%notitle,transition=none]
+=== LLM/RAG
+
+image::upside_down.png[background, size=contain]
+image::chercher_remplacer.png[role=chercher_remplacer]
+image::regexp.png[role=regexp]
+image::click_droit.png[role=click_droit]
+image::llm.png[role=llm]
+
+[%notitle,transition=none,%notitle]
+=== Punition
+
+image::upside_down.png[background, size=contain]
+image::chercher_remplacer.png[role=chercher_remplacer]
+image::regexp.png[role=regexp]
+image::click_droit.png[role=click_droit]
+image::llm.png[role=llm]
+audio::sound/punition.mp3[data-autoplay]
+
 [%notitle.columns.is-vcentered.transparency]
 == Présentation
 
 [.column.is-one-third]
 --
-image::jta.png[]
+image::jta_1.png[]
 --
 
 [.column.is-3.has-text-left.medium]
 --
 Jérôme
 
-Tech Lead, Architecte, Compagnon du devoir
-
-Maintainer de l'extension `quarkus-minio`
+Tech Lead/Architecte, Instructeur en permis de réécriture
 --
 
 [.column]
@@ -32,18 +75,3 @@ Rappel rapide de ce qu'est quarkus et en quoi il est fondamentalement différent
 
 --
 
-=== Openrewrite
-
-== Exécution d'une recette
-
-== Anatomie d'une recette
-
-== Catalogue de recette
-
-== Customisation de recette déclarative
-
-== Composition de recette
-
-== Ecrire sa propre recette
-
-== Point d'attention

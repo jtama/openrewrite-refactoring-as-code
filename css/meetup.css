@@ -45,16 +45,16 @@
 body::after {
     content: url("../images/logo_event.svg");
     position: fixed;
-    left: -150px;
-    bottom: -20px;
-    transform: scale(.5);
+    left: 4px;
+    bottom: 9px;
+    width: 100px;
 }
 
-/* We'll see about that later
+
 h1 {
     display: none;
 }
-*/
+
 
 
 .reveal ul {
@@ -62,7 +62,7 @@ h1 {
 }
 
 .slide-background.conclusion {
-    background: url("../images/openrewrite.png") no-repeat 50% 15%;
+    background: url("../images/openrewrite.svg") no-repeat 50% 15%;
 }
 
 
@@ -137,6 +137,43 @@ img {
     margin-left: 0;
 }
 
+section.lesson::before {
+    content: url("../images/permis_de_refactoring.jpg");
+}
+
+.lesson.slide-background.present {
+    background-color: #BB8181FF;
+}
+
 .blur {
     filter: blur(4px);
+}
+
+.chercher_remplacer {
+    position: fixed;
+    top: 36px;
+    left: 710px;
+}
+
+.regexp{
+    position: fixed;
+    top: 36px;
+    left: 261px;
+}
+
+.llm{
+    position: fixed;
+    top: 355px;
+    left: 261px;
+}
+
+.click_droit {
+    position: fixed;
+    top: 335px;
+    left: 656px;
+    overflow: hidden;
+}
+
+audio {
+    display: none;
 }

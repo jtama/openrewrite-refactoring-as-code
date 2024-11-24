@@ -1,21 +1,22 @@
-= Openrewrite: Refactoring as code
+= Openrewrite - Refactoring as code
 :docinfo: private
 :source-highlighter: highlight.js
 :autofit-option:
 :icons: font
-:notitle:
 :revealjs_slideNumber: true
 :revealjs_theme: white
 :revealjs_history: true
 :revealjs_pdfseparatefragments: false
 :revealjs_width: 1200
-:title-slide-background-image: openrewrite.png
+:title-slide-background-image: title_image.png
 :title-slide-background-size: contain
 :title-slide-background-repeat: no-repeat
-:title-slide-filter: blur(4px)
+//:title-slide-filter: blur(4px)
 :customcss: css/meetup.css
 :imagesdir: images
 
 include::intro.adoc[]
+include::01-openrewrite.adoc[]
+include::02-catalogue.adoc[]
 include::outro.adoc[]
 

@@ -1,0 +1,69 @@
+[%notitle]
+== Openrewrite
+
+image::openrewrite.svg[width=30%]
+image::under_logo.svg[]
+
+[.notes]
+--
+C'est un outil open source développé par Moderne et qui est rentré dans la common haus fondation
+
+. Debezium
+. SdkMan
+. Feign
+. Hibernate
+. Jackson
+. JBang
+. JReleaser
+. Quarkus
+--
+
+=== !
+
+[%step]
+. LST
+. Recipe
+. Java
+. Text
+. Properties
+. Yaml
+
+[.notes]
+--
+Yaml
+--
+
+== Exécution d'une recette
+
+[%step]
+. En modifiant vos `pom`, ou vos `build.gradle` => `mvn openrewrite:run` ou `./gradlew openrewrite:run`
+. Sans modifier vos poms => mvn -U org.openrewrite.maven:rewrite-maven-plugin:run -Drewrite.activeRecipes=org.openrewrite.java.RemoveUnusedImports
+. En utilisant une cli dédiée
+
+[.notes]
+--
+Mais honnêtement je n'ai jamais essayé
+--
+
+== Anatomie d'une recette
+
+[%step]
+. Des préconditions
+. Des transformations
+. Des résultat sous forme de _data tables_
+
+[.lesson]
+== !
+
+✅ Connaître l'outil
+
+
+== Catalogue de recette
+
+== Customisation de recette déclarative
+
+== Composition de recette
+
+== Ecrire sa propre recette
+
+== Point d'attention
