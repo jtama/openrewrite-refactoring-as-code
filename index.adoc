@@ -1,8 +1,10 @@
 = Openrewrite - Refactoring as code
 :docinfo: private
 :source-highlighter: highlight.js
+:highlightjsdir: highlight.js
 :autofit-option:
 :icons: font
+:favicon: favicon.svg
 :revealjs_slideNumber: true
 :revealjs_theme: white
 :revealjs_history: true

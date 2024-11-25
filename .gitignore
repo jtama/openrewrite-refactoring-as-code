@@ -3,6 +3,7 @@
 target
 .DS_Store
 reveal.js
+highlight.js
 *.html
 .asciidoctor
 !index-docinfo-footer.html

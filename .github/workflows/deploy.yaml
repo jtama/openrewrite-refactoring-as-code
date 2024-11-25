@@ -32,7 +32,7 @@ jobs:
       - name: Copy build to folder 📦
         run: |
           mkdir -p build/reveal.js/dist && \
-          cp -r favicon.ico *.html images css js build/ && \
+          cp -r favicon.svg *.html images css highlight.js build/ && \
           cp -r reveal.js/dist/* build/reveal.js/dist/ && \
           cp -r reveal.js/plugin build/reveal.js/
 
