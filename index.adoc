@@ -13,12 +13,15 @@
 :title-slide-background-image: title_image.png
 :title-slide-background-size: contain
 :title-slide-background-repeat: no-repeat
-//:title-slide-filter: blur(4px)
+:title-slide-filter: blur(4px)
 :customcss: css/meetup.css
 :imagesdir: images
 
 include::intro.adoc[]
 include::01-openrewrite.adoc[]
 include::02-catalogue.adoc[]
+include::03-running-recipes.adoc[]
+include::04-declarative-recipes.adoc[]
+include::xx-the-rest.adoc[]
 include::outro.adoc[]
 

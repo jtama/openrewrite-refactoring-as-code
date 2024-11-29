@@ -1,9 +1,15 @@
+
+[.transparent]
 == Catalogue de recette
 
-== Customisation de recette déclarative
+image::catalog.jpg[background, size=cover]
 
-== Composition de recette
+[%notitle,background-iframe="https://docs.openrewrite.org/recipes/java/testing/hamcrest"]
+=== Partons à la découverte du catalogue
 
-== Ecrire sa propre recette
 
-== Point d'attention
+[.lesson]
+=== !
+
+- ✅ Connaître l'outil
+- ✅ Savoir lire une carte

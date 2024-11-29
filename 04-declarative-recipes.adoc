@@ -1,0 +1,94 @@
+
+[.transparent]
+== Declarative recipes
+
+image::declarative.jpg[background, size=cover]
+
+[%notitle]
+=== Comment et où ?
+
+
+[.fragment]
+Dans un fichier qui doit s'appeler `rewrite.yml`
+
+[.fragment]
+À la racine d'un projet.
+[.fragment]
+Dans le répertoire `META-INF/rewrite`
+
+[.notes]
+--
+Un recette déclaratice est en fait juste un format de déclaration de recette sans avoir à écrire du code.
+Attention, pas `yaml`
+Projet Maven ou Gradle...
+--
+
+[%notitle]
+=== Et ça ressemble à ?
+
+[source,yaml,highlight="3|4..10|11..13|14..17|23..24|26..34"]
+----
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: org.acme.RemovesThatToxicDependency
+displayName: Removes that toxic dependency
+description: |
+  Migrate from AcmeToxic ☠️ to AcmeHealthy 😇,
+  removes dependencies and migrates code.
+tags:
+  - acme
+  - toxic
+preconditions:
+  - org.openrewrite.text.Find:
+      find: org.acme.toxic.BigDecimalUtils
+recipeList:
+  - org.openrewrite.java.ChangeMethodTargetToStatic:
+      methodPattern: org.acme.toxic.BigDecimalUtils valueOf(..)
+      fullyQualifiedTargetTypeName: java.math.BigDecimal
+  - org.openrewrite.maven.RemoveUnusedProperties:
+      properties: .*toxic\.version
+  - org.openrewrite.maven.RemoveDependency:
+      groupId: org.acme
+      artifactId: toxic
+  - org.acme.VousAllezVoirCeQueVousAllezVoir
+  - org.acme.EtCEstPasFinis
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: org.acme.VousAllezVoirCeQueVousAllezVoir
+displayName: Ça va vous épater
+description: |
+  Rech. proj. pr proj. priv. Self Dem. Brt. Poss. S’adr. à l’hô. Mart
+tags:
+  - acme
+recipeList:
+  - org.openrewrite.java.RemoveUnusedImports
+----
+
+[.notes]
+--
+Et on imagine ici que la dernière rectte est accessible ailleurs.
+--
+
+[%notitle]
+=== Et on l'execute comme ça
+
+[.fragment]
+[source,bash,highlight="2..3|4..5"]
+----
+mvn -U org.openrewrite.maven:rewrite-maven-plugin:run \
+    -Drewrite.activeRecipes=\
+      org.acme.RemovesThatToxicDependency
+----
+
+=== Distribution
+
+Bin tu écris un fichier `rewrite.yaml` à la racine de ton projet !
+
+
+[.lesson]
+=== !
+
+- ✅ Connaître l'outil
+- ✅ Savoir lire une carte
+- ✅ Savoir démarrer le véhicule
+- ✅ Savoir conduire en ville

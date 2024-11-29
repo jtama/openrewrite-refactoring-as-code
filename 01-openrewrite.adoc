@@ -1,3 +1,4 @@
+
 [%notitle]
 == Openrewrite
 
@@ -18,52 +19,47 @@ C'est un outil open source développé par Moderne et qui est rentré dans la co
 . Quarkus
 --
 
-=== !
+[%notitle]
+=== Les concepts
 
 [%step]
-. LST
+. **##L##**ossless **##S##**yntax **##T##**ree
+. Un framework modulaire
 . Recipe
-. Java
-. Text
-. Properties
-. Yaml
+. Le pattern visitor
 
 [.notes]
 --
-Yaml
+* Programming languages
+** Java
+** Kotlin
+** Groovy
+* Data formats
+** XML
+** Properties
+** YAML
+** JSON
+** Protobuf
+* Build tools
+** Maven
+** Gradle
+
+
+Le core module, qui contient toute la logique de refactoring générique, les apis et sdk pour un langage spécifique
 --
 
-== Exécution d'une recette
-
-[%step]
-. En modifiant vos `pom`, ou vos `build.gradle` => `mvn openrewrite:run` ou `./gradlew openrewrite:run`
-. Sans modifier vos poms => mvn -U org.openrewrite.maven:rewrite-maven-plugin:run -Drewrite.activeRecipes=org.openrewrite.java.RemoveUnusedImports
-. En utilisant une cli dédiée
-
-[.notes]
---
-Mais honnêtement je n'ai jamais essayé
---
-
-== Anatomie d'une recette
+=== Anatomie d'une recette
 
 [%step]
 . Des préconditions
 . Des transformations
-. Des résultat sous forme de _data tables_
+
+[.notes]
+--
+Des résultats sous forme de _data tables_
+--
 
 [.lesson]
-== !
+=== !
 
 ✅ Connaître l'outil
-
-
-== Catalogue de recette
-
-== Customisation de recette déclarative
-
-== Composition de recette
-
-== Ecrire sa propre recette
-
-== Point d'attention

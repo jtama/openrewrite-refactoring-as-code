@@ -1,0 +1,64 @@
+
+[.transparent]
+== Exécution d'une recette
+
+image::running.avif[background, size=cover]
+
+=== Dans vos poms
+
+[.fragment]
+[source,xml, highlight="4..6|15..17"]]
+----
+<project>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.openrewrite.maven</groupId>
+        <artifactId>rewrite-maven-plugin</artifactId>
+        <version>5.46.0</version>
+        <configuration>
+          <exportDatatables>true</exportDatatables>
+          <activeRecipes>
+            <recipe>org.openrewrite.apache.httpclient5.StatusLine</recipe>
+          </activeRecipes>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>org.openrewrite.recipe</groupId>
+            <artifactId>rewrite-apache</artifactId>
+            <version>1.9.0</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+    </plugins>
+  </build>
+</project>
+----
+
+[.fragment]
+`mvn rewrite:run`
+
+
+[.notes]
+--
+Pareil avec gradle
+--
+
+=== Sans modifier vos poms
+
+[.fragment]
+[source,bash,highlight="2..3|4..5"]
+----
+mvn -U org.openrewrite.maven:rewrite-maven-plugin:run \
+-Drewrite.recipeArtifactCoordinates=\
+   org.openrewrite.recipe:rewrite-testing-frameworks:RELEASE \
+-Drewrite.activeRecipes=\
+   org.openrewrite.java.testing.hamcrest.AssertThatBooleanToAssertJ
+----
+
+[.lesson]
+=== !
+
+- ✅ Connaître l'outil
+- ✅ Savoir lire une carte
+- ✅ Savoir démarrer le véhicule

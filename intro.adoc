@@ -67,11 +67,3 @@ onepoint BDX
 [.vertical-align-middle]
 icon:github[] @jtama image:avatar.png[width=100]
 --
-
-[.notes]
---
-
-Rappel rapide de ce qu'est quarkus et en quoi il est fondamentalement différent par exemple de spring.
-
---
-
