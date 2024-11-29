@@ -138,7 +138,9 @@ img {
 }
 
 section.lesson::before {
-    content: url("../images/permis_de_refactoring.jpg");
+    content: url("../images/permis_de_refactoring.png");
+    height: 100px;
+    width: 100px;
 }
 
 .lesson.slide-background.present {
@@ -172,6 +174,22 @@ section.lesson::before {
     top: 335px;
     left: 656px;
     overflow: hidden;
+}
+
+ol {
+    width: 40%;
+}
+
+li {
+    list-style-type: none;
+}
+
+li:nth-child(even) {
+    text-align: right;
+}
+
+li:nth-child(odd) {
+    text-align: left;
 }
 
 audio {
