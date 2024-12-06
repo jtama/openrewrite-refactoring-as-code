@@ -14,6 +14,6 @@ podman container run --rm -v $(pwd):/documents -w /documents asciidoctor/docker-
 
 [source,bash]
 ----
-podman container run --rm -d -p 8080:80 -v $(pwd):/usr/share/nginx/html nginx
+podman container run --name prez --rm -d -p 8080:80 -v $(pwd)/slides:/usr/share/nginx/html nginx
 ----
 

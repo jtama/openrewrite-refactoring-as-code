@@ -20,17 +20,18 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install required dependencies
-        run: ./setup.sh
+        run: slides/setup.sh
 
       - name: Install and Build 🔧
         uses: addnab/docker-run-action@v3
         with:
           image: asciidoctor/docker-asciidoctor:1.77.0
-          options: -v ${{ github.workspace }}:/documents
+          options: -v ${{ github.workspace }}/slides:/documents
           run: asciidoctor-revealjs -r asciidoctor-diagram /documents/index.adoc
 
       - name: Copy build to folder 📦
         run: |
+          cd slides && \
           mkdir -p build/${{ github.ref_name }}/reveal.js/dist && \
           cp -r favicon.svg *.html images css highlight.js build/${{ github.ref_name }} && \
           cp -r reveal.js/dist/* build/${{ github.ref_name }}/reveal.js/dist/ && \
@@ -39,6 +40,6 @@ jobs:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.5.0
         with:
-          folder: build
+          folder: build/slides
           branch: gh-pages
           clean: false

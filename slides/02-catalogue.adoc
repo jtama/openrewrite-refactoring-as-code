@@ -1,8 +1,7 @@
 
-[.transparent]
 == Catalogue de recette
 
-image::catalog.jpg[background, size=cover]
+//image::catalog.jpg[background, size=cover]
 
 [%notitle,background-iframe="https://docs.openrewrite.org/recipes/java/testing/hamcrest"]
 === Partons à la découverte du catalogue

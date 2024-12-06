@@ -1,0 +1,74 @@
+
+[.transparent]
+== Exécution d'une recette
+
+image::running.avif[background, size=cover]
+
+
+=== En modifiant vos poms (1/2)
+
+[source,xml,highlight="5..7|15..17|10",.fragment,step="0"]
+----
+<project>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.openrewrite.maven</groupId> <1>
+        <artifactId>rewrite-maven-plugin</artifactId>
+        <version>5.46.0</version>
+        <configuration>
+          <activeRecipes>
+            <recipe>org.openrewrite.apache.httpclient5.StatusLine</recipe> <3>
+          </activeRecipes>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>org.openrewrite.recipe</groupId> <2>
+            <artifactId>rewrite-apache</artifactId>
+            <version>1.9.0</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+    </plugins>
+  </build>
+</project>
+----
+[%step]
+<1> Declare the plugin
+<2> Activate the recipe
+<3> Add the recipe dependency
+
+=== En modifiant vos poms (2/2)
+
+[source,bash,.fragment]
+----
+mvn rewrite:run
+----
+
+[.notes]
+--
+Pareil avec gradle
+--
+
+=== Sans modifier vos poms
+
+[.fragment]
+[source,bash,highlight="1|2..3|4..5"]
+----
+mvn -U org.openrewrite.maven:rewrite-maven-plugin:run <1>
+-Drewrite.activeRecipes=
+   org.openrewrite.java.testing.hamcrest.AssertThatBooleanToAssertJ <2>
+-Drewrite.recipeArtifactCoordinates=
+   org.openrewrite.recipe:rewrite-testing-frameworks:RELEASE <3>
+----
+[%step]
+<1> Declare the plugin
+<2> Activate the recipe
+<3> Add the recipe dependency
+
+[.lesson]
+=== !
+
+- ✅ Connaître l'outil
+- ✅ Savoir lire une carte
+- ✅ Savoir démarrer le véhicule

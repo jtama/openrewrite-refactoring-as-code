@@ -7,3 +7,5 @@ highlight.js
 *.html
 .asciidoctor
 !index-docinfo-footer.html
+openrewrite-sample-recipes/target/
+toxic-library/target/
