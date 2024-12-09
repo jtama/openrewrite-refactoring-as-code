@@ -1,197 +1,192 @@
-@import url("https://fonts.googleapis.com/css2?family=Gochi+Hand");
+@import url("https://fonts.googleapis.com/css2?family=Poppins");
 
-/* latin-ext */
-@font-face {
-    font-family: 'Titillium Web';
-    font-style: normal;
-    font-weight: 400;
-    src: url(https://fonts.gstatic.com/s/titilliumweb/v15/NaPecZTIAOhVxoMyOr9n_E7fdM3mDaZRbryhsA.woff2) format('woff2');
-    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-
-/* latin */
-@font-face {
-    font-family: 'Titillium Web';
-    font-style: normal;
-    font-weight: 400;
-    src: url(https://fonts.gstatic.com/s/titilliumweb/v15/NaPecZTIAOhVxoMyOr9n_E7fdMPmDaZRbrw.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-/* latin-ext */
-@font-face {
-    font-family: 'Titillium Bold';
-    font-style: normal;
-    font-weight: 900;
-    src: url(https://fonts.gstatic.com/s/titilliumweb/v15/NaPDcZTIAOhVxoMyOr9n_E7ffEDBGIVzY5abuWIGxA.woff2) format('woff2');
-    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-
-/* latin */
-@font-face {
-    font-family: 'Titillium Bold';
-    font-style: normal;
-    font-weight: 900;
-    src: url(https://fonts.gstatic.com/s/titilliumweb/v15/NaPDcZTIAOhVxoMyOr9n_E7ffEDBGItzY5abuWI.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
 
 :root {
     --r-background-color: #EEEEEE;
     --r-main-color: #111012;
-    --r-main-font: 'Titillium Web';
+    --r-main-font: 'Poppins';
 }
 
-body::after {
-    content: url("../images/logo_event.svg");
-    position: fixed;
-    left: 4px;
-    bottom: 9px;
-    width: 100px;
-}
+body {
+    &::after {
+        content: url("../images/logo_event.svg");
+        position: fixed;
+        left: 4px;
+        bottom: 9px;
+        width: 100px;
+    }
 
 
-h1 {
-    display: none;
-}
+    h1 {
+        display: none;
+    }
+
+    .reveal {
+        h2 {
+            text-shadow: 0 0 7px #fff,
+            0 0 10px #fff,
+            0 0 21px #fff,
+            0 0 42px #84c8d8,
+            0 0 82px #84c8d8,
+            0 0 92px #84c8d8,
+            0 0 102px #84c8d8,
+            0 0 151px #84c8d8;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        .progress {
+            color: #1BC1E4;
+            height: 7px;
+        }
+
+    }
 
 
-
-.reveal ul {
-    list-style-type: none;
-}
-
-.slide-background.conclusion {
-    background: url("../images/openrewrite.svg") no-repeat 50% 15%;
-}
+    .slide-background.conclusion {
+        background: no-repeat center/80% url("../images/conclusion.jpg");
+    }
 
 
-.light h2 {
-    color: var(--r-background-color);
-    -webkit-text-stroke: 2px black;
-    text-stroke: 2px black;
-    font-size: var(--r-heading2-size);
-}
+    .light h2 {
+        color: var(--r-background-color);
+        -webkit-text-stroke: 2px black;
+        text-stroke: 2px black;
+        font-size: var(--r-heading2-size);
+    }
 
 
-.transparency.slide-background.present {
-    opacity: 0.20;
-}
+    .transparency.slide-background.present {
+        opacity: 0.60;
+    }
 
-.big {
-    font-size: 60px;
-    color: #012d3f;
-}
+    .blur-border.slide-background.present {
+        div {
+            box-shadow: inset 0 0 10px 8px var(--r-background-color);
+        }
+    }
 
-.use-case {
-    font-family: "Gochi Hand", serif;
-}
+    .big {
+        font-size: 60px;
+        color: #012d3f;
+    }
 
-.red {
-    color: #111012;
-}
+    .use-case {
+        font-family: "Gochi Hand", serif;
+    }
 
-img {
-    border-radius: 10px;
-}
+    .red {
+        color: #111012;
+    }
 
+    img {
+        border-radius: 10px;
+    }
 
-.reveal .progress {
-    color: #1BC1E4;
-    height: 7px;
-}
+    .vertical-align-middle > p {
+        vertical-align: middle;
+    }
 
-.vertical-align-middle > p {
-    vertical-align: middle;
-}
+    .vertical-align-middle > p > span {
+        vertical-align: middle;
+        margin: 0;
+    }
 
-.vertical-align-middle > p > span {
-    vertical-align: middle;
-    margin: 0;
-}
+    .vertical-align-middle > p > span > img {
+        vertical-align: middle;
+        margin: 0;
+    }
 
-.vertical-align-middle > p > span > img {
-    vertical-align: middle;
-    margin: 0;
-}
+    .important-text > * {
+        font-size: xxx-large;
+        font-weight: bold;
+        color: #012d3f;
+    }
 
-.important-text > *  {
-    font-size: xxx-large;
-    font-weight: bold;
-    color: #012d3f;
-}
+    .small {
+        font-size: small;
+    }
 
-.small {
-    font-size: small;
-}
+    .medium {
+        font-size: 38px;
+    }
 
-.medium {
-    font-size: 38px;
-}
+    .column.has-text-right > div > div.hdlist.small > table {
+        margin-right: 0;
+    }
 
-.column.has-text-right > div > div.hdlist.small > table {
-    margin-right: 0;
-}
+    .column.has-text-left > div > div.hdlist.small > table {
+        margin-left: 0;
+    }
 
-.column.has-text-left > div > div.hdlist.small > table {
-    margin-left: 0;
-}
+    section.lesson::before {
+        content: url("../images/permis_de_refactoring.png");
+    }
 
-section.lesson::before {
-    content: url("../images/permis_de_refactoring.png");
-    height: 100px;
-    width: 100px;
-}
+    .lesson.slide-background.present {
+        background-color: #BB8181FF;
+    }
 
-.lesson.slide-background.present {
-    background-color: #BB8181FF;
-}
+    .blur {
+        filter: blur(4px);
+    }
 
-.blur {
-    filter: blur(4px);
-}
+    .chercher_remplacer {
+        position: fixed;
+        top: 36px;
+        left: 710px;
+    }
 
-.chercher_remplacer {
-    position: fixed;
-    top: 36px;
-    left: 710px;
-}
+    .regexp {
+        position: fixed;
+        top: 36px;
+        left: 261px;
+    }
 
-.regexp{
-    position: fixed;
-    top: 36px;
-    left: 261px;
-}
+    .llm {
+        position: fixed;
+        top: 355px;
+        left: 261px;
+    }
 
-.llm{
-    position: fixed;
-    top: 355px;
-    left: 261px;
-}
+    .click_droit {
+        position: fixed;
+        top: 335px;
+        left: 656px;
+        overflow: hidden;
+    }
 
-.click_droit {
-    position: fixed;
-    top: 335px;
-    left: 656px;
-    overflow: hidden;
-}
+    li {
+        list-style-type: none;
+    }
 
-ol {
-    width: 40%;
-}
+    /*li:nth-child(even) {*/
+    /*    text-align: right;*/
+    /*}*/
 
-li {
-    list-style-type: none;
-}
+    /*li:nth-child(odd) {*/
+    /*    text-align: left;*/
+    /*}*/
 
-li:nth-child(even) {
-    text-align: right;
-}
+    audio {
+        display: none;
+    }
 
-li:nth-child(odd) {
-    text-align: left;
-}
-
-audio {
-    display: none;
+    @keyframes flicker {
+        0%, 18%, 22%, 25%, 53%, 57%, 100% {
+            text-shadow: 0 0 4px #fff,
+            0 0 11px #fff,
+            0 0 19px #fff,
+            0 0 40px #0fa,
+            0 0 80px #0fa,
+            0 0 90px #0fa,
+            0 0 100px #0fa,
+            0 0 150px #0fa;
+        }
+        20%, 24%, 55% {
+            text-shadow: none;
+        }
+    }
 }
