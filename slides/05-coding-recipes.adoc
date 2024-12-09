@@ -1,0 +1,14 @@
+
+== Ecrire sa propre recette
+
+Demo time !
+
+[.lesson]
+=== !
+
+- ✅ Connaître l'outil
+- ✅ Savoir lire une carte
+- ✅ Savoir démarrer le véhicule
+- ✅ Savoir conduire en ville
+- ✅ Savoir drifter sur la glace
+

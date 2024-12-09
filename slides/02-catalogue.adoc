@@ -1,7 +1,12 @@
 
 == Catalogue de recette
 
-//image::catalog.jpg[background, size=cover]
+image::catalog.jpg[background, size=contain]
+
+[.notes]
+--
+C'est en tout cas vrai pour toutes les recettes proposées par OpenRewrite, mais il peut y en avoir d'autres.
+--
 
 [%notitle,background-iframe="https://docs.openrewrite.org/recipes/java/testing/hamcrest"]
 === Partons à la découverte du catalogue

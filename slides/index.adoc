@@ -22,6 +22,6 @@ include::01-openrewrite.adoc[]
 include::02-catalogue.adoc[]
 include::03-running-recipes.adoc[]
 include::04-declarative-recipes.adoc[]
-include::xx-the-rest.adoc[]
+include::05-coding-recipes.adoc[]
 include::outro.adoc[]
 

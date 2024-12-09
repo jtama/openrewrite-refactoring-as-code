@@ -1,0 +1,41 @@
+= Openrewrite: Refactoring as Code
+
+Readable version available on https://jtama.github.io/refactoring-as-code/#/[Github Pages -> ici]
+
+== Slides
+=== Generate
+
+[source,bash]
+----
+cd slides;
+jbang qrcode@maxandersen -i images/qr_inlay.png <open feedback url> --qr-colo="linear-gradient(90deg, rgba(36,14,0,1) 0%, rgba(9,121,105,1) 35%, rgba(0,212,255,1) 100%);"
+jbang qrcode@maxandersen -i image/github.png <open feedback url> --qr-colo="linear-gradient(90deg, rgba(36,14,0,1) 0%, rgba(9,121,105,1) 35%, rgba(0,212,255,1) 100%);"
+podman container run --rm -v $(pwd):/documents -w /documents asciidoctor/docker-asciidoctor:1.80.0 asciidoctor-revealjs -r asciidoctor-diagram index.adoc
+----
+
+=== Run locally
+
+[source,bash]
+----
+podman container run --name prez --rm -d -p 8080:80 -v $(pwd)/slides:/usr/share/nginx/html nginx
+----
+
+== `toxic-library`
+
+Contains a small dumb maven module mocking a toxic library.
+
+Install locally with `mvn clean install`.
+
+== `toxic-library-remover`
+
+Contains sample code demonstrating OpenRewrite capabilities.
+
+Install locally with `mvn clean install`.
+
+== `toxic-library-user`
+
+Contains a small java application using the `toxic-library`.
+
+Clean using :
+
+include::toxic-library-user/README.adoc[]

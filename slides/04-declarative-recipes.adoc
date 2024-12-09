@@ -1,8 +1,12 @@
 
-[.transparent]
 == Declarative recipes
 
 image::declarative.jpg[background, size=cover]
+
+[.notes]
+--
+Un recette déclaratice est en fait juste un format de déclaration de recette sans avoir à écrire du code.
+--
 
 [%notitle]
 === Comment et où ?
@@ -18,7 +22,6 @@ Dans le répertoire `META-INF/rewrite`
 
 [.notes]
 --
-Un recette déclaratice est en fait juste un format de déclaration de recette sans avoir à écrire du code.
 Attention, pas `yaml`
 Projet Maven ou Gradle...
 --
@@ -48,10 +51,9 @@ recipeList:
   - org.openrewrite.maven.RemoveUnusedProperties:
       properties: .*toxic\.version
   - org.openrewrite.maven.RemoveDependency:
-      groupId: org.acme
-      artifactId: toxic
+      groupId: com.github.jtama
+      artifactId: toxic-library
   - org.acme.VousAllezVoirCeQueVousAllezVoir
-  - org.acme.EtCEstPasFinis
 ---
 type: specs.openrewrite.org/v1beta/recipe
 name: org.acme.VousAllezVoirCeQueVousAllezVoir
@@ -61,16 +63,18 @@ description: |
 tags:
   - acme
 recipeList:
-  - org.openrewrite.java.RemoveUnusedImports
+  - com.github.jtama.openrewrite.RemoveFooBarUtilsIsEmpty
+  - com.github.jtama.openrewrite.RemoveFooBarUtilsStringFormatted
+  - com.github.jtama.openrewrite.UseObjectsCompare
 ----
 
 [.notes]
 --
-Et on imagine ici que la dernière rectte est accessible ailleurs.
+Et on imagine ici que la dernière recette est accessible ailleurs.
 --
 
 [%notitle]
-=== Et on l'execute comme ça
+=== Et on l'exécute comme ça
 
 [.fragment]
 [source,bash,highlight="2..3|4..5"]
@@ -82,7 +86,7 @@ mvn -U org.openrewrite.maven:rewrite-maven-plugin:run \
 
 === Distribution
 
-Bin tu écris un fichier `rewrite.yaml` à la racine de ton projet !
+Inclure ce fichier dans un module maven fantôme...
 
 
 [.lesson]

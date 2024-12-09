@@ -19,13 +19,17 @@ C'est un outil open source développé par Moderne et qui est rentré dans la co
 . Quarkus
 --
 
-[%notitle]
 === Les concepts
 
+image::concepts.jpg[background, size=cover]
+
+[%notitle]
+=== Les concepts (2/2)
+
 [%step]
-. **##L##**ossless **##S##**yntax **##T##**ree
 . Un framework modulaire
 . Recipe
+. **L**ossless **S**yntax **T**ree
 . Le pattern visitor
 
 [.notes]
@@ -48,11 +52,18 @@ C'est un outil open source développé par Moderne et qui est rentré dans la co
 Le core module, qui contient toute la logique de refactoring générique, les apis et sdk pour un langage spécifique
 --
 
+[.blur-border.top-title]
 === Anatomie d'une recette
+
+image::anatomy.jpg[background, size=contain, .blur-border]
+
+[%notitle]
+=== Anatomie d'une recette (2/2)
 
 [%step]
 . Des préconditions
 . Des transformations
+. Des _data tables_
 
 [.notes]
 --

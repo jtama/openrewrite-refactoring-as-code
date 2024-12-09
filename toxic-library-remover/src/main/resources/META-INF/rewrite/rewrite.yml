@@ -1,0 +1,34 @@
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: org.acme.RemovesThatToxicDependency
+displayName: Removes that toxic dependency
+description: |
+  Migrate from AcmeToxic ☠️ to AcmeHealthy 😇,
+  removes dependencies and migrates code.
+tags:
+  - acme
+  - toxic
+recipeList:
+  - org.openrewrite.java.ChangeMethodTargetToStatic:
+      methodPattern: com.github.jtama.toxic.BigDecimalUtils valueOf(..)
+      fullyQualifiedTargetTypeName: java.math.BigDecimal
+  - org.acme.VousAllezVoirCeQueVousAllezVoir
+  - org.openrewrite.java.RemoveUnusedImports
+  - org.openrewrite.staticanalysis.RemoveUnusedPrivateFields
+  - org.openrewrite.maven.RemoveDependency:
+      groupId: com.github.jtama
+      artifactId: toxic-library
+  - org.openrewrite.maven.RemoveUnusedProperties:
+      properties: toxic\.version
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: org.acme.VousAllezVoirCeQueVousAllezVoir
+displayName: Ça va vous épater
+description: |
+  Rech. proj. pr proj. priv. Self Dem. Brt. Poss. S’adr. à l’hô. Mart
+tags:
+  - acme
+recipeList:
+  - com.github.jtama.openrewrite.RemoveFooBarUtilsIsEmptyRecipes
+  - com.github.jtama.openrewrite.RemoveFooBarUtilsStringFormatted
+  - com.github.jtama.openrewrite.UseObjectsCompare
