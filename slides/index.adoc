@@ -19,9 +19,9 @@
 
 include::intro.adoc[]
 include::01-openrewrite.adoc[]
-include::04-catalogue.adoc[]
 include::02-running-recipes.adoc[]
 include::03-declarative-recipes.adoc[]
+include::04-catalogue.adoc[]
 include::05-coding-recipes.adoc[]
 include::outro.adoc[]
 
