@@ -1,7 +1,10 @@
 
 == Catalogue de recette
 
-image::catalog.jpg[background, size=contain]
+image::catalog.jpg[background, size=cover]
+
+[.down]
+http://www.freepik.com[Designed by Freepik]
 
 [.notes]
 --
@@ -21,6 +24,6 @@ Plus de 500 recettes la dernière fois que j'ai compté.
 === !
 
 - ✅ Connaître l'outil
-- ✅ Savoir lire une carte
 - ✅ Savoir démarrer le véhicule
 - ✅ Savoir conduire en ville
+- ✅ Savoir lire une carte

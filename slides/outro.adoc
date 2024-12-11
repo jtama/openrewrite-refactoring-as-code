@@ -1,8 +1,11 @@
-[.conclusion.transparency]
+[.transparency]
 == Point d'attention
 
-- No a silver bullet
-- Composition de recettes complexes
+image::conclusion.jpg[background, size=cover]
+
+[%step]
+- Quand on a qu'un marteau tout ressemble à un clou.
+- Composition de recettes complexes.
 
 
 [.transparency]

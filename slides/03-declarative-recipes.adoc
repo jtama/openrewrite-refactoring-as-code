@@ -8,23 +8,6 @@ image::declarative.jpg[background, size=cover]
 Un recette déclaratice est en fait juste un format de déclaration de recette sans avoir à écrire du code.
 --
 
-[%notitle]
-=== Comment et où ?
-
-
-[.fragment]
-Dans un fichier qui doit s'appeler `rewrite.yml`
-
-[.fragment]
-À la racine d'un projet.
-[.fragment]
-Dans le répertoire `META-INF/rewrite`
-
-[.notes]
---
-Attention, pas `yaml`
-Projet Maven ou Gradle...
---
 
 [%notitle]
 === Et ça ressemble à ?
@@ -71,6 +54,23 @@ recipeList:
 [.notes]
 --
 Et on imagine ici que la dernière recette est accessible ailleurs.
+--
+
+[%notitle]
+=== Comment et où ?
+
+
+Dans un fichier qui doit s'appeler `rewrite.yml`
+
+[.fragment]
+À la racine d'un projet.
+[.fragment]
+Dans le répertoire `META-INF/rewrite`
+
+[.notes]
+--
+Attention, pas `yaml`
+Projet Maven ou Gradle...
 --
 
 [%notitle]

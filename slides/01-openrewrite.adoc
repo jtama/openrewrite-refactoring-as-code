@@ -57,7 +57,7 @@ Par exemple 73 points d'extension pour Java...
 [.blur-border.top-title]
 === Anatomie d'une recette
 
-image::anatomy.jpg[background, size=contain, .blur-border]
+image::anatomy.jpg[background, size=cover]
 
 [%notitle]
 === Anatomie d'une recette (2/2)

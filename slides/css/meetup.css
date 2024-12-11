@@ -9,7 +9,7 @@
 
 body {
     &::after {
-        content: url("../images/logo_event.svg");
+        content: url("../images/logo_event.png");
         position: fixed;
         left: 4px;
         bottom: 9px;
@@ -73,12 +73,6 @@ body {
         opacity: 0.60;
     }
 
-    .blur-border.slide-background.present {
-        div {
-            box-shadow: inset 0 0 10px 8px var(--r-background-color);
-        }
-    }
-
     .big {
         font-size: 60px;
         color: #012d3f;
@@ -132,12 +126,11 @@ body {
         margin-left: 0;
     }
 
-    section.lesson::before {
-        content: url("../images/permis_de_refactoring.png");
-    }
+    section {
+        .lesson::before {
+            content: url("../images/permis_de_refactoring.png");
+        }
 
-    .lesson.slide-background.present {
-        background-color: #BB8181FF;
     }
 
     .blur {
@@ -173,15 +166,12 @@ body {
         list-style-type: none;
     }
 
-    /*li:nth-child(even) {*/
-    /*    text-align: right;*/
-    /*}*/
-
-    /*li:nth-child(odd) {*/
-    /*    text-align: left;*/
-    /*}*/
-
     audio {
         display: none;
+    }
+
+    .down {
+        position: relative;
+        bottom: -600px;
     }
 }

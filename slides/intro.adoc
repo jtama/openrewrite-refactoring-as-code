@@ -44,7 +44,7 @@ image::llm.png[role=llm]
 audio::sound/punition.mp3[data-autoplay]
 
 [%notitle.columns.is-vcentered.transparency]
-== Présentation
+=== Présentation
 
 [.column.is-one-third]
 --
