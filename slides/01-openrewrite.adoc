@@ -50,6 +50,8 @@ image::concepts.jpg[background, size=cover]
 
 
 Le core module, qui contient toute la logique de refactoring générique, les apis et sdk pour un langage spécifique
+
+Par exemple 73 points d'extension pour Java...
 --
 
 [.blur-border.top-title]

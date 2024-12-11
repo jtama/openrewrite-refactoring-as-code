@@ -11,9 +11,16 @@ C'est en tout cas vrai pour toutes les recettes proposées par OpenRewrite, mais
 [%notitle,background-iframe="https://docs.openrewrite.org/recipes/java/testing/hamcrest"]
 === Partons à la découverte du catalogue
 
+[.notes]
+--
+Plus de 500 recettes la dernière fois que j'ai compté.
+--
+
 
 [.lesson]
 === !
 
 - ✅ Connaître l'outil
 - ✅ Savoir lire une carte
+- ✅ Savoir démarrer le véhicule
+- ✅ Savoir conduire en ville

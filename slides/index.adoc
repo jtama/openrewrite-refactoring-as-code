@@ -11,7 +11,7 @@
 :revealjs_pdfseparatefragments: false
 :revealjs_width: 1200
 :title-slide-background-image: title_image.png
-:title-slide-background-size: contain
+:title-slide-background-size: cover
 :title-slide-background-repeat: no-repeat
 :title-slide-filter: blur(4px)
 :customcss: css/meetup.css
@@ -19,9 +19,9 @@
 
 include::intro.adoc[]
 include::01-openrewrite.adoc[]
-include::02-catalogue.adoc[]
-include::03-running-recipes.adoc[]
-include::04-declarative-recipes.adoc[]
+include::04-catalogue.adoc[]
+include::02-running-recipes.adoc[]
+include::03-declarative-recipes.adoc[]
 include::05-coding-recipes.adoc[]
 include::outro.adoc[]
 

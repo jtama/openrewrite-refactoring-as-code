@@ -34,11 +34,11 @@ image::running.avif[background, size=cover]
 </project>
 ----
 [.fragment, data-fragment-index=0]
-Declare the plugin
+Déclaration du plugin
 [.fragment, data-fragment-index=1]
-Add the recipe dependency
+Ajout de la dépendance de la recette
 [.fragment, data-fragment-index=2]
-Activate the recipe
+Activation des recettes
 
 [%notitle]
 === En modifiant vos poms (2/2)
@@ -65,15 +65,14 @@ mvn -U org.openrewrite.maven:rewrite-maven-plugin:run
    org.openrewrite.java.testing.hamcrest.AssertThatBooleanToAssertJ
 ----
 [.fragment, data-fragment-index=0]
-Declare the plugin
+Déclaration du plugin
 [.fragment, data-fragment-index=1]
-Add the recipe dependency
+Ajout de la dépendance de la recette
 [.fragment, data-fragment-index=2]
-Activate the recipe
+Activation des recettes
 
 [.lesson]
 === !
 
 - ✅ Connaître l'outil
-- ✅ Savoir lire une carte
 - ✅ Savoir démarrer le véhicule

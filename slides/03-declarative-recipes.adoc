@@ -93,6 +93,5 @@ Inclure ce fichier dans un module maven fantôme...
 === !
 
 - ✅ Connaître l'outil
-- ✅ Savoir lire une carte
 - ✅ Savoir démarrer le véhicule
 - ✅ Savoir conduire en ville
