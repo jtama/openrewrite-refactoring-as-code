@@ -14,7 +14,7 @@ public class FooBarUtils {
         return value.isEmpty();
     }
 
-    public static boolean isEmpty(List value) {
+    public static <T> boolean isEmpty(List<T> value) {
         if (value == null) return true;
         return value.isEmpty();
     }

@@ -10,6 +10,8 @@ import org.openrewrite.java.JavaTemplate;
 import org.openrewrite.java.MethodMatcher;
 import org.openrewrite.java.search.UsesType;
 import org.openrewrite.java.tree.J;
+import org.openrewrite.java.tree.TextComment;
+import org.openrewrite.marker.Markers;
 
 public class UseObjectsCompare extends Recipe {
 
@@ -47,8 +49,10 @@ public class UseObjectsCompare extends Recipe {
             J.MethodInvocation mi = super.visitMethodInvocation(method, ctx);
             if (compareMethodMatcher.matches(mi)) {
                 maybeAddImport("java.util.Objects");
-                mi = objectsCompareTemplate.apply(getCursor(), mi.getCoordinates().replace(),
+                J.MethodInvocation invocation = objectsCompareTemplate.apply(getCursor(), mi.getCoordinates().replace(),
                         mi.getArguments().get(0), mi.getArguments().get(1), mi.getArguments().get(2));
+                invocation.getComments().add(new TextComment(false, "Comparing %s using %s".formatted(mi.getArguments().get(0).getType().toString(), mi.getArguments().get(2).getType().toString()), mi.getPrefix().getWhitespace() ,Markers.EMPTY));
+                mi = invocation;
             }
             return mi;
         }

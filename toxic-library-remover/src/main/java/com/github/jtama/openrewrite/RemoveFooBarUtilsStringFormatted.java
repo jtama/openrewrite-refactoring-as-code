@@ -19,15 +19,15 @@ import org.openrewrite.ExecutionContext;
 import org.openrewrite.Preconditions;
 import org.openrewrite.Recipe;
 import org.openrewrite.TreeVisitor;
+import org.openrewrite.internal.ListUtils;
 import org.openrewrite.java.JavaIsoVisitor;
-import org.openrewrite.java.JavaParser;
 import org.openrewrite.java.JavaTemplate;
 import org.openrewrite.java.MethodMatcher;
 import org.openrewrite.java.search.UsesType;
 import org.openrewrite.java.tree.Expression;
 import org.openrewrite.java.tree.J;
+import org.openrewrite.java.tree.Space;
 
-import java.util.Collections;
 import java.util.List;
 
 public class RemoveFooBarUtilsStringFormatted extends Recipe {
@@ -50,24 +50,20 @@ public class RemoveFooBarUtilsStringFormatted extends Recipe {
 
     private static class ToStringFormattedVisitor extends JavaIsoVisitor<ExecutionContext> {
 
-        public ToStringFormattedVisitor() {
-            maybeRemoveImport("com.github.jtama.toxic.FooBarUtils");
-        }
-
-        private final MethodMatcher stringFomatted = new MethodMatcher("com.github.jtama.toxic.FooBarUtils stringFormatted(String,..)");
+        private final MethodMatcher stringFormatted = new MethodMatcher("com.github.jtama.toxic.FooBarUtils stringFormatted(String,..)");
 
         @Override
         public J.MethodInvocation visitMethodInvocation(J.MethodInvocation method, ExecutionContext ctx) {
             J.MethodInvocation methodInvocation = super.visitMethodInvocation(method, ctx);
-            if (stringFomatted.matches(methodInvocation)) {
-                List<Expression> arguments = methodInvocation.getArguments();
-                String varags = String.join(", ", Collections.nCopies(arguments.size() - 1, "#{any(java.lang.Object)}"));
-                methodInvocation = JavaTemplate.builder("#{any(java.lang.String)}.formatted(" + varags + ")")
-                        .javaParser(JavaParser.fromJavaVersion().classpath(JavaParser.runtimeClasspath()))
-                        .build()
-                        .apply(getCursor(),methodInvocation.getCoordinates().replace(),arguments.toArray(new Expression[0]));
+            if (!stringFormatted.matches(methodInvocation)) {
+                return methodInvocation;
             }
-            return methodInvocation;
+            maybeRemoveImport("com.github.jtama.toxic.FooBarUtils");
+            List<Expression> arguments = methodInvocation.getArguments();
+            J.MethodInvocation mi = JavaTemplate.builder("#{any(java.lang.String)}.formatted()").build().apply(getCursor(), methodInvocation.getCoordinates().replace(), arguments.get(0));
+            mi = mi.withSelect(arguments.get(0).withPrefix(Space.EMPTY))
+                    .withArguments(ListUtils.mapFirst(arguments.subList(1, arguments.size()),expression -> expression.withPrefix(Space.EMPTY)));
+            return mi;
         }
     }
 

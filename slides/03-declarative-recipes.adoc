@@ -16,7 +16,7 @@ Un recette déclaratice est en fait juste un format de déclaration de recette s
 ----
 ---
 type: specs.openrewrite.org/v1beta/recipe
-name: org.acme.RemovesThatToxicDependency
+name: com.github.jtama.openrewrite.RemovesThatToxicDependency
 displayName: Removes that toxic dependency
 description: |
   Migrate from AcmeToxic ☠️ to AcmeHealthy 😇,
@@ -24,27 +24,27 @@ description: |
 tags:
   - acme
   - toxic
-preconditions:
-  - org.openrewrite.text.Find:
-      find: org.acme.toxic.BigDecimalUtils
 recipeList:
   - org.openrewrite.java.ChangeMethodTargetToStatic:
-      methodPattern: org.acme.toxic.BigDecimalUtils valueOf(..)
+      methodPattern: com.github.jtama.toxic.BigDecimalUtils valueOf(..)
       fullyQualifiedTargetTypeName: java.math.BigDecimal
   - org.openrewrite.maven.RemoveUnusedProperties:
       properties: .*toxic\.version
   - org.openrewrite.maven.RemoveDependency:
       groupId: com.github.jtama
       artifactId: toxic-library
-  - org.acme.VousAllezVoirCeQueVousAllezVoir
+  - com.github.jtama.openrewrite.VousAllezVoirCeQueVousAllezVoir
 ---
 type: specs.openrewrite.org/v1beta/recipe
-name: org.acme.VousAllezVoirCeQueVousAllezVoir
+name: com.github.jtama.openrewrite.VousAllezVoirCeQueVousAllezVoir
 displayName: Ça va vous épater
 description: |
   Rech. proj. pr proj. priv. Self Dem. Brt. Poss. S’adr. à l’hô. Mart
 tags:
   - acme
+preconditions:
+  - org.openrewrite.text.Find:
+      find: com.github.jtama.toxic
 recipeList:
   - com.github.jtama.openrewrite.RemoveFooBarUtilsIsEmpty
   - com.github.jtama.openrewrite.RemoveFooBarUtilsStringFormatted
@@ -77,11 +77,11 @@ Projet Maven ou Gradle...
 === Et on l'exécute comme ça
 
 [.fragment]
-[source,bash,highlight="2..3|4..5"]
+[source,console,highlight="2..3|4..5"]
 ----
-mvn -U org.openrewrite.maven:rewrite-maven-plugin:run \
+$ mvn -U org.openrewrite.maven:rewrite-maven-plugin:run \
     -Drewrite.activeRecipes=\
-      org.acme.RemovesThatToxicDependency
+      com.github.jtama.openrewrite.RemovesThatToxicDependency
 ----
 
 === Distribution

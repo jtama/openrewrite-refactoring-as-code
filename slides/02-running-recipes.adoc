@@ -43,9 +43,9 @@ Activation des recettes
 [%notitle]
 === En modifiant vos poms (2/2)
 
-[source,bash,.fragment]
+[source,console,.fragment]
 ----
-mvn rewrite:run
+$ mvn rewrite:run
 ----
 
 [.notes]
@@ -56,12 +56,12 @@ Pareil avec gradle
 === Sans modifier vos poms
 
 [.fragment]
-[source,bash,highlight="1|2..3|4..5",step=0]
+[source,console,highlight="1|2..3|4..5",step=0]
 ----
-mvn -U org.openrewrite.maven:rewrite-maven-plugin:run
--Drewrite.recipeArtifactCoordinates=
-   org.openrewrite.recipe:rewrite-testing-frameworks:RELEASE
--Drewrite.activeRecipes=
+$ mvn -U org.openrewrite.maven:rewrite-maven-plugin:run \
+  -Drewrite.recipeArtifactCoordinates=\
+   org.openrewrite.recipe:rewrite-testing-frameworks:RELEASE\
+  -Drewrite.activeRecipes=\
    org.openrewrite.java.testing.hamcrest.AssertThatBooleanToAssertJ
 ----
 [.fragment, data-fragment-index=0]
@@ -76,3 +76,8 @@ Activation des recettes
 
 - ✅ Connaître l'outil
 - ✅ Savoir démarrer le véhicule
+
+[.notes]
+--
+Les façons de faire décrites ci-dessus ne sont valables que si les recettes ne prennent pas de paramètres. Si telle n'est pas le cas il va falloir passer à l'étape suivante
+--

@@ -31,9 +31,10 @@ class RemoveFooBarUtilsStringFormattedTest implements RewriteTest {
               
                   public String foo() {
                       return new FooBarUtils().stringFormatted("Hello %s %s %s", 2L,
-                         "tutu" + 
+                         "tutu" +
                          "tata",
-                         this.getClass().getName());
+                         this.getClass()
+                              .getName());
                   }
               }
               """,
@@ -41,8 +42,11 @@ class RemoveFooBarUtilsStringFormattedTest implements RewriteTest {
               public class FullDriftCar {
              
                   public String foo() {
-                      return "Hello %s %s %s".formatted(2L, "tutu" +
-                              "tata", this.getClass().getName());
+                      return "Hello %s %s %s".formatted(2L,
+                         "tutu" +
+                         "tata",
+                         this.getClass()
+                              .getName());
                   }
               }
               """));

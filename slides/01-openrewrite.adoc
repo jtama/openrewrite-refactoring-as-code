@@ -63,7 +63,9 @@ image::anatomy.jpg[background, size=cover]
 === Anatomie d'une recette (2/2)
 
 [%step]
+. Un/des paramètre(s) pour personnaliser le comportement de la recette.
 . Des préconditions
+. Une liste de recettes filles
 . Des transformations
 . Des _data tables_
 

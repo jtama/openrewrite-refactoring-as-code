@@ -46,6 +46,7 @@ class RemoveFooBarCompareTest implements RewriteTest {
                   private static final FooBarUtils UTILS = new FooBarUtils();
               
                   public void virage(String param) {
+                      //Comparing java.lang.String using java.util.Comparator<java.lang.String>
                       Objects.compare(param, "au frein à main ?", (o1, o2) -> o1.compareTo(o2));
                   }
               }
