@@ -14,8 +14,9 @@ class RemoveFooBarUtilsStringFormattedTest implements RewriteTest {
     public void defaults(RecipeSpec spec) {
         spec.recipe(new RemoveFooBarUtilsStringFormatted())
           .parser(JavaParser.fromJavaVersion()
-          .logCompilationWarningsAndErrors(true)
-          .classpath("toxic-library"));
+              .logCompilationWarningsAndErrors(true)
+              .classpath("toxic-library")
+          );
     }
 
     @DocumentExample

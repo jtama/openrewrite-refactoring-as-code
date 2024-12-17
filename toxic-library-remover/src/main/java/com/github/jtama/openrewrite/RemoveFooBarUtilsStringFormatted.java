@@ -44,25 +44,32 @@ public class RemoveFooBarUtilsStringFormatted extends Recipe {
 
     @Override
     public TreeVisitor<?, ExecutionContext> getVisitor() {
-        return new Preconditions.Check(new UsesType<>("com.github.jtama.toxic.FooBarUtils", true), new ToStringFormattedVisitor());
+        return new Preconditions.Check(
+                new UsesType<>("com.github.jtama.toxic.FooBarUtils", true),
+                new ToStringFormattedVisitor());
     }
 
 
     private static class ToStringFormattedVisitor extends JavaIsoVisitor<ExecutionContext> {
 
-        private final MethodMatcher stringFormatted = new MethodMatcher("com.github.jtama.toxic.FooBarUtils stringFormatted(String,..)");
+        private final MethodMatcher toxicStringFormatted = new MethodMatcher("com.github.jtama.toxic.FooBarUtils stringFormatted(String,..)");
+        private JavaTemplate stringFormatted = JavaTemplate.builder("#{any(java.lang.String)}.formatted()").build();
 
         @Override
         public J.MethodInvocation visitMethodInvocation(J.MethodInvocation method, ExecutionContext ctx) {
             J.MethodInvocation methodInvocation = super.visitMethodInvocation(method, ctx);
-            if (!stringFormatted.matches(methodInvocation)) {
+            if (!toxicStringFormatted.matches(methodInvocation)) {
                 return methodInvocation;
             }
             maybeRemoveImport("com.github.jtama.toxic.FooBarUtils");
             List<Expression> arguments = methodInvocation.getArguments();
-            J.MethodInvocation mi = JavaTemplate.builder("#{any(java.lang.String)}.formatted()").build().apply(getCursor(), methodInvocation.getCoordinates().replace(), arguments.get(0));
-            mi = mi.withSelect(arguments.get(0).withPrefix(Space.EMPTY))
-                    .withArguments(ListUtils.mapFirst(arguments.subList(1, arguments.size()),expression -> expression.withPrefix(Space.EMPTY)));
+            J.MethodInvocation mi = stringFormatted.apply(
+                    getCursor(),
+                    methodInvocation.getCoordinates().replace(),
+                    arguments.get(0));
+            mi = mi.withArguments(ListUtils.mapFirst(
+                    arguments.subList(1, arguments.size()),
+                    expression -> expression.withPrefix(Space.EMPTY)));
             return mi;
         }
     }

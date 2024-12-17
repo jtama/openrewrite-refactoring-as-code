@@ -5,7 +5,7 @@ Readable version available on https://jtama.github.io/refactoring-as-code/#/[Git
 == Slides
 === Generate
 
-[source,bash]
+[source%linenums,bash]
 ----
 cd slides;
 jbang qrcode@maxandersen -i images/qr_inlay.png <open feedback url> --qr-colo="linear-gradient(90deg, rgba(36,14,0,1) 0%, rgba(9,121,105,1) 35%, rgba(0,212,255,1) 100%);"
@@ -15,7 +15,7 @@ podman container run --rm -v $(pwd):/documents -w /documents asciidoctor/docker-
 
 === Run locally
 
-[source,bash]
+[source%linenums,bash]
 ----
 podman container run --name prez --rm -d -p 8080:80 -v $(pwd)/slides:/usr/share/nginx/html nginx
 ----
