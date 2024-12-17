@@ -4,7 +4,7 @@
 image::conclusion.jpg[background, size=cover]
 
 [%step]
-- Quand on a qu'un marteau tout ressemble à un clou.
+- Quand on n'a qu'un marteau tout ressemble à un clou.
 - Composition de recettes complexes.
 
 

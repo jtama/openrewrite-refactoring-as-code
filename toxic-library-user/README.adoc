@@ -1,4 +1,4 @@
-[source, bash]
+[source%linenums, bash]
 ----
 mvn -U org.openrewrite.maven:rewrite-maven-plugin:run \
 -Drewrite.recipeArtifactCoordinates=com.github.jtama:toxic-library-remover:1.0.1-SNAPSHOT \
