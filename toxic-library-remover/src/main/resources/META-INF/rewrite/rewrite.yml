@@ -28,7 +28,10 @@ description: |
   Rech. proj. pr proj. priv. Self Dem. Brt. Poss. S’adr. à l’hô. Mart
 tags:
   - acme
+preconditions:
+  - org.openrewrite.java.search.FindTypes:
+      fullyQualifiedTypeName: com.github.jtama.toxic.FooBarUtils
 recipeList:
   - com.github.jtama.openrewrite.RemoveFooBarUtilsIsEmptyRecipes
   - com.github.jtama.openrewrite.RemoveFooBarUtilsStringFormatted
-  - com.github.jtama.openrewrite.NeverAssignNullToList
+  - com.github.jtama.openrewrite.UseObjectsCompare

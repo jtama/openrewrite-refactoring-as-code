@@ -32,8 +32,6 @@
             <groupId>org.openrewrite.meta</groupId>
             <artifactId>rewrite-analysis</artifactId>
         </dependency>
-
-
         <dependency>
             <groupId>org.openrewrite</groupId>
             <artifactId>rewrite-java</artifactId>
@@ -64,6 +62,12 @@
         </dependency>
 
         <dependency>
+            <groupId>com.github.jtama</groupId>
+            <artifactId>toxic-library</artifactId>
+            <version>19.666.45-RC18-FINAL</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.openrewrite</groupId>
             <artifactId>rewrite-test</artifactId>
             <scope>test</scope>
@@ -82,11 +86,6 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>com.github.jtama</groupId>
-            <artifactId>toxic-library</artifactId>
-            <version>19.666.45-RC18-FINAL</version>
-        </dependency>
     </dependencies>
 
     <dependencyManagement>

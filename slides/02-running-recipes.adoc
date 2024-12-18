@@ -71,10 +71,15 @@ Ajout de la dépendance de la recette
 [.fragment, data-fragment-index=2]
 Activation des recettes
 
+[.notes]
+--
+Il existe aussi une intégration avec IntelliJ qui facilite beaucoup la vie.
+--
+
 [.lesson]
 === !
 
-- ✅ Connaître l'outil
+- ✅ Vue d'ensemble du véhicule
 - ✅ Savoir démarrer le véhicule
 
 [.notes]

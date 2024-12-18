@@ -6,7 +6,7 @@ Demo time !
 [.lesson]
 === !
 
-- ✅ Connaître l'outil
+- ✅ Vue d'ensemble du véhicule
 - ✅ Savoir lire une carte
 - ✅ Savoir démarrer le véhicule
 - ✅ Savoir conduire en ville

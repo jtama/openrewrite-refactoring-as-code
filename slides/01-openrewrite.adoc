@@ -7,7 +7,7 @@ image::under_logo.svg[]
 
 [.notes]
 --
-C'est un outil open source développé par Moderne et qui est rentré dans la common haus fondation
+C'est un outil java open-source - Apache 2
 
 . Debezium
 . SdkMan
@@ -27,7 +27,6 @@ image::concepts.jpg[background, size=cover]
 === Les concepts (2/2)
 
 [%step]
-. Un framework modulaire
 . Recipe
 . **L**ossless **S**yntax **T**ree
 . Le pattern visitor
@@ -48,9 +47,6 @@ image::concepts.jpg[background, size=cover]
 ** Maven
 ** Gradle
 
-
-Le core module, qui contient toute la logique de refactoring générique, les apis et sdk pour un langage spécifique
-
 Par exemple 73 points d'extension pour Java...
 --
 
@@ -63,7 +59,9 @@ image::anatomy.jpg[background, size=cover]
 === Anatomie d'une recette (2/2)
 
 [%step]
-. Un/des paramètre(s) pour personnaliser le comportement de la recette.
+. Un nom
+. Un nom et une description (Ceux-ci sont obligatoires)
+. Un/des paramètre(s) pour personnaliser le comportement de la recette
 . Des préconditions
 . Une liste de recettes filles
 . Des transformations
@@ -77,4 +75,4 @@ Des résultats sous forme de _data tables_
 [.lesson]
 === !
 
-✅ Connaître l'outil
+✅ Vue d'ensemble du véhicule

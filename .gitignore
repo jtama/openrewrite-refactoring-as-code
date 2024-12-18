@@ -2,10 +2,11 @@
 .idea
 target
 .DS_Store
-reveal.js
-highlight.js
+slides/reveal.js
+slides/highlight.js
 *.html
 .asciidoctor
 !index-docinfo-footer.html
 openrewrite-sample-recipes/target/
 toxic-library/target/
+/slides/reveal.js/
