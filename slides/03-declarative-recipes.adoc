@@ -1,5 +1,5 @@
 
-[.transparency]
+[.transparency.no-transition]
 == Declarative recipes
 
 image::declarative.jpg[background, size=cover]
@@ -13,11 +13,11 @@ Une recette déclarative est en fait juste un format de déclaration de recette 
 [%notitle]
 === Et ça ressemble à ?
 
-[source%linenums,yaml,highlight="3|4..10|12..19|20|23..24|29..35"]
+[source%linenums,yaml,highlight="3|4..10|13..17|12|20|26..28|29..32"]
 ----
 ---
 type: specs.openrewrite.org/v1beta/recipe
-name: com.github.jtama.openrewrite.RemovesThatToxicDependency
+name: com.github.jtama.openrewrite.RedIsDead
 displayName: Removes that toxic dependency
 description: |
   Migrate from AcmeToxic ☠️ to AcmeHealthy 😇,
@@ -26,18 +26,15 @@ tags:
   - acme
   - toxic
 recipeList:
-  - org.openrewrite.java.ChangeMethodTargetToStatic:
-      methodPattern: com.github.jtama.toxic.BigDecimalUtils valueOf(..)
-      fullyQualifiedTargetTypeName: java.math.BigDecimal
-  - org.openrewrite.maven.RemoveUnusedProperties:
-      properties: .*toxic\.version
+  - com.github.jtama.openrewrite.CaVaCouperCherie
   - org.openrewrite.maven.RemoveDependency:
       groupId: com.github.jtama
       artifactId: toxic-library
-  - com.github.jtama.openrewrite.VousAllezVoirCeQueVousAllezVoir
+  - org.openrewrite.maven.RemoveUnusedProperties:
+      propertyPattern: .*toxic\.version
 ---
 type: specs.openrewrite.org/v1beta/recipe
-name: com.github.jtama.openrewrite.VousAllezVoirCeQueVousAllezVoir
+name: com.github.jtama.openrewrite.CaVaCouperCherie
 displayName: Ça va vous épater
 description: |
   Rech. proj. pr proj. priv. Self Dem. Brt. Poss. S’adr. à l’hô. Mart
@@ -47,9 +44,9 @@ preconditions:
   - org.openrewrite.java.search.FindTypes:
       fullyQualifiedTypeName: com.github.jtama.toxic.FooBarUtils
 recipeList:
-  - com.github.jtama.openrewrite.RemoveFooBarUtilsIsEmptyRecipes
-  - com.github.jtama.openrewrite.RemoveFooBarUtilsStringFormatted
-  - com.github.jtama.openrewrite.UseObjectsCompare
+    - org.openrewrite.java.ChangeMethodTargetToStatic:
+          methodPattern: com.github.jtama.toxic.BigDecimalUtils valueOf(..)
+          fullyQualifiedTargetTypeName: java.math.BigDecimal
 ----
 
 [.notes]
@@ -86,6 +83,7 @@ $ mvn -U org.openrewrite.maven:rewrite-maven-plugin:run \
       com.github.jtama.openrewrite.RemovesThatToxicDependency
 ----
 
+[.no-transition]
 === Distribution
 
 Inclure ce fichier dans un module maven fantôme...
@@ -103,5 +101,6 @@ image::permis_de_refactoring.png[]
 --
 - ✅ Vue d'ensemble du véhicule
 - ✅ Savoir démarrer le véhicule
+- ✅ Savoir lire une carte
 - ✅ Savoir conduire en ville
 --

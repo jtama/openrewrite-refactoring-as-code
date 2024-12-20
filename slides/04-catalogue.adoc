@@ -1,5 +1,5 @@
-[.transparency]
-== Catalogue de recette
+[.transparency.no-transition]
+== Catalogue de recettes
 
 image::catalog.avif[background, size=cover]
 
@@ -8,7 +8,7 @@ image::catalog.avif[background, size=cover]
 C'est en tout cas vrai pour toutes les recettes proposées par OpenRewrite, mais il peut y en avoir d'autres.
 --
 
-[%notitle,background-iframe="https://docs.openrewrite.org/recipes/java/testing/hamcrest"]
+[%notitle,background-iframe="https://docs.openrewrite.org/recipes/java/testing/junit5/junit4to5migration"]
 === Partons à la découverte du catalogue
 
 [.notes]
@@ -29,6 +29,5 @@ image::permis_de_refactoring.png[]
 --
 - ✅ Vue d'ensemble du véhicule
 - ✅ Savoir démarrer le véhicule
-- ✅ Savoir conduire en ville
 - ✅ Savoir lire une carte
 --

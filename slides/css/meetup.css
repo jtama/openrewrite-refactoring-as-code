@@ -12,12 +12,24 @@ body {
         content: "";
         position: fixed;
         left: 60px;
-        bottom: 60px;
+        bottom: 0;
         width: 200px;
         height: 143px;
-        background-image: url('../images/logo_event.png');
-        background-size: 200px 143px;
+        background-image: url('../images/logo_event.svg');
+        background-size: 70%;
+        background-repeat: no-repeat;
     }
+
+    footer {
+        z-index: 10;
+        position: absolute;
+        left: 0%;
+        width: 100%;
+        bottom: 0;
+        min-height: 80px;
+        text-align: center;
+    }
+
 
 
 
@@ -37,7 +49,12 @@ body {
         }
 
         h2 {
-            text-shadow: -1px 0 #1BC1E4, 0 1px #1BC1E4, 1px 0 #1BC1E4, 0 -1px #1BC1E4;
+            text-shadow: -1px 0 #EEEEEE, 0 1px #EEEEEE, 1px 0 #EEEEEE, 0 -1px #EEEEEE;
+            position: fixed;
+            left: 50%;
+            top: 6px;
+            transform: translateX(-50%);
+            width: 100%;
         }
 
         ul {
@@ -144,26 +161,26 @@ body {
 
     .chercher_remplacer {
         position: fixed;
-        top: 36px;
-        left: 710px;
+        top: 125px;
+        left: 821px;
     }
 
     .regexp {
         position: fixed;
-        top: 36px;
-        left: 261px;
+        top: 125px;
+        left: 197px;
     }
 
     .llm {
         position: fixed;
         top: 355px;
-        left: 261px;
+        left: 197px;
     }
 
     .click_droit {
         position: fixed;
-        top: 335px;
-        left: 656px;
+        top: 355px;
+        left: 821px;
         overflow: hidden;
     }
 

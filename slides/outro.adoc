@@ -1,15 +1,21 @@
-[.transparency]
-== Point d'attention
+[.transparency.no-transition]
+== Points d'attention
 
 image::conclusion.jpg[background, size=cover]
 
-[%step]
+=== !
+
+
 - Quand on n'a qu'un marteau tout ressemble à un clou.
-- Composition de recettes complexes.
+
+[.fragment]
+Composition de recettes complexes.
+
+[.fragment]
+_java preview feature_
 
 
-[.transparency]
-[.columns]
+[.transparency.columns.no-transition]
 === Merci !
 
 [.column]

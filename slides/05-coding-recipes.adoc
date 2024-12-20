@@ -1,11 +1,10 @@
+[.no-transition]
+== Écrire sa propre recette
 
-== Ecrire sa propre recette
 
-[.fragment]
-Ha hahahahahahaha hahaha haha hhahhaha.
+[%notitle]
+=== hahaha
 
-[.notes]
---
-Pour le drift il va falloir attendre!
---
+image::laughing.gif[width=600]
+
 
