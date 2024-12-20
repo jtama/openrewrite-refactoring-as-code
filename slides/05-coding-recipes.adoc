@@ -1,8 +1,7 @@
 
 == Ecrire sa propre recette
 
-[.fragment]
-Ha hahahahahahaha hahaha haha hhahhaha.
+Demo time !
 
 [.notes]
 --
