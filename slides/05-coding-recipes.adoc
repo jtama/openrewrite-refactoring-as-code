@@ -1,10 +1,6 @@
 
 == Ecrire sa propre recette
 
-Demo time !
-
-[.notes]
---
-Pour le drift il va falloir attendre!
---
+[.fragment]
+Ha hahahahahahaha hahaha haha hhahhaha.
 
