@@ -34,14 +34,7 @@ body {
         }
 
         h2 {
-            text-shadow: 0 0 7px #fff,
-            0 0 10px #fff,
-            0 0 21px #fff,
-            0 0 42px #84c8d8,
-            0 0 82px #84c8d8,
-            0 0 92px #84c8d8,
-            0 0 102px #84c8d8,
-            0 0 151px #84c8d8;
+            text-shadow: -1px 0 #1BC1E4, 0 1px #1BC1E4, 1px 0 #1BC1E4, 0 -1px #1BC1E4;
         }
 
         ul {
@@ -70,7 +63,7 @@ body {
 
 
     .transparency.slide-background.present {
-        opacity: 0.60;
+        opacity: 0.50;
     }
 
     .big {
@@ -127,8 +120,10 @@ body {
     }
 
     section {
-        .lesson::before {
-            content: url("../images/permis_de_refactoring.png");
+        .lesson{
+            &::before {
+                content: url("../images/permis_de_refactoring.png");
+            }
         }
 
     }
@@ -171,7 +166,8 @@ body {
     }
 
     .down {
-        position: relative;
-        bottom: -600px;
+        position: fixed;
+        bottom: 0;
+        right: 0;
     }
 }

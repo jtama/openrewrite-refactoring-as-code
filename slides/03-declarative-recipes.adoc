@@ -1,4 +1,5 @@
 
+[.transparency]
 == Declarative recipes
 
 image::declarative.jpg[background, size=cover]
@@ -53,6 +54,7 @@ recipeList:
 
 [.notes]
 --
+On va créer une recette declarative qui permet de supprimer une dépendance toxique.
 Et on imagine ici que la dernière recette est accessible ailleurs.
 --
 

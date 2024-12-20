@@ -1,5 +1,5 @@
 
-[.transparent]
+[.transparency]
 == Exécution d'une recette
 
 image::running.avif[background, size=cover]
@@ -84,5 +84,5 @@ Il existe aussi une intégration avec IntelliJ qui facilite beaucoup la vie.
 
 [.notes]
 --
-Les façons de faire décrites ci-dessus ne sont valables que si les recettes ne prennent pas de paramètres. Si telle n'est pas le cas il va falloir passer à l'étape suivante
+Les façons de faire décrites ci-dessus ne sont valables que si les recettes ne prennent pas de paramètres. Si telle n'est pas le cas, il va falloir passer à l'étape suivante
 --

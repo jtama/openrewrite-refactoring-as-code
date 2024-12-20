@@ -58,18 +58,28 @@ image::anatomy.jpg[background, size=cover]
 [%notitle]
 === Anatomie d'une recette (2/2)
 
-[%step]
-. Un nom
-. Un nom et une description (Ceux-ci sont obligatoires)
-. Un/des paramètre(s) pour personnaliser le comportement de la recette
-. Des préconditions
-. Une liste de recettes filles
-. Des transformations
-. Des _data tables_
+[source,java,highlight="3|5|7|9|11|13"]
+----
+public abstract class Recipe implements Cloneable {
+
+    public abstract String getDisplayName();
+
+    public abstract String getDescription();
+
+    public Set<String> getTags() { ... }
+
+    public List<Recipe> getRecipeList() { ... }
+
+    public TreeVisitor<?, ExecutionContext> getVisitor() { ... }
+
+    public void addDataTable(DataTable<?> dataTable) { ... }
+}
+----
+
 
 [.notes]
 --
-Des résultats sous forme de _data tables_
+Des résultats sous forme de _data tables_, et le concept de préconditions.
 --
 
 [.lesson]
