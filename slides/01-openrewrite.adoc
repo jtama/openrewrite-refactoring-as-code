@@ -30,7 +30,6 @@ image::concepts.jpg[background, size=cover]
 [%step]
 . Recipe
 . **L**ossless **S**yntax **T**ree
-. Le pattern visitor
 
 [.notes]
 --
