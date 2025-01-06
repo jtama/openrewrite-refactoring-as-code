@@ -122,7 +122,14 @@ body {
     section {
         .lesson{
             &::before {
-                content: url("../images/permis_de_refactoring.png");
+                content: "";
+                background:url("../images/permis_de_refactoring.png");
+                background-size: contain;
+                background-repeat: no-repeat;
+                width:350px;
+                height:350px;
+                display: inline-block;
+                overflow: hidden;
             }
         }
 

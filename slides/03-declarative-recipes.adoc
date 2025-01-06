@@ -91,9 +91,17 @@ $ mvn -U org.openrewrite.maven:rewrite-maven-plugin:run \
 Inclure ce fichier dans un module maven fantôme...
 
 
-[.lesson]
+[.columns]
 === !
 
+[.column.is-one-third]
+--
+image::permis_de_refactoring.png[]
+--
+
+[.column]
+--
 - ✅ Vue d'ensemble du véhicule
 - ✅ Savoir démarrer le véhicule
 - ✅ Savoir conduire en ville
+--

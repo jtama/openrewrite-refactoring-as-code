@@ -76,11 +76,19 @@ Activation des recettes
 Il existe aussi une intégration avec IntelliJ qui facilite beaucoup la vie.
 --
 
-[.lesson]
+[.columns]
 === !
 
+[.column.is-one-third]
+--
+image::permis_de_refactoring.png[]
+--
+
+[.column]
+--
 - ✅ Vue d'ensemble du véhicule
 - ✅ Savoir démarrer le véhicule
+--
 
 [.notes]
 --
