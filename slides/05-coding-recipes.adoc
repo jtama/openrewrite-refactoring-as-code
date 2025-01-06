@@ -3,12 +3,23 @@
 
 Demo time !
 
-[.lesson]
+[%notitle,background-iframe="http://localhost:8443"]
+=== GO
+
+[.columns]
 === !
 
+[.column.is-one-third]
+--
+image::permis_de_refactoring.png[]
+--
+
+[.column]
+--
 - ✅ Vue d'ensemble du véhicule
 - ✅ Savoir lire une carte
 - ✅ Savoir démarrer le véhicule
 - ✅ Savoir conduire en ville
 - ✅ Savoir drifter sur la glace
+--
 

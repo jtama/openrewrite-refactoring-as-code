@@ -10,9 +10,10 @@
 :revealjs_history: true
 :revealjs_pdfseparatefragments: false
 :revealjs_width: 1200
-:title-slide-background-image: title_image.png
-:title-slide-background-size: cover
+:title-slide-background-image: title.png
+:title-slide-background-size: contain
 :title-slide-background-repeat: no-repeat
+:title-slide-background-color: #FFFFFF
 :title-slide-filter: blur(4px)
 :customcss: css/meetup.css
 :imagesdir: images

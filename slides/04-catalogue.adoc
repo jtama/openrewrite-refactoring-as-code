@@ -20,10 +20,18 @@ Plus de 500 recettes la dernière fois que j'ai compté.
 --
 
 
-[.lesson]
+[.columns]
 === !
 
+[.column]
+--
+image::permis_de_refactoring.png[]
+--
+
+[.column.is-one-third]
+--
 - ✅ Vue d'ensemble du véhicule
 - ✅ Savoir démarrer le véhicule
 - ✅ Savoir conduire en ville
 - ✅ Savoir lire une carte
+--
