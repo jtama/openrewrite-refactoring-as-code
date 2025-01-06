@@ -94,12 +94,12 @@ Inclure ce fichier dans un module maven fantôme...
 [.columns]
 === !
 
-[.column]
+[.column.is-one-third]
 --
 image::permis_de_refactoring.png[]
 --
 
-[.column.is-one-third]
+[.column]
 --
 - ✅ Vue d'ensemble du véhicule
 - ✅ Savoir démarrer le véhicule
