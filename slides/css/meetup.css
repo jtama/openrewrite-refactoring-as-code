@@ -9,11 +9,14 @@
 
 body {
     &::after {
-        content: url("../images/logo_event.png");
+        content: "";
         position: fixed;
-        left: 4px;
-        bottom: 9px;
-        width: 100px;
+        left: 60px;
+        bottom: 60px;
+        width: 200px;
+        height: 143px;
+        background-image: url('../images/logo_event.png');
+        background-size: 200px 143px;
     }
 
 

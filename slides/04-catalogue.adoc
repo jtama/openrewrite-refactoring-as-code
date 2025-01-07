@@ -1,10 +1,7 @@
-
+[.transparency]
 == Catalogue de recette
 
-image::catalog.jpg[background, size=cover]
-
-[.down]
-http://www.freepik.com[Designed by Freepik]
+image::catalog.avif[background, size=cover]
 
 [.notes]
 --
