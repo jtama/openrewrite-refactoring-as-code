@@ -1,5 +1,6 @@
 package com.github.jtama.app.security;
 
+import com.github.jtama.toxic.FooBarUtils;
 import io.netty.handler.codec.http.HttpHeaderNames;
 import io.netty.handler.codec.http.HttpResponseStatus;
 import io.quarkus.security.identity.IdentityProviderManager;
@@ -35,7 +36,7 @@ public class NaiveAuth implements HttpAuthenticationMechanism {
     @Override
     public Uni<SecurityIdentity> authenticate(RoutingContext context,
                                               IdentityProviderManager identityProviderManager) {
-
+        FooBarUtils.logStart();
         var userName = context.request().headers().get("X-user-name");
         var userRoles = Set.of(Optional.ofNullable(context.request().getHeader("X-user-roles")).orElse("").split(","));
         HeaderAuthenticationRequest credential = new HeaderAuthenticationRequest(userName,

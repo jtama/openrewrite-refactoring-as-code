@@ -44,6 +44,11 @@
             <groupId>org.openrewrite.recipe</groupId>
             <artifactId>rewrite-static-analysis</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-micrometer-registry-prometheus</artifactId>
+            <version>3.17.3</version>
+        </dependency>
 
 
         <!-- The `@BeforeTemplate` and `@AfterTemplate` annotations are needed for refaster style recipes -->

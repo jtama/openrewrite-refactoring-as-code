@@ -22,4 +22,8 @@ public class FooBarUtils {
     public <T> int compare(T o1, T o2, Comparator<T> comparator) {
         return comparator.compare(o1, o2);
     }
+
+    public static void logStart() {
+        System.out.println("Start");
+    }
 }

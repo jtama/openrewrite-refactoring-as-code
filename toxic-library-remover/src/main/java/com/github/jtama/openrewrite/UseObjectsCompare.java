@@ -53,7 +53,13 @@ public class UseObjectsCompare extends Recipe {
                 maybeAddImport("java.util.Objects");
                 J.MethodInvocation invocation = objectsCompareTemplate.apply(getCursor(), mi.getCoordinates().replace(),
                         mi.getArguments().get(0), mi.getArguments().get(1), mi.getArguments().get(2));
-                mi = invocation.withComments(List.of(new TextComment(false, "Comparing %s using %s".formatted(mi.getArguments().get(0).getType().toString(), mi.getArguments().get(2).getType().toString()), mi.getPrefix().getWhitespace() ,Markers.EMPTY)));
+                mi = invocation.withComments(List.of(new TextComment(
+                        false,
+                        "Comparing %s using %s".formatted(
+                                    mi.getArguments().get(0).getType().toString(),
+                                    mi.getArguments().get(2).getType().toString()),
+                                    mi.getPrefix().getWhitespace() ,Markers.EMPTY)
+                ));
             }
             return mi;
         }
