@@ -453,33 +453,7 @@ onepoint BDX</p></div>
 }</code></pre></div></div>
 <aside class="notes"><div class="paragraph"><p>Des résultats sous forme de <em>data tables</em>, et le concept de préconditions.</p></div></aside></div></section><section class="columns"><div class="slide-content"><div class="openblock column is-one-third"><div class="content"><div class="imageblock"><img src="images/permis_de_refactoring.png" alt="permis de refactoring"></div></div></div>
 <div class="openblock column"><div class="content"><div class="paragraph"><p>✅ Vue d&#8217;ensemble du véhicule</p></div></div></div></div></section></section>
-<section><section id="_exécution_dune_recette" class="transparency" data-background-image="images/running.avif" data-background-size="cover"><h2>Exécution d&#8217;une recette</h2><div class="slide-content"></div></section><section id="_en_modifiant_vos_poms_12"><div class="slide-content"><div class="listingblock fragment" data-fragment-index="0"><div class="content"><pre class="highlightjs highlight"><code class="language-xml hljs" data-noescape="true" data-line-numbers="5,6,7|15,16,17|10" data-lang="xml">&lt;project&gt;
-  &lt;build&gt;
-    &lt;plugins&gt;
-      &lt;plugin&gt;
-        &lt;groupId&gt;org.openrewrite.maven&lt;/groupId&gt;
-        &lt;artifactId&gt;rewrite-maven-plugin&lt;/artifactId&gt;
-        &lt;version&gt;5.46.0&lt;/version&gt;
-        &lt;configuration&gt;
-          &lt;activeRecipes&gt;
-            &lt;recipe&gt;org.openrewrite.apache.httpclient5.StatusLine&lt;/recipe&gt;
-          &lt;/activeRecipes&gt;
-        &lt;/configuration&gt;
-        &lt;dependencies&gt;
-          &lt;dependency&gt;
-            &lt;groupId&gt;org.openrewrite.recipe&lt;/groupId&gt;
-            &lt;artifactId&gt;rewrite-apache&lt;/artifactId&gt;
-            &lt;version&gt;1.9.0&lt;/version&gt;
-          &lt;/dependency&gt;
-        &lt;/dependencies&gt;
-      &lt;/plugin&gt;
-    &lt;/plugins&gt;
-  &lt;/build&gt;
-&lt;/project&gt;</code></pre></div></div>
-<div class="paragraph fragment" data-fragment-index="0"><p>Déclaration du plugin</p></div>
-<div class="paragraph fragment" data-fragment-index="1"><p>Ajout de la dépendance de la recette</p></div>
-<div class="paragraph fragment" data-fragment-index="2"><p>Activation des recettes</p></div></div></section><section id="_en_modifiant_vos_poms_22"><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-console hljs" data-noescape="true" data-line-numbers="" data-lang="console">$ mvn rewrite:run</code></pre></div></div>
-<aside class="notes"><div class="paragraph"><p>Pareil avec gradle</p></div></aside></div></section><section id="_sans_modifier_vos_poms"><h2>Sans modifier vos poms</h2><div class="slide-content"><div class="listingblock fragment fragment" data-fragment-index="0"><div class="content"><pre class="highlightjs highlight"><code class="language-console hljs" data-noescape="true" data-line-numbers="1|2,3|4,5" data-lang="console">$ mvn -U org.openrewrite.maven:rewrite-maven-plugin:run \
+<section><section id="_exécution_dune_recette" class="transparency" data-background-image="images/running.avif" data-background-size="cover"><h2>Exécution d&#8217;une recette</h2><div class="slide-content"></div></section><section id="_via_la_ligne_de_commande"><h2>Via la ligne de commande</h2><div class="slide-content"><div class="listingblock fragment fragment" data-fragment-index="0"><div class="content"><pre class="highlightjs highlight"><code class="language-console hljs" data-noescape="true" data-line-numbers="1|2,3|4,5" data-lang="console">$ mvn -U org.openrewrite.maven:rewrite-maven-plugin:run \
   -Drewrite.recipeArtifactCoordinates=\
    org.openrewrite.recipe:rewrite-testing-frameworks:RELEASE\
   -Drewrite.activeRecipes=\
@@ -487,7 +461,8 @@ onepoint BDX</p></div>
 <div class="paragraph fragment" data-fragment-index="0"><p>Déclaration du plugin</p></div>
 <div class="paragraph fragment" data-fragment-index="1"><p>Ajout de la dépendance de la recette</p></div>
 <div class="paragraph fragment" data-fragment-index="2"><p>Activation des recettes</p></div>
-<aside class="notes"><div class="paragraph"><p>Il existe aussi une intégration avec IntelliJ qui facilite beaucoup la vie.</p></div></aside></div></section><section class="columns"><div class="slide-content"><div class="openblock column is-one-third"><div class="content"><div class="imageblock"><img src="images/permis_de_refactoring.png" alt="permis de refactoring"></div></div></div>
+<aside class="notes"><div class="paragraph"><p>On peut aussi le faire en modifiant son <code>pom.xml</code> ou son <code>build.gradle</code>.
+Il existe aussi une intégration avec IntelliJ qui facilite beaucoup la vie.</p></div></aside></div></section><section class="columns"><div class="slide-content"><div class="openblock column is-one-third"><div class="content"><div class="imageblock"><img src="images/permis_de_refactoring.png" alt="permis de refactoring"></div></div></div>
 <div class="openblock column"><div class="content"><div class="ulist"><ul><li><p>✅ Vue d&#8217;ensemble du véhicule</p></li><li><p>✅ Savoir démarrer le véhicule</p></li></ul></div></div></div>
 <aside class="notes"><div class="paragraph"><p>Les façons de faire décrites ci-dessus ne sont valables que si les recettes ne prennent pas de paramètres. Si telle n&#8217;est pas le cas, il va falloir passer à l&#8217;étape suivante</p></div></aside></div></section></section>
 <section><section id="_declarative_recipes" class="transparency" data-background-image="images/declarative.jpg" data-background-size="cover"><h2>Declarative recipes</h2><div class="slide-content"><aside class="notes"><div class="paragraph"><p>Une recette déclarative est en fait juste un format de déclaration de recette sans avoir à écrire du code.</p></div></aside></div></section><section id="_et_ça_ressemble_à"><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-yaml hljs" data-noescape="true" data-line-numbers="3|4,5,6,7,8,9,10|12,13,14,15,16,17,18,19|20|23,24|29,30,31,32,33,34,35" data-lang="yaml">---
