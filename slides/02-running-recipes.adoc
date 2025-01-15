@@ -4,56 +4,7 @@
 
 image::running.avif[background, size=cover]
 
-[%notitle]
-=== En modifiant vos poms (1/2)
-
-[source%linenums,xml,highlight="5..7|15..17|10",step=0]
-----
-<project>
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.openrewrite.maven</groupId>
-        <artifactId>rewrite-maven-plugin</artifactId>
-        <version>5.46.0</version>
-        <configuration>
-          <activeRecipes>
-            <recipe>org.openrewrite.apache.httpclient5.StatusLine</recipe>
-          </activeRecipes>
-        </configuration>
-        <dependencies>
-          <dependency>
-            <groupId>org.openrewrite.recipe</groupId>
-            <artifactId>rewrite-apache</artifactId>
-            <version>1.9.0</version>
-          </dependency>
-        </dependencies>
-      </plugin>
-    </plugins>
-  </build>
-</project>
-----
-[.fragment, data-fragment-index=0]
-Déclaration du plugin
-[.fragment, data-fragment-index=1]
-Ajout de la dépendance de la recette
-[.fragment, data-fragment-index=2]
-Activation des recettes
-
-[%notitle]
-=== En modifiant vos poms (2/2)
-
-[source%linenums,console,.fragment]
-----
-$ mvn rewrite:run
-----
-
-[.notes]
---
-Pareil avec gradle
---
-
-=== Sans modifier vos poms
+=== Via la ligne de commande
 
 [.fragment]
 [source%linenums,console,highlight="1|2..3|4..5",step=0]
@@ -73,6 +24,7 @@ Activation des recettes
 
 [.notes]
 --
+On peut aussi le faire en modifiant son `pom.xml` ou son `build.gradle`.
 Il existe aussi une intégration avec IntelliJ qui facilite beaucoup la vie.
 --
 
