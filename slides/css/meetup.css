@@ -151,19 +151,20 @@ body {
     .regexp {
         position: fixed;
         top: 36px;
-        left: 234px;
+        left: 261px;
     }
 
     .llm {
         position: fixed;
         top: 355px;
-        left: 174px;
+        left: 261px;
     }
 
     .click_droit {
         position: fixed;
         top: 335px;
-        left: 718px;
+        left: 656px;
+        overflow: hidden;
     }
 
     li {
