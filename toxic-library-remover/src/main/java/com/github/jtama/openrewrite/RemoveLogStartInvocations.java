@@ -9,10 +9,11 @@ import org.openrewrite.java.JavaIsoVisitor;
 import org.openrewrite.java.JavaParser;
 import org.openrewrite.java.JavaTemplate;
 import org.openrewrite.java.MethodMatcher;
+import org.openrewrite.java.RemoveMethodInvocationsVisitor;
 import org.openrewrite.java.search.UsesType;
 import org.openrewrite.java.tree.J;
-import org.openrewrite.staticanalysis.EmptyBlock;
 
+import java.util.Collections;
 import java.util.Comparator;
 
 public class RemoveLogStartInvocations extends Recipe {
@@ -36,7 +37,8 @@ public class RemoveLogStartInvocations extends Recipe {
 
     private static class ReplaceCompareVisitor extends JavaIsoVisitor<ExecutionContext> {
 
-        private final MethodMatcher compareMethodMatcher = new MethodMatcher("com.github.jtama.toxic.FooBarUtils logStart()");
+        public static final String LOG_START_INVOCATION_PATTERN = "com.github.jtama.toxic.FooBarUtils logStart()";
+        private final MethodMatcher logStartInvocaMatcher = new MethodMatcher(LOG_START_INVOCATION_PATTERN);
         private final AnnotationMatcher logStartMatcher = new AnnotationMatcher("@io.micrometer.core.annotation.Timed");
         private final JavaTemplate annotationTemplate = JavaTemplate.builder("@Timed")
                 .imports("io.micrometer.core.annotation.Timed")
@@ -64,11 +66,11 @@ public class RemoveLogStartInvocations extends Recipe {
         @Override
         public J.MethodInvocation visitMethodInvocation(J.MethodInvocation method, ExecutionContext ctx) {
             J.MethodInvocation mi = super.visitMethodInvocation(method, ctx);
-            if (!compareMethodMatcher.matches(mi)) {
+            if (!logStartInvocaMatcher.matches(mi)) {
                 return mi;
             }
             ctx.putMessage("appendAnnotation", true);
-            this.doAfterVisit(new EmptyBlock().getVisitor());
+            this.doAfterVisit(new RemoveMethodInvocationsVisitor(Collections.singletonList(LOG_START_INVOCATION_PATTERN)));
             return null;
         }
     }
