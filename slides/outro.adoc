@@ -3,7 +3,7 @@
 
 image::conclusion.jpg[background, size=cover]
 
-=== %
+=== !
 
 [%step]
 - Quand on n'a qu'un marteau tout ressemble à un clou.

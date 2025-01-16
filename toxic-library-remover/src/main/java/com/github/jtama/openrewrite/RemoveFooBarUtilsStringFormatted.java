@@ -27,8 +27,6 @@ import org.openrewrite.java.search.UsesType;
 import org.openrewrite.java.tree.Expression;
 import org.openrewrite.java.tree.J;
 import org.openrewrite.java.tree.Space;
-import org.openrewrite.java.tree.TextComment;
-import org.openrewrite.marker.Markers;
 
 import java.util.List;
 
@@ -72,7 +70,6 @@ public class RemoveFooBarUtilsStringFormatted extends Recipe {
             mi = mi.withArguments(ListUtils.mapFirst(
                     arguments.subList(1, arguments.size()),
                     expression -> expression.withPrefix(Space.EMPTY)));
-            mi.withComments(List.of(new TextComment(false, "You should realy learn java",mi.getPrefix().getWhitespace(), Markers.EMPTY)));
             return mi;
         }
     }
