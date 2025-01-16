@@ -1,5 +1,5 @@
 [.transparency]
-== Catalogue de recette
+== Catalogue de recettes
 
 image::catalog.avif[background, size=cover]
 

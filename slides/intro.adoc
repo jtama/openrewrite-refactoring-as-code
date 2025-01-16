@@ -67,3 +67,11 @@ onepoint BDX
 [.vertical-align-middle]
 icon:github[] @jtama image:avatar.png[width=100]
 --
+
+[%notitle]
+=== Le permis
+
+[.column]
+--
+image::permis_de_refactoring.png[width=300]
+--
