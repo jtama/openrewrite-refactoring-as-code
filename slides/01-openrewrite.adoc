@@ -19,7 +19,7 @@ C'est un outil java open-source - Apache 2
 . Quarkus
 --
 
-[.transparency]
+[.transparency.no-transition]
 === Les concepts
 
 image::concepts.jpg[background, size=cover]
@@ -50,7 +50,7 @@ image::concepts.jpg[background, size=cover]
 Par exemple 73 points d'extension pour Java...
 --
 
-[.transparency]
+[.transparency.no-transition]
 === Anatomie d'une recette
 
 image::anatomy.png[background, size=cover]

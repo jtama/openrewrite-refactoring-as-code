@@ -1,9 +1,10 @@
 
-[.transparency]
+[%notitle]
 == Exécution d'une recette
 
 image::running.avif[background, size=cover]
 
+[%notitle]
 === Via la ligne de commande
 
 [.fragment]

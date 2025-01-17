@@ -1,5 +1,5 @@
 
-[.transparency]
+[.transparency.no-transition]
 == Declarative recipes
 
 image::declarative.jpg[background, size=cover]
@@ -86,6 +86,7 @@ $ mvn -U org.openrewrite.maven:rewrite-maven-plugin:run \
       com.github.jtama.openrewrite.RemovesThatToxicDependency
 ----
 
+[.no-transition]
 === Distribution
 
 Inclure ce fichier dans un module maven fantôme...
