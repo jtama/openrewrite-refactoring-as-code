@@ -16,7 +16,8 @@ body {
         width: 200px;
         height: 143px;
         background-image: url('../images/logo_event.png');
-        background-size: 200px 143px;
+        background-size: 70%;
+        background-repeat: no-repeat;
     }
 
 
@@ -37,7 +38,12 @@ body {
         }
 
         h2 {
-            text-shadow: -1px 0 #1BC1E4, 0 1px #1BC1E4, 1px 0 #1BC1E4, 0 -1px #1BC1E4;
+            text-shadow: -1px 0 #EEEEEE, 0 1px #EEEEEE, 1px 0 #EEEEEE, 0 -1px #EEEEEE;
+            position: fixed;
+            left: 50%;
+            top: 6px;
+            transform: translateX(-50%);
+            width: 100%;
         }
 
         ul {

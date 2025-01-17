@@ -1,5 +1,5 @@
 
-[.transparency]
+[%notitle]
 == Exécution d'une recette
 
 image::running.avif[background, size=cover]
@@ -53,6 +53,7 @@ $ mvn rewrite:run
 Pareil avec gradle
 --
 
+[.no-transition]
 === Sans modifier vos poms
 
 [.fragment]
