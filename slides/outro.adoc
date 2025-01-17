@@ -10,6 +10,10 @@ image::conclusion.jpg[background, size=cover]
 - Composition de recettes complexes.
 - _java preview feature_
 
+[%notitle]
+=== Sponsors
+
+image::sponsors.png[background, size=contain]
 
 [.transparency]
 [.columns]
