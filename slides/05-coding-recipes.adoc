@@ -1,4 +1,4 @@
-
+[.no-transition]
 == Ecrire sa propre recette
 
 Demo time !

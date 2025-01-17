@@ -1,5 +1,5 @@
 
-[.transparency]
+[.transparency.no-transition]
 == Declarative recipes
 
 image::declarative.jpg[background, size=cover]
@@ -29,11 +29,11 @@ recipeList:
   - org.openrewrite.java.ChangeMethodTargetToStatic:
       methodPattern: com.github.jtama.toxic.BigDecimalUtils valueOf(..)
       fullyQualifiedTargetTypeName: java.math.BigDecimal
-  - org.openrewrite.maven.RemoveUnusedProperties:
-      properties: .*toxic\.version
   - org.openrewrite.maven.RemoveDependency:
       groupId: com.github.jtama
       artifactId: toxic-library
+  - org.openrewrite.maven.RemoveUnusedProperties:
+      properties: .*toxic\.version
   - com.github.jtama.openrewrite.VousAllezVoirCeQueVousAllezVoir
 ---
 type: specs.openrewrite.org/v1beta/recipe
@@ -86,6 +86,7 @@ $ mvn -U org.openrewrite.maven:rewrite-maven-plugin:run \
       com.github.jtama.openrewrite.RemovesThatToxicDependency
 ----
 
+[.no-transition]
 === Distribution
 
 Inclure ce fichier dans un module maven fantôme...

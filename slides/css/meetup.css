@@ -39,6 +39,11 @@ body {
 
         h2 {
             text-shadow: -1px 0 #EEEEEE, 0 1px #EEEEEE, 1px 0 #EEEEEE, 0 -1px #EEEEEE;
+            position: fixed;
+            left: 50%;
+            top: 6px;
+            transform: translateX(-50%);
+            width: 100%;
         }
 
         ul {

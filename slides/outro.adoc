@@ -1,4 +1,4 @@
-[.transparency]
+[.transparency.no-transition]
 == Points d'attention
 
 image::conclusion.jpg[background, size=cover]
@@ -15,8 +15,7 @@ image::conclusion.jpg[background, size=cover]
 
 image::sponsors.png[background, size=contain]
 
-[.transparency]
-[.columns]
+[.transparency.columns.no-transition]
 === Merci !
 
 [.column]
