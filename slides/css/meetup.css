@@ -150,26 +150,26 @@ body {
 
     .chercher_remplacer {
         position: fixed;
-        top: 36px;
-        left: 710px;
+        top: 125px;
+        left: 821px;
     }
 
     .regexp {
         position: fixed;
-        top: 36px;
-        left: 261px;
+        top: 125px;
+        left: 197px;
     }
 
     .llm {
         position: fixed;
         top: 355px;
-        left: 261px;
+        left: 197px;
     }
 
     .click_droit {
         position: fixed;
-        top: 335px;
-        left: 656px;
+        top: 355px;
+        left: 821px;
         overflow: hidden;
     }
 
