@@ -13,7 +13,7 @@ Une recette déclarative est en fait juste un format de déclaration de recette 
 [%notitle]
 === Et ça ressemble à ?
 
-[source%linenums,yaml,highlight="3|4..10|12..19|20|23..24|29..35"]
+[source%linenums,yaml,highlight="3|4..10|13..17|12|26..28|29..32"]
 ----
 ---
 type: specs.openrewrite.org/v1beta/recipe
@@ -26,15 +26,12 @@ tags:
   - acme
   - toxic
 recipeList:
-  - org.openrewrite.java.ChangeMethodTargetToStatic:
-      methodPattern: com.github.jtama.toxic.BigDecimalUtils valueOf(..)
-      fullyQualifiedTargetTypeName: java.math.BigDecimal
+  - com.github.jtama.openrewrite.VousAllezVoirCeQueVousAllezVoir
   - org.openrewrite.maven.RemoveDependency:
       groupId: com.github.jtama
       artifactId: toxic-library
   - org.openrewrite.maven.RemoveUnusedProperties:
       propertyPattern: .*toxic\.version
-  - com.github.jtama.openrewrite.VousAllezVoirCeQueVousAllezVoir
 ---
 type: specs.openrewrite.org/v1beta/recipe
 name: com.github.jtama.openrewrite.VousAllezVoirCeQueVousAllezVoir
@@ -47,9 +44,9 @@ preconditions:
   - org.openrewrite.java.search.FindTypes:
       fullyQualifiedTypeName: com.github.jtama.toxic.FooBarUtils
 recipeList:
-  - com.github.jtama.openrewrite.RemoveFooBarUtilsIsEmptyRecipes
-  - com.github.jtama.openrewrite.RemoveFooBarUtilsStringFormatted
-  - com.github.jtama.openrewrite.UseObjectsCompare
+    - org.openrewrite.java.ChangeMethodTargetToStatic:
+          methodPattern: com.github.jtama.toxic.BigDecimalUtils valueOf(..)
+          fullyQualifiedTargetTypeName: java.math.BigDecimal
 ----
 
 [.notes]
