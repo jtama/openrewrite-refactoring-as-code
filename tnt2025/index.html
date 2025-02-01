@@ -465,7 +465,7 @@ onepoint BDX</p></div>
 Il existe aussi une intégration avec IntelliJ qui facilite beaucoup la vie.</p></div></aside></div></section><section class="columns"><div class="slide-content"><div class="openblock column is-one-third"><div class="content"><div class="imageblock"><img src="images/permis_de_refactoring.png" alt="permis de refactoring"></div></div></div>
 <div class="openblock column"><div class="content"><div class="ulist"><ul><li><p>✅ Vue d&#8217;ensemble du véhicule</p></li><li><p>✅ Savoir démarrer le véhicule</p></li></ul></div></div></div>
 <aside class="notes"><div class="paragraph"><p>Les façons de faire décrites ci-dessus ne sont valables que si les recettes ne prennent pas de paramètres. Si telle n&#8217;est pas le cas, il va falloir passer à l&#8217;étape suivante</p></div></aside></div></section></section>
-<section><section id="_declarative_recipes" class="transparency no-transition" data-background-image="images/declarative.jpg" data-background-size="cover"><h2>Declarative recipes</h2><div class="slide-content"><aside class="notes"><div class="paragraph"><p>Une recette déclarative est en fait juste un format de déclaration de recette sans avoir à écrire du code.</p></div></aside></div></section><section id="_et_ça_ressemble_à"><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-yaml hljs" data-noescape="true" data-line-numbers="3|4,5,6,7,8,9,10|12,13,14,15,16,17,18,19|20|23,24|29,30,31,32,33,34,35" data-lang="yaml">---
+<section><section id="_declarative_recipes" class="transparency no-transition" data-background-image="images/declarative.jpg" data-background-size="cover"><h2>Declarative recipes</h2><div class="slide-content"><aside class="notes"><div class="paragraph"><p>Une recette déclarative est en fait juste un format de déclaration de recette sans avoir à écrire du code.</p></div></aside></div></section><section id="_et_ça_ressemble_à"><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-yaml hljs" data-noescape="true" data-line-numbers="3|4,5,6,7,8,9,10|13,14,15,16,17|12|26,27,28|29,30,31,32" data-lang="yaml">---
 type: specs.openrewrite.org/v1beta/recipe
 name: com.github.jtama.openrewrite.RemovesThatToxicDependency
 displayName: Removes that toxic dependency
@@ -476,15 +476,12 @@ tags:
   - acme
   - toxic
 recipeList:
-  - org.openrewrite.java.ChangeMethodTargetToStatic:
-      methodPattern: com.github.jtama.toxic.BigDecimalUtils valueOf(..)
-      fullyQualifiedTargetTypeName: java.math.BigDecimal
+  - com.github.jtama.openrewrite.VousAllezVoirCeQueVousAllezVoir
   - org.openrewrite.maven.RemoveDependency:
       groupId: com.github.jtama
       artifactId: toxic-library
   - org.openrewrite.maven.RemoveUnusedProperties:
       propertyPattern: .*toxic\.version
-  - com.github.jtama.openrewrite.VousAllezVoirCeQueVousAllezVoir
 ---
 type: specs.openrewrite.org/v1beta/recipe
 name: com.github.jtama.openrewrite.VousAllezVoirCeQueVousAllezVoir
@@ -497,9 +494,9 @@ preconditions:
   - org.openrewrite.java.search.FindTypes:
       fullyQualifiedTypeName: com.github.jtama.toxic.FooBarUtils
 recipeList:
-  - com.github.jtama.openrewrite.RemoveFooBarUtilsIsEmptyRecipes
-  - com.github.jtama.openrewrite.RemoveFooBarUtilsStringFormatted
-  - com.github.jtama.openrewrite.UseObjectsCompare</code></pre></div></div>
+    - org.openrewrite.java.ChangeMethodTargetToStatic:
+          methodPattern: com.github.jtama.toxic.BigDecimalUtils valueOf(..)
+          fullyQualifiedTargetTypeName: java.math.BigDecimal</code></pre></div></div>
 <aside class="notes"><div class="paragraph"><p>On va créer une recette declarative qui permet de supprimer une dépendance toxique.
 Et on imagine ici que la dernière recette est accessible ailleurs.</p></div></aside></div></section><section id="_comment_et_où"><div class="slide-content"><div class="paragraph"><p>Dans un fichier qui doit s&#8217;appeler <code>rewrite.yml</code></p></div>
 <div class="paragraph fragment"><p>À la racine d&#8217;un projet.</p></div>
