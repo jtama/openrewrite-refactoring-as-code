@@ -13,7 +13,7 @@ Une recette déclarative est en fait juste un format de déclaration de recette 
 [%notitle]
 === Et ça ressemble à ?
 
-[source%linenums,yaml,highlight="3|4..10|13..17|12|26..28|29..32"]
+[source%linenums,yaml,highlight="3|4..10|13..17|12|20|26..28|29..32"]
 ----
 ---
 type: specs.openrewrite.org/v1beta/recipe
@@ -101,5 +101,6 @@ image::permis_de_refactoring.png[]
 --
 - ✅ Vue d'ensemble du véhicule
 - ✅ Savoir démarrer le véhicule
+- ✅ Savoir conduire en ville
 - ✅ Savoir conduire en ville
 --
