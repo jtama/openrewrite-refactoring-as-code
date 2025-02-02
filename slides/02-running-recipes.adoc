@@ -18,14 +18,14 @@ image::running.avif[background, size=cover]
         <version>5.46.0</version>
         <configuration>
           <activeRecipes>
-            <recipe>org.openrewrite.apache.httpclient5.StatusLine</recipe>
+            <recipe>org.openrewrite.java.testing.junit5.JUnit4to5Migration</recipe>
           </activeRecipes>
         </configuration>
         <dependencies>
           <dependency>
             <groupId>org.openrewrite.recipe</groupId>
-            <artifactId>rewrite-apache</artifactId>
-            <version>1.9.0</version>
+            <artifactId>rewrite-testing-frameworks</artifactId>
+            <version>RELEASE</version>
           </dependency>
         </dependencies>
       </plugin>
@@ -63,7 +63,7 @@ $ mvn -U org.openrewrite.maven:rewrite-maven-plugin:run \
   -Drewrite.recipeArtifactCoordinates=\
    org.openrewrite.recipe:rewrite-testing-frameworks:RELEASE\
   -Drewrite.activeRecipes=\
-   org.openrewrite.java.testing.hamcrest.AssertThatBooleanToAssertJ
+   org.openrewrite.java.testing.junit5.JUnit4to5Migration
 ----
 [.fragment, data-fragment-index=0]
 Déclaration du plugin
