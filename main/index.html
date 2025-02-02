@@ -462,14 +462,14 @@ onepoint BDX</p></div>
         &lt;version&gt;5.46.0&lt;/version&gt;
         &lt;configuration&gt;
           &lt;activeRecipes&gt;
-            &lt;recipe&gt;org.openrewrite.apache.httpclient5.StatusLine&lt;/recipe&gt;
+            &lt;recipe&gt;org.openrewrite.java.testing.junit5.JUnit4to5Migration&lt;/recipe&gt;
           &lt;/activeRecipes&gt;
         &lt;/configuration&gt;
         &lt;dependencies&gt;
           &lt;dependency&gt;
             &lt;groupId&gt;org.openrewrite.recipe&lt;/groupId&gt;
-            &lt;artifactId&gt;rewrite-apache&lt;/artifactId&gt;
-            &lt;version&gt;1.9.0&lt;/version&gt;
+            &lt;artifactId&gt;rewrite-testing-frameworks&lt;/artifactId&gt;
+            &lt;version&gt;RELEASE&lt;/version&gt;
           &lt;/dependency&gt;
         &lt;/dependencies&gt;
       &lt;/plugin&gt;
@@ -483,13 +483,15 @@ onepoint BDX</p></div>
   -Drewrite.recipeArtifactCoordinates=\
    org.openrewrite.recipe:rewrite-testing-frameworks:RELEASE\
   -Drewrite.activeRecipes=\
-   org.openrewrite.java.testing.hamcrest.AssertThatBooleanToAssertJ</code></pre></div></div>
+   org.openrewrite.java.testing.junit5.JUnit4to5Migration</code></pre></div></div>
 <div class="paragraph fragment" data-fragment-index="0"><p>Déclaration du plugin</p></div>
 <div class="paragraph fragment" data-fragment-index="1"><p>Ajout de la dépendance de la recette</p></div>
 <div class="paragraph fragment" data-fragment-index="2"><p>Activation des recettes</p></div>
 <aside class="notes"><div class="paragraph"><p>Il existe aussi une intégration avec IntelliJ qui facilite beaucoup la vie.</p></div></aside></div></section><section class="columns"><div class="slide-content"><div class="openblock column is-one-third"><div class="content"><div class="imageblock"><img src="images/permis_de_refactoring.png" alt="permis de refactoring"></div></div></div>
 <div class="openblock column"><div class="content"><div class="ulist"><ul><li><p>✅ Vue d&#8217;ensemble du véhicule</p></li><li><p>✅ Savoir démarrer le véhicule</p></li></ul></div></div></div>
 <aside class="notes"><div class="paragraph"><p>Les façons de faire décrites ci-dessus ne sont valables que si les recettes ne prennent pas de paramètres. Si telle n&#8217;est pas le cas, il va falloir passer à l&#8217;étape suivante</p></div></aside></div></section></section>
+<section><section id="_catalogue_de_recettes" class="transparency no-transition" data-background-image="images/catalog.avif" data-background-size="cover"><h2>Catalogue de recettes</h2><div class="slide-content"><aside class="notes"><div class="paragraph"><p>C&#8217;est en tout cas vrai pour toutes les recettes proposées par OpenRewrite, mais il peut y en avoir d&#8217;autres.</p></div></aside></div></section><section id="_partons_à_la_découverte_du_catalogue" data-background-iframe="https://docs.openrewrite.org/recipes/java/testing/junit5/junit4to5migration"><div class="slide-content"><aside class="notes"><div class="paragraph"><p>Plus de 500 recettes la dernière fois que j&#8217;ai compté.</p></div></aside></div></section><section class="columns"><div class="slide-content"><div class="openblock column is-one-third"><div class="content"><div class="imageblock"><img src="images/permis_de_refactoring.png" alt="permis de refactoring"></div></div></div>
+<div class="openblock column"><div class="content"><div class="ulist"><ul><li><p>✅ Vue d&#8217;ensemble du véhicule</p></li><li><p>✅ Savoir démarrer le véhicule</p></li><li><p>✅ Savoir conduire en ville</p></li><li><p>✅ Savoir lire une carte</p></li></ul></div></div></div></div></section></section>
 <section><section id="_declarative_recipes" class="transparency no-transition" data-background-image="images/declarative.jpg" data-background-size="cover"><h2>Declarative recipes</h2><div class="slide-content"><aside class="notes"><div class="paragraph"><p>Une recette déclarative est en fait juste un format de déclaration de recette sans avoir à écrire du code.</p></div></aside></div></section><section id="_et_ça_ressemble_à"><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-yaml hljs" data-noescape="true" data-line-numbers="3|4,5,6,7,8,9,10|12,13,14,15,16,17,18,19|20|23,24|29,30,31,32,33,34,35" data-lang="yaml">---
 type: specs.openrewrite.org/v1beta/recipe
 name: com.github.jtama.openrewrite.RemovesThatToxicDependency
@@ -534,11 +536,11 @@ Projet Maven ou Gradle&#8230;&#8203;</p></div></aside></div></section><section i
     -Drewrite.activeRecipes=\
       com.github.jtama.openrewrite.RemovesThatToxicDependency</code></pre></div></div></div></section><section id="_distribution" class="no-transition"><h2>Distribution</h2><div class="slide-content"><div class="paragraph"><p>Inclure ce fichier dans un module maven fantôme&#8230;&#8203;</p></div></div></section><section class="columns"><div class="slide-content"><div class="openblock column is-one-third"><div class="content"><div class="imageblock"><img src="images/permis_de_refactoring.png" alt="permis de refactoring"></div></div></div>
 <div class="openblock column"><div class="content"><div class="ulist"><ul><li><p>✅ Vue d&#8217;ensemble du véhicule</p></li><li><p>✅ Savoir démarrer le véhicule</p></li><li><p>✅ Savoir conduire en ville</p></li></ul></div></div></div></div></section></section>
-<section><section id="_catalogue_de_recettes" class="transparency no-transition" data-background-image="images/catalog.avif" data-background-size="cover"><h2>Catalogue de recettes</h2><div class="slide-content"><aside class="notes"><div class="paragraph"><p>C&#8217;est en tout cas vrai pour toutes les recettes proposées par OpenRewrite, mais il peut y en avoir d&#8217;autres.</p></div></aside></div></section><section id="_partons_à_la_découverte_du_catalogue" data-background-iframe="https://docs.openrewrite.org/recipes/java/testing/hamcrest"><div class="slide-content"><aside class="notes"><div class="paragraph"><p>Plus de 500 recettes la dernière fois que j&#8217;ai compté.</p></div></aside></div></section><section class="columns"><div class="slide-content"><div class="openblock column is-one-third"><div class="content"><div class="imageblock"><img src="images/permis_de_refactoring.png" alt="permis de refactoring"></div></div></div>
-<div class="openblock column"><div class="content"><div class="ulist"><ul><li><p>✅ Vue d&#8217;ensemble du véhicule</p></li><li><p>✅ Savoir démarrer le véhicule</p></li><li><p>✅ Savoir conduire en ville</p></li><li><p>✅ Savoir lire une carte</p></li></ul></div></div></div></div></section></section>
 <section><section id="_ecrire_sa_propre_recette" class="no-transition"><h2>Ecrire sa propre recette</h2><div class="slide-content"><div class="paragraph"><p>Demo time !</p></div></div></section><section id="_go" data-background-iframe="http://localhost:8443"></section><section class="columns"><div class="slide-content"><div class="openblock column is-one-third"><div class="content"><div class="imageblock"><img src="images/permis_de_refactoring.png" alt="permis de refactoring"></div></div></div>
 <div class="openblock column"><div class="content"><div class="ulist"><ul><li><p>✅ Vue d&#8217;ensemble du véhicule</p></li><li><p>✅ Savoir lire une carte</p></li><li><p>✅ Savoir démarrer le véhicule</p></li><li><p>✅ Savoir conduire en ville</p></li><li><p>✅ Savoir drifter sur la glace</p></li></ul></div></div></div></div></section></section>
-<section><section id="_points_dattention" class="transparency no-transition" data-background-image="images/conclusion.jpg" data-background-size="cover"><h2>Points d&#8217;attention</h2><div class="slide-content"></div></section><section><div class="slide-content"><div class="ulist"><ul><li class="fragment"><p>Quand on n&#8217;a qu&#8217;un marteau tout ressemble à un clou.</p></li><li class="fragment"><p>Composition de recettes complexes.</p></li><li class="fragment"><p><em>java preview feature</em></p></li></ul></div></div></section><section id="_merci" class="transparency columns no-transition"><h2>Merci !</h2><div class="slide-content"><div class="openblock column"><div class="content"><div class="paragraph important-text has-text-left vertical-align-middle"><p>Le dépôt github :</p></div>
+<section><section id="_points_dattention" class="transparency no-transition" data-background-image="images/conclusion.jpg" data-background-size="cover"><h2>Points d&#8217;attention</h2><div class="slide-content"></div></section><section><div class="slide-content"><div class="ulist"><ul><li><p>Quand on n&#8217;a qu&#8217;un marteau tout ressemble à un clou.</p></li></ul></div>
+<div class="paragraph fragment"><p>Composition de recettes complexes.</p></div>
+<div class="paragraph fragment"><p><em>java preview feature</em></p></div></div></section><section id="_merci" class="transparency columns no-transition"><h2>Merci !</h2><div class="slide-content"><div class="openblock column"><div class="content"><div class="paragraph important-text has-text-left vertical-align-middle"><p>Le dépôt github :</p></div>
 <div class="paragraph"><p><span class="image"><img src="images/qrcode_github.png" alt="https://github.com/jtama/openrewrite-refactor-as-code" width="400"></span></p></div></div></div>
 <div class="openblock column"><div class="content"><div class="paragraph important-text has-text-left vertical-align-middle"><p>Feedback :</p></div>
 <div class="paragraph"><p><span class="image"><img src="images/qrcode_feedback.png" alt="qrcode feedback" width="400"></span></p></div></div></div></div></section></section></div></div><script src="reveal.js/dist/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
