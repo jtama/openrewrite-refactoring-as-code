@@ -20,6 +20,17 @@ body {
         background-repeat: no-repeat;
     }
 
+    footer {
+        z-index: 10;
+        position: absolute;
+        left: 0%;
+        width: 100%;
+        bottom: 0;
+        min-height: 80px;
+        text-align: center;
+    }
+
+
 
 
 

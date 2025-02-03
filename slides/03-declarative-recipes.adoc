@@ -17,7 +17,7 @@ Une recette déclarative est en fait juste un format de déclaration de recette 
 ----
 ---
 type: specs.openrewrite.org/v1beta/recipe
-name: com.github.jtama.openrewrite.RemovesThatToxicDependency
+name: com.github.jtama.openrewrite.RedIsDead
 displayName: Removes that toxic dependency
 description: |
   Migrate from AcmeToxic ☠️ to AcmeHealthy 😇,
@@ -26,7 +26,7 @@ tags:
   - acme
   - toxic
 recipeList:
-  - com.github.jtama.openrewrite.VousAllezVoirCeQueVousAllezVoir
+  - com.github.jtama.openrewrite.CaVaCouperCherie
   - org.openrewrite.maven.RemoveDependency:
       groupId: com.github.jtama
       artifactId: toxic-library
@@ -34,7 +34,7 @@ recipeList:
       propertyPattern: .*toxic\.version
 ---
 type: specs.openrewrite.org/v1beta/recipe
-name: com.github.jtama.openrewrite.VousAllezVoirCeQueVousAllezVoir
+name: com.github.jtama.openrewrite.CaVaCouperCherie
 displayName: Ça va vous épater
 description: |
   Rech. proj. pr proj. priv. Self Dem. Brt. Poss. S’adr. à l’hô. Mart
@@ -101,6 +101,6 @@ image::permis_de_refactoring.png[]
 --
 - ✅ Vue d'ensemble du véhicule
 - ✅ Savoir démarrer le véhicule
-- ✅ Savoir conduire en ville
+- ✅ Savoir lire une carte
 - ✅ Savoir conduire en ville
 --
