@@ -17,8 +17,8 @@ image::permis_de_refactoring.png[]
 [.column]
 --
 - ✅ Vue d'ensemble du véhicule
-- ✅ Savoir lire une carte
 - ✅ Savoir démarrer le véhicule
+- ✅ Savoir lire une carte
 - ✅ Savoir conduire en ville
 - ✅ Savoir drifter sur la glace
 --

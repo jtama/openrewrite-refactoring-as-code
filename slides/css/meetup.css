@@ -8,20 +8,16 @@
 }
 
 body {
-    &::after {
-        content: "";
-        position: fixed;
-        left: 60px;
-        bottom: 60px;
-        width: 200px;
-        height: 143px;
-        background-image: url('../images/logo_event.png');
-        background-size: 70%;
-        background-repeat: no-repeat;
+
+    footer {
+        z-index: 10;
+        position: absolute;
+        left: 0%;
+        width: 100%;
+        bottom: 0;
+        min-height: 80px;
+        text-align: center;
     }
-
-
-
 
     .reveal {
         h1 {
