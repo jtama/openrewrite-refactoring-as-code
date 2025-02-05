@@ -2,6 +2,7 @@
 :docinfo: private
 :source-highlighter: highlight.js
 :highlightjsdir: highlight.js
+:highlightjs-theme: highlight.js/atom-one-light.min.css
 :autofit-option:
 :icons: font
 :favicon: favicon.svg
