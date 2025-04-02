@@ -1,0 +1,185 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins");
+
+
+:root {
+    --r-background-color: #EEEEEE;
+    --r-main-color: #111012;
+    --r-main-font: 'Poppins';
+}
+
+body {
+
+    footer {
+        z-index: 10;
+        position: absolute;
+        left: 0%;
+        width: 100%;
+        bottom: 0;
+        min-height: 80px;
+        text-align: center;
+    }
+
+    .reveal {
+        h1 {
+            /*display: none;*/
+
+            text-shadow: 0 0 7px #fff,
+            0 0 10px #fff,
+            0 0 21px #fff,
+            0 0 42px #84c8d8,
+            0 0 82px #84c8d8,
+            0 0 92px #84c8d8,
+            0 0 102px #84c8d8,
+            0 0 151px #84c8d8;
+        }
+
+        h2 {
+            text-shadow: -1px 0 #EEEEEE, 0 1px #EEEEEE, 1px 0 #EEEEEE, 0 -1px #EEEEEE;
+            position: fixed;
+            left: 50%;
+            top: 6px;
+            transform: translateX(-50%);
+            width: 100%;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        .progress {
+            color: #241F35;
+            height: 7px;
+        }
+
+    }
+
+
+    .slide-background.conclusion {
+        background: no-repeat center/80% url("../images/conclusion.jpg");
+    }
+
+
+    .light h2 {
+        color: var(--r-background-color);
+        -webkit-text-stroke: 2px black;
+        text-stroke: 2px black;
+        font-size: var(--r-heading2-size);
+    }
+
+
+    .transparency.slide-background.present {
+        opacity: 0.50;
+    }
+
+    .big {
+        font-size: 60px;
+        color: #012d3f;
+    }
+
+    .use-case {
+        font-family: "Gochi Hand", serif;
+    }
+
+    .red {
+        color: #111012;
+    }
+
+    img {
+        border-radius: 10px;
+    }
+
+    .vertical-align-middle > p {
+        vertical-align: middle;
+    }
+
+    .vertical-align-middle > p > span {
+        vertical-align: middle;
+        margin: 0;
+    }
+
+    .vertical-align-middle > p > span > img {
+        vertical-align: middle;
+        margin: 0;
+    }
+
+    .important-text > * {
+        font-size: xxx-large;
+        font-weight: bold;
+        color: #012d3f;
+    }
+
+    .small {
+        font-size: small;
+    }
+
+    .medium {
+        font-size: 38px;
+    }
+
+    .column.has-text-right > div > div.hdlist.small > table {
+        margin-right: 0;
+    }
+
+    .column.has-text-left > div > div.hdlist.small > table {
+        margin-left: 0;
+    }
+
+    section {
+        .lesson{
+            &::before {
+                content: "";
+                background:url("../images/permis_de_refactoring.png");
+                background-size: contain;
+                background-repeat: no-repeat;
+                width:350px;
+                height:350px;
+                display: inline-block;
+                overflow: hidden;
+            }
+        }
+
+    }
+
+    .blur {
+        filter: blur(4px);
+    }
+
+    .chercher_remplacer {
+        position: fixed;
+        top: 125px;
+        left: 821px;
+    }
+
+    .regexp {
+        position: fixed;
+        top: 125px;
+        left: 197px;
+    }
+
+    .llm {
+        position: fixed;
+        top: 355px;
+        left: 197px;
+    }
+
+    .click_droit {
+        position: fixed;
+        top: 355px;
+        left: 821px;
+        overflow: hidden;
+    }
+
+    li {
+        list-style-type: none;
+    }
+
+    audio {
+        display: none;
+    }
+
+    .down {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+    }
+}
