@@ -1,5 +1,6 @@
 package com.github.jtama.openrewrite;
 
+import org.openrewrite.Cursor;
 import org.openrewrite.ExecutionContext;
 import org.openrewrite.Preconditions;
 import org.openrewrite.Recipe;
@@ -52,12 +53,12 @@ public class RemoveLogStartInvocations extends Recipe {
         @Override
         public J.MethodDeclaration visitMethodDeclaration(J.MethodDeclaration method, ExecutionContext ctx) {
             J.MethodDeclaration md = super.visitMethodDeclaration(method, ctx);
-            if (ctx.getMessage("appendAnnotation", false)) {
-                ctx.putMessage("appendAnnotation", false);
+            Cursor cursor = getCursor();
+            if (cursor.getMessage("appendAnnotation", false)) {
                 if (md.getLeadingAnnotations().stream()
                         .noneMatch(logStartMatcher::matches)) {
                     maybeAddImport("io.micrometer.core.annotation.Timed");
-                    md = annotationTemplate.apply(getCursor(), method.getCoordinates().addAnnotation(Comparator.comparing(J.Annotation::getSimpleName)));
+                    md = annotationTemplate.apply(cursor, method.getCoordinates().addAnnotation(Comparator.comparing(J.Annotation::getSimpleName)));
                 }
             }
             return md;
@@ -69,7 +70,7 @@ public class RemoveLogStartInvocations extends Recipe {
             if (!logStartInvocaMatcher.matches(mi)) {
                 return mi;
             }
-            ctx.putMessage("appendAnnotation", true);
+            getCursor().putMessageOnFirstEnclosing(J.MethodDeclaration.class, "appendAnnotation", true);
             this.doAfterVisit(new RemoveMethodInvocationsVisitor(Collections.singletonList(LOG_START_INVOCATION_PATTERN)));
             return null;
         }

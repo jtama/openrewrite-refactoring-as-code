@@ -18,8 +18,8 @@ recipeList:
   - org.openrewrite.maven.RemoveDependency:
       groupId: com.github.jtama
       artifactId: toxic-library
-  - org.openrewrite.maven.RemoveUnusedProperties:
-      propertyPattern: toxic\.version
+  - org.openrewrite.maven.RemoveProperty:
+      propertyName: toxic.version
 ---
 type: specs.openrewrite.org/v1beta/recipe
 name: com.github.jtama.openrewrite.VousAllezVoirCeQueVousAllezVoir

@@ -15,8 +15,7 @@ class RemoveLogStartInvocationTest implements RewriteTest {
         spec.recipe(new RemoveLogStartInvocations())
                 .parser(JavaParser.fromJavaVersion()
                         .logCompilationWarningsAndErrors(true)
-                        .classpath("toxic-library", "quarkus-micrometer-registry-prometheus"))
-                .cycles(3);
+                        .classpath("toxic-library", "quarkus-micrometer-registry-prometheus"));
 
     }
 
