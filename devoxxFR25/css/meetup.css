@@ -1,40 +1,58 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins");
+@font-face {
+    font_family: Old Maquine Caps;
+    src:
+            url("../fonts/OldmaquineCaps.ttf") format("opentype"),
+            url("../fonts/OldmaquineCaps.otf") format("opentype"),
+            url("../fonts/OldmaquineCaps.woff") format("woff");
+}
 
 
 :root {
     --r-background-color: #EEEEEE;
     --r-main-color: #111012;
     --r-main-font: 'Poppins';
+    --r-heading-font: 'Old Maquine Caps';
+    --r-link-color: #8FAADC
 }
 
-body {
-
-    footer {
+body:not(.title) {
+    & footer {
         z-index: 10;
         position: absolute;
-        left: 0%;
+        left: 0;
         width: 100%;
         bottom: 0;
         min-height: 80px;
         text-align: center;
     }
+}
 
+body {
     .reveal {
         h1 {
-            /*display: none;*/
+            --r-heading1-size: 82px;
+            color: #8FAADC;
+            position: fixed;
+            top: 123px;
+            left: 28px;
+            width: 100%;
+            text-align: center;
+        }
 
-            text-shadow: 0 0 7px #fff,
-            0 0 10px #fff,
-            0 0 21px #fff,
-            0 0 42px #84c8d8,
-            0 0 82px #84c8d8,
-            0 0 92px #84c8d8,
-            0 0 102px #84c8d8,
-            0 0 151px #84c8d8;
+        .title.present h2{
+            color: #FFFFFF;
+            position: fixed;
+            top: 208px;
+            left: 630px;
+            width: 100%;
+            font-family: Poppins, serif;
+            text-transform: none;
+            text-shadow: none;
         }
 
         h2 {
-            text-shadow: -1px 0 #EEEEEE, 0 1px #EEEEEE, 1px 0 #EEEEEE, 0 -1px #EEEEEE;
+            text-shadow: -1px 0 #8FAADC, 0 1px #8FAADC, 1px 0 #8FAADC, 0 -1px #8FAADC;
             position: fixed;
             left: 50%;
             top: 6px;
@@ -47,25 +65,13 @@ body {
         }
 
         .progress {
-            color: #241F35;
+            color: #8FAADC;
             height: 7px;
         }
 
+        .control-
+
     }
-
-
-    .slide-background.conclusion {
-        background: no-repeat center/80% url("../images/conclusion.jpg");
-    }
-
-
-    .light h2 {
-        color: var(--r-background-color);
-        -webkit-text-stroke: 2px black;
-        text-stroke: 2px black;
-        font-size: var(--r-heading2-size);
-    }
-
 
     .transparency.slide-background.present {
         opacity: 0.50;
