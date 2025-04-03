@@ -1,4 +1,4 @@
-= Openrewrite - Refactoring as code
+= Openrewrite: Refactoring as code
 :docinfo: private
 :source-highlighter: highlight.js
 :highlightjsdir: highlight.js
@@ -10,7 +10,7 @@
 :revealjs_history: true
 :revealjs_pdfseparatefragments: false
 :revealjs_width: 1200
-:title-slide-background-image: title.png
+:title-slide-background-image: title.jpg
 :title-slide-background-size: cover
 :title-slide-background-repeat: no-repeat
 :title-slide-filter: blur(4px)
