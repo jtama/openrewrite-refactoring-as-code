@@ -6,9 +6,10 @@ Demo time !
 [%notitle,background-iframe="http://localhost:8443"]
 === GO
 
-[.columns]
+[.columns.transparency]
 === !
 
+image::title.jpg[background, size=cover]
 [.column.is-one-third]
 --
 image::permis_de_refactoring.png[]

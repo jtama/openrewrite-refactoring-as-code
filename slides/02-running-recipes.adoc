@@ -1,11 +1,13 @@
 
-[%notitle]
+[.transparency.no-transition]
 == Exécution d'une recette
 
 image::running.avif[background, size=cover]
 
-[%notitle]
+[%notitle.transparency.blur-background]
 === Via la ligne de commande
+
+image::running.avif[background, size=cover]
 
 [.fragment]
 [source%linenums,console,highlight="1|2..3|4..5",step=0]
@@ -29,9 +31,10 @@ On peut aussi le faire en modifiant son `pom.xml` ou son `build.gradle`.
 Il existe aussi une intégration avec IntelliJ qui facilite beaucoup la vie.
 --
 
-[.columns]
+[.columns.transparency]
 === !
 
+image::title.jpg[background, size=cover]
 [.column.is-one-third]
 --
 image::permis_de_refactoring.png[]

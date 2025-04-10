@@ -61,14 +61,15 @@ Tech Lead/Architecte, Instructeur en permis de réécriture
 [.column]
 --
 [.vertical-align-middle]
-image:logo_onepoint.png
+image:logo_onepoint.png[]
 
 [.vertical-align-middle]
 icon:github[] @jtama image:avatar.png[width=100]
 --
 
-[%notitle]
+[%notitle.transparency]
 === Le permis
 
+image::title.jpg[background, size=cover]
 image::permis_de_refactoring.png[width=600]
 

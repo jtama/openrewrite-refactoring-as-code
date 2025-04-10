@@ -1,15 +1,17 @@
-[.transparency.no-transition]
+[.transparency.no-transition.blur-background]
 == Points d'attention
+
 
 image::conclusion.jpg[background, size=cover]
 
-=== !
+[.transparency.no-transition.blur-background]
+== Points d'attention
 
 
-- Quand on n'a qu'un marteau tout ressemble à un clou.
+image::conclusion.jpg[background, size=cover]
 
 [.fragment]
-Composition de recettes complexes.
+- Quand on n'a qu'un marteau tout ressemble à un clou.
 
 [.fragment]
 _java preview feature_
@@ -17,6 +19,9 @@ _java preview feature_
 
 [.transparency.columns.no-transition]
 === Merci !
+
+image::title.jpg[background, size=cover]
+
 
 [.column]
 --

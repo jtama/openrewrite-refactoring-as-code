@@ -13,6 +13,7 @@
     --r-main-color: #111012;
     --r-main-font: 'Poppins';
     --r-heading-font: 'Old Maquine Caps';
+    --r-heading-color: #8FAADC;
     --r-link-color: #8FAADC
 }
 
@@ -28,30 +29,37 @@ body:not(.title) {
     }
 }
 
+/*.title h2::after {
+   content: "Jérôme Tama";
+    display: block;
+    color: #F4B183;
+    font-size: 51px;
+}*/
+
 body {
     .reveal {
         h1 {
             --r-heading1-size: 82px;
-            color: #8FAADC;
+            color: #FFFFFF;
             position: fixed;
             top: 123px;
             left: 28px;
             width: 100%;
             text-align: center;
+            text-shadow: -1px 0 #8FAADC, 0 1px #8FAADC, 1px 0 #8FAADC, 0 -1px #8FAADC;
         }
 
         .title.present h2{
-            color: #FFFFFF;
             position: fixed;
             top: 208px;
             left: 630px;
             width: 100%;
-            font-family: Poppins, serif;
+            font-family: var(--r-heading-font);
             text-transform: none;
-            text-shadow: none;
         }
 
         h2 {
+            --r-heading-color: #000000;
             text-shadow: -1px 0 #8FAADC, 0 1px #8FAADC, 1px 0 #8FAADC, 0 -1px #8FAADC;
             position: fixed;
             left: 50%;
@@ -69,25 +77,19 @@ body {
             height: 7px;
         }
 
-        .control-
-
+        .blur-background {
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
     }
 
     .transparency.slide-background.present {
-        opacity: 0.50;
+        opacity: 0.40;
     }
 
     .big {
         font-size: 60px;
         color: #012d3f;
-    }
-
-    .use-case {
-        font-family: "Gochi Hand", serif;
-    }
-
-    .red {
-        color: #111012;
     }
 
     img {
@@ -128,22 +130,6 @@ body {
 
     .column.has-text-left > div > div.hdlist.small > table {
         margin-left: 0;
-    }
-
-    section {
-        .lesson{
-            &::before {
-                content: "";
-                background:url("../images/permis_de_refactoring.png");
-                background-size: contain;
-                background-repeat: no-repeat;
-                width:350px;
-                height:350px;
-                display: inline-block;
-                overflow: hidden;
-            }
-        }
-
     }
 
     .blur {

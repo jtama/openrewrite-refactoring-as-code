@@ -18,7 +18,7 @@ podman container run --rm -v $(pwd)/slides:/documents -w /documents asciidoctor/
 [source%linenums,bash]
 ----
 podman container run --name prez --rm -d -p 8080:80 -v $(pwd)/slides:/usr/share/nginx/html nginx
-podman container run --name coder --rm -d -p 8443:8443 -v $(pwd):/config/workspace -v ~/.m2:/config/.m2 -e MAVEN_CONFIG=/config/.m2 ghcr.io/jtama/java_jbang_codeserver:latest
+podman container run --name coder --rm -d -p 8443:8443 -v $(pwd):/config/workspace -v ~/.m2:/config/.m2 -e MAVEN_CONFIG=/config/.m2 ghcr.io/jtama/java_jbang_codeserver:23
 ----
 
 == `toxic-library`

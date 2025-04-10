@@ -17,9 +17,10 @@ Plus de 500 recettes la dernière fois que j'ai compté.
 --
 
 
-[.columns]
+[.columns.transparency]
 === !
 
+image::title.jpg[background, size=cover]
 [.column.is-one-third]
 --
 image::permis_de_refactoring.png[]
