@@ -3,7 +3,7 @@
 
 Demo time !
 
-[%notitle,background-iframe="http://localhost:8443"]
+[%notitle.demo,background-iframe="http://localhost:8443"]
 === GO
 
 [.columns.transparency]

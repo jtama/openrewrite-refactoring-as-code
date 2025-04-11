@@ -17,7 +17,7 @@
     --r-link-color: #8FAADC
 }
 
-body:not(.title) {
+body:not(:has(.present.demo)):not(.title) {
     & footer {
         z-index: 10;
         position: absolute;
@@ -28,13 +28,6 @@ body:not(.title) {
         text-align: center;
     }
 }
-
-/*.title h2::after {
-   content: "Jérôme Tama";
-    display: block;
-    color: #F4B183;
-    font-size: 51px;
-}*/
 
 body {
     .reveal {
