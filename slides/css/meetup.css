@@ -48,6 +48,8 @@ body {
             left: 630px;
             width: 100%;
             font-family: var(--r-heading-font);
+            text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
+            color: #8FAADC;
             text-transform: none;
         }
 
@@ -132,26 +134,29 @@ body {
     .chercher_remplacer {
         position: fixed;
         top: 125px;
-        left: 821px;
+        left: 460px;
+        width: 100%;
     }
 
     .regexp {
         position: fixed;
         top: 125px;
-        left: 197px;
+        left: -339px;
+        width: 100%;
     }
 
     .llm {
         position: fixed;
         top: 355px;
-        left: 197px;
+        left: -369px;
+        width: 100%;
     }
 
     .click_droit {
         position: fixed;
         top: 355px;
-        left: 821px;
-        overflow: hidden;
+        left: 443px;
+        width: 100%;
     }
 
     li {
