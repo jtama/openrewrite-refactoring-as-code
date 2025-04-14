@@ -67,7 +67,7 @@ Et puis un coup de mvn run
 === Distribution
 
 image::declarative.jpg[background, size=cover]
-Inclure ce fichier dans un module maven fantôme...
+Inclure ce fichier dans un module maven...
 
 
 [.columns.transparency]

@@ -62,7 +62,7 @@ image::anatomy.png[background, size=cover]
 === Anatomie d'une recette (2/2)
 
 image::anatomy.png[background, size=cover]
-[source,java,highlight="3|5|7|9|11|13"]
+[source,java,highlight="1|3|5|7|9|11|13"]
 ----
 public abstract class Recipe implements Cloneable {
 
