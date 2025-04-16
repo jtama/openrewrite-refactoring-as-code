@@ -440,7 +440,7 @@ ul.byline li + li {
 <div class="paragraph fragment"><p><strong>L</strong>ossless <strong>S</strong>yntax <strong>T</strong>ree</p></div>
 <aside class="notes"><div class="ulist"><ul><li><p>Programming languages</p><div class="ulist"><ul><li><p>Java</p></li><li><p>Kotlin</p></li><li><p>Groovy</p></li></ul></div></li><li><p>Data formats</p><div class="ulist"><ul><li><p>XML</p></li><li><p>Properties</p></li><li><p>YAML</p></li><li><p>JSON</p></li><li><p>Protobuf</p></li></ul></div></li><li><p>Build tools</p><div class="ulist"><ul><li><p>Maven</p></li><li><p>Gradle</p></li></ul></div></li></ul></div>
 <div class="paragraph"><p>Par exemple 73 points d&#8217;extension pour Java&#8230;&#8203;</p></div></aside></div></section><section id="_anatomie_dune_recette" class="transparency no-transition" data-background-image="images/anatomy.png" data-background-size="cover"><h2>Anatomie d&#8217;une recette</h2></section><section id="_anatomie_dune_recette_22" class="transparency" data-background-image="images/anatomy.png" data-background-size="cover"><div class="slide-content">
-<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-line-numbers="3|5|7|9|11|13" data-lang="java">public abstract class Recipe implements Cloneable {
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-line-numbers="1|3|5|7|9|11|13" data-lang="java">public abstract class Recipe implements Cloneable {
 
     public abstract String getDisplayName();
 
@@ -513,7 +513,7 @@ Et on imagine ici que la dernière recette est accessible ailleurs.</p></div>
 Dans le répertoire <code>META-INF/rewrite</code>
 Attention, pas <code>yaml</code>
 Et puis un coup de mvn run</p></div></aside></div></section><section id="_distribution" class="no-transition transparency blur-background" data-background-image="images/declarative.jpg" data-background-size="cover"><h2>Distribution</h2><div class="slide-content">
-<div class="paragraph"><p>Inclure ce fichier dans un module maven fantôme&#8230;&#8203;</p></div></div></section><section class="columns transparency" data-background-image="images/title.jpg" data-background-size="cover"><div class="slide-content">
+<div class="paragraph"><p>Inclure ce fichier dans un module maven&#8230;&#8203;</p></div></div></section><section class="columns transparency" data-background-image="images/title.jpg" data-background-size="cover"><div class="slide-content">
 <div class="openblock column is-one-third"><div class="content"><div class="imageblock"><img src="images/permis_de_refactoring.png" alt="permis de refactoring"></div></div></div>
 <div class="openblock column"><div class="content"><div class="ulist"><ul><li><p>✅ Vue d&#8217;ensemble du véhicule</p></li><li><p>✅ Savoir démarrer le véhicule</p></li><li><p>✅ Savoir lire une carte</p></li><li><p>✅ Savoir conduire en ville</p></li></ul></div></div></div></div></section></section>
 <section><section id="_ecrire_sa_propre_recette" class="no-transition"><h2>Ecrire sa propre recette</h2><div class="slide-content"><div class="paragraph"><p>Demo time !</p></div></div></section><section id="_go" class="demo" data-background-iframe="http://localhost:8443"></section><section class="columns transparency" data-background-image="images/title.jpg" data-background-size="cover"><div class="slide-content">
