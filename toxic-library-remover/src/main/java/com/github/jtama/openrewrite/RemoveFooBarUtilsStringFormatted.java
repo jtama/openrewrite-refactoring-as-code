@@ -66,7 +66,7 @@ public class RemoveFooBarUtilsStringFormatted extends Recipe {
             J.MethodInvocation mi = stringFormatted.apply(
                     getCursor(),
                     methodInvocation.getCoordinates().replace(),
-                    arguments.get(0));
+                    arguments.getFirst());
             mi = mi.withArguments(ListUtils.mapFirst(
                     arguments.subList(1, arguments.size()),
                     expression -> expression.withPrefix(Space.EMPTY)));

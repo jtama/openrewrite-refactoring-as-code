@@ -21,7 +21,7 @@
             <dependency>
                 <groupId>org.openrewrite.recipe</groupId>
                 <artifactId>rewrite-recipe-bom</artifactId>
-                <version>3.4.0</version>
+                <version>3.11.1</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -133,32 +133,6 @@
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
-            <!--
-                Only needed when you want to apply the OpenRewriteBestPractices recipe to your recipes through
-                ./mvnw rewrite:run -Drewrite.activeRecipes=org.openrewrite.recipes.OpenRewriteBestPractices
-            -->
-            <plugin>
-                <groupId>org.openrewrite.maven</groupId>
-                <artifactId>rewrite-maven-plugin</artifactId>
-                <version>5.46.1</version>
-                <configuration>
-                    <failOnDryRunResults>true</failOnDryRunResults>
-                </configuration>
-                <dependencies>
-
-                    <dependency>
-                        <groupId>org.openrewrite.recipe</groupId>
-                        <artifactId>rewrite-migrate-java</artifactId>
-                        <version>2.30.1</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.openrewrite.recipe</groupId>
-                        <artifactId>rewrite-rewrite</artifactId>
-                        <version>0.1.0</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-
         </plugins>
     </build>
 </project>

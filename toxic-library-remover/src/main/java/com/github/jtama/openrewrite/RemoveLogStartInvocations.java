@@ -71,7 +71,6 @@ public class RemoveLogStartInvocations extends Recipe {
                 return mi;
             }
             getCursor().putMessageOnFirstEnclosing(J.MethodDeclaration.class, "appendAnnotation", true);
-            this.doAfterVisit(new RemoveMethodInvocationsVisitor(Collections.singletonList(LOG_START_INVOCATION_PATTERN)));
             return null;
         }
     }
