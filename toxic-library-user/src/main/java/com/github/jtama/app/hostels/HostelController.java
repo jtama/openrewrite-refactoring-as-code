@@ -3,6 +3,7 @@ package com.github.jtama.app.hostels;
 import com.github.jtama.app.reservation.Reservation;
 import com.github.jtama.toxic.BigDecimalUtils;
 import com.github.jtama.toxic.FooBarUtils;
+import com.github.jtama.toxic.LearnToFly;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -22,7 +23,8 @@ import java.util.List;
 
 @Path("/api/hostels")
 @Produces(MediaType.APPLICATION_JSON)
-public class    HostelController {
+@LearnToFly
+public class HostelController {
 
     @Inject
     HostelReservationService hostelReservationService;
