@@ -5,36 +5,49 @@
     --r-background-color: #EEEEEE;
     --r-main-color: #111012;
     --r-main-font: 'Poppins';
+    --r-heading-color: #8FAADC;
+    --r-link-color: #8FAADC
 }
 
-body {
-
-    footer {
+body:not(:has(.present.demo)):not(.title) {
+    & footer {
         z-index: 10;
         position: absolute;
-        left: 0%;
+        left: 0;
         width: 100%;
         bottom: 0;
         min-height: 80px;
         text-align: center;
     }
+}
 
+body {
     .reveal {
         h1 {
-            /*display: none;*/
+            --r-heading1-size: 82px;
+            color: #FFFFFF;
+            position: fixed;
+            top: 123px;
+            left: 28px;
+            width: 100%;
+            text-align: center;
+            text-shadow: -1px 0 #8FAADC, 0 1px #8FAADC, 1px 0 #8FAADC, 0 -1px #8FAADC;
+        }
 
-            text-shadow: 0 0 7px #fff,
-            0 0 10px #fff,
-            0 0 21px #fff,
-            0 0 42px #84c8d8,
-            0 0 82px #84c8d8,
-            0 0 92px #84c8d8,
-            0 0 102px #84c8d8,
-            0 0 151px #84c8d8;
+        .title.present h2{
+            position: fixed;
+            top: 208px;
+            left: 630px;
+            width: 100%;
+            font-family: var(--r-heading-font);
+            text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
+            color: #8FAADC;
+            text-transform: none;
         }
 
         h2 {
-            text-shadow: -1px 0 #EEEEEE, 0 1px #EEEEEE, 1px 0 #EEEEEE, 0 -1px #EEEEEE;
+            --r-heading-color: #000000;
+            text-shadow: -1px 0 #8FAADC, 0 1px #8FAADC, 1px 0 #8FAADC, 0 -1px #8FAADC;
             position: fixed;
             left: 50%;
             top: 6px;
@@ -51,37 +64,19 @@ body {
             height: 7px;
         }
 
+        .blur-background {
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
     }
-
-
-    .slide-background.conclusion {
-        background: no-repeat center/80% url("../images/conclusion.jpg");
-    }
-
-
-    .light h2 {
-        color: var(--r-background-color);
-        -webkit-text-stroke: 2px black;
-        text-stroke: 2px black;
-        font-size: var(--r-heading2-size);
-    }
-
 
     .transparency.slide-background.present {
-        opacity: 0.50;
+        opacity: 0.40;
     }
 
     .big {
         font-size: 60px;
         color: #012d3f;
-    }
-
-    .use-case {
-        font-family: "Gochi Hand", serif;
-    }
-
-    .red {
-        color: #111012;
     }
 
     img {
@@ -122,22 +117,6 @@ body {
 
     .column.has-text-left > div > div.hdlist.small > table {
         margin-left: 0;
-    }
-
-    section {
-        .lesson{
-            &::before {
-                content: "";
-                background:url("../images/permis_de_refactoring.png");
-                background-size: contain;
-                background-repeat: no-repeat;
-                width:350px;
-                height:350px;
-                display: inline-block;
-                overflow: hidden;
-            }
-        }
-
     }
 
     .blur {
