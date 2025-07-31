@@ -20,6 +20,9 @@ recipeList:
       artifactId: toxic-library
   - org.openrewrite.maven.RemoveProperty:
       propertyName: toxic.version
+  - com.github.jtama.openrewrite.ExtractInterface:
+      sourceModule: .
+      targetModule: .
 ---
 type: specs.openrewrite.org/v1beta/recipe
 name: com.github.jtama.openrewrite.VousAllezVoirCeQueVousAllezVoir

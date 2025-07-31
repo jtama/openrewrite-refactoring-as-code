@@ -1,10 +1,14 @@
-[.transparency.no-transition]
+[.transparency.no-transition.blur-background]
 == Points d'attention
+
 
 image::conclusion.jpg[background, size=cover]
 
-=== !
+[%notitle.transparency.no-transition.blur-background]
+=== Points d'attention
 
+
+image::conclusion.jpg[background, size=cover]
 
 - Quand on n'a qu'un marteau tout ressemble à un clou.
 

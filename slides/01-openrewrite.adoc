@@ -1,5 +1,5 @@
 
-[%notitle]
+[%notitle.transparency]
 == Openrewrite
 
 image::openrewrite.svg[width=30%]
@@ -24,13 +24,14 @@ C'est un outil java open-source - Apache 2
 
 image::concepts.jpg[background, size=cover]
 
-[%notitle]
+[%notitle.transparency.blur-background]
 === Les concepts (2/2)
 
-[%step]
-. Recipe
-. **L**ossless **S**yntax **T**ree
-. Le pattern visitor
+image::concepts.jpg[background, size=cover]
+
+Recipe
+[.fragment]
+**L**ossless **S**yntax **T**ree
 
 [.notes]
 --
@@ -83,7 +84,7 @@ public abstract class Recipe implements Cloneable {
 Des résultats sous forme de _data tables_, et le concept de préconditions.
 --
 
-[.columns]
+[.columns.transparency]
 === !
 
 [.column.is-one-third]

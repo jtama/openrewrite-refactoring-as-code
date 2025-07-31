@@ -1,52 +1,11 @@
 
-[%notitle]
+[.transparency.no-transition]
 == Exécution d'une recette
 
 image::running.avif[background, size=cover]
 
-[%notitle]
-=== En modifiant vos poms (1/2)
-
-[source%linenums,xml,highlight="5..7|15..17|10",step=0]
-----
-<project>
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.openrewrite.maven</groupId>
-        <artifactId>rewrite-maven-plugin</artifactId>
-        <version>5.46.0</version>
-        <configuration>
-          <activeRecipes>
-            <recipe>org.openrewrite.java.testing.junit5.JUnit4to5Migration</recipe>
-          </activeRecipes>
-        </configuration>
-        <dependencies>
-          <dependency>
-            <groupId>org.openrewrite.recipe</groupId>
-            <artifactId>rewrite-testing-frameworks</artifactId>
-            <version>RELEASE</version>
-          </dependency>
-        </dependencies>
-      </plugin>
-    </plugins>
-  </build>
-</project>
-----
-[.fragment, data-fragment-index=0]
-Déclaration du plugin
-[.fragment, data-fragment-index=1]
-Ajout de la dépendance de la recette
-[.fragment, data-fragment-index=2]
-Activation des recettes
-
-[%notitle]
-=== En modifiant vos poms (2/2)
-
-[source%linenums,console,.fragment]
-----
-$ mvn rewrite:run
-----
+[%notitle.transparency.blur-background]
+=== Via la ligne de commande
 
 [.notes]
 --
@@ -77,7 +36,7 @@ Activation des recettes
 Il existe aussi une intégration avec IntelliJ qui facilite beaucoup la vie.
 --
 
-[.columns]
+[.columns.transparency]
 === !
 
 [.column.is-one-third]

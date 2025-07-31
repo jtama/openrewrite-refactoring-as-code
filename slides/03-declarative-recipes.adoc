@@ -10,8 +10,10 @@ Une recette déclarative est en fait juste un format de déclaration de recette 
 --
 
 
-[%notitle]
+[%notitle.transparency]
 === Et ça ressemble à ?
+
+image::declarative.jpg[background, size=cover]
 
 [source%linenums,yaml,highlight="3|4..10|13..17|12|20|26..28|29..32"]
 ----
@@ -53,23 +55,11 @@ recipeList:
 --
 On va créer une recette declarative qui permet de supprimer une dépendance toxique.
 Et on imagine ici que la dernière recette est accessible ailleurs.
---
 
-[%notitle]
-=== Comment et où ?
-
-
-Dans un fichier qui doit s'appeler `rewrite.yml`
-
-[.fragment]
 À la racine d'un projet.
-[.fragment]
 Dans le répertoire `META-INF/rewrite`
-
-[.notes]
---
 Attention, pas `yaml`
-Projet Maven ou Gradle...
+Et puis un coup de mvn run
 --
 
 [%notitle]
@@ -86,10 +76,11 @@ $ mvn -U org.openrewrite.maven:rewrite-maven-plugin:run \
 [.no-transition]
 === Distribution
 
-Inclure ce fichier dans un module maven fantôme...
+image::declarative.jpg[background, size=cover]
+Inclure ce fichier dans un module maven...
 
 
-[.columns]
+[.columns.transparency]
 === !
 
 [.column.is-one-third]

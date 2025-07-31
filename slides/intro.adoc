@@ -61,14 +61,13 @@ Tech Lead/Architecte, Instructeur en permis de réécriture
 [.column]
 --
 [.vertical-align-middle]
-image:logo_onepoint.jpeg[width=50]
-onepoint BDX
+image:logo_onepoint.png[]
 
 [.vertical-align-middle]
 icon:github[] @jtama image:avatar.png[width=100]
 --
 
-[%notitle]
+[%notitle.transparency]
 === Le permis
 
 image::permis_de_refactoring.png[width=600]
