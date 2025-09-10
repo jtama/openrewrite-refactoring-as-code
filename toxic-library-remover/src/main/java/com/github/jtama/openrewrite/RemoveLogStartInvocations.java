@@ -10,11 +10,9 @@ import org.openrewrite.java.JavaIsoVisitor;
 import org.openrewrite.java.JavaParser;
 import org.openrewrite.java.JavaTemplate;
 import org.openrewrite.java.MethodMatcher;
-import org.openrewrite.java.RemoveMethodInvocationsVisitor;
 import org.openrewrite.java.search.UsesType;
 import org.openrewrite.java.tree.J;
 
-import java.util.Collections;
 import java.util.Comparator;
 
 public class RemoveLogStartInvocations extends Recipe {
@@ -22,24 +20,24 @@ public class RemoveLogStartInvocations extends Recipe {
 
     @Override
     public String getDisplayName() {
-        return "Remove `FooBarUtils.compare()` usages";
+        return "Remove `Timer.logStart()` usages";
     }
 
     @Override
     public String getDescription() {
-        return "Replace any usage of `FooBarUtils.compare()` method by `Objects.compare()` invocations.";
+        return "Replace any usage of `Timer.logStart()` and `Timer.logEnd()` methods by `@Timed` annotation.";
     }
 
     @Override
     public TreeVisitor<?, ExecutionContext> getVisitor() {
-        return new Preconditions.Check(new UsesType<>("com.github.jtama.toxic.FooBarUtils", true),
+        return new Preconditions.Check(new UsesType<>("com.github.jtama.toxic.Timer", true),
                 new ReplaceCompareVisitor());
     }
 
     private static class ReplaceCompareVisitor extends JavaIsoVisitor<ExecutionContext> {
 
-        public static final String LOG_START_INVOCATION_PATTERN = "com.github.jtama.toxic.FooBarUtils logStart()";
-        private final MethodMatcher logStartInvocaMatcher = new MethodMatcher(LOG_START_INVOCATION_PATTERN);
+        private final MethodMatcher logStartInvocaMatcher = new MethodMatcher("com.github.jtama.toxic.Timer logStart()");
+        private final MethodMatcher logEndInvocaMatcher = new MethodMatcher("com.github.jtama.toxic.Timer logEnd()");
         private final AnnotationMatcher logStartMatcher = new AnnotationMatcher("@io.micrometer.core.annotation.Timed");
         private final JavaTemplate annotationTemplate = JavaTemplate.builder("@Timed")
                 .imports("io.micrometer.core.annotation.Timed")
@@ -47,7 +45,7 @@ public class RemoveLogStartInvocations extends Recipe {
                 .build();
 
         public ReplaceCompareVisitor() {
-            maybeRemoveImport("com.github.jtama.toxic.FooBarUtils");
+            maybeRemoveImport("com.github.jtama.toxic.Timer");
         }
 
         @Override
@@ -67,11 +65,11 @@ public class RemoveLogStartInvocations extends Recipe {
         @Override
         public J.MethodInvocation visitMethodInvocation(J.MethodInvocation method, ExecutionContext ctx) {
             J.MethodInvocation mi = super.visitMethodInvocation(method, ctx);
-            if (!logStartInvocaMatcher.matches(mi)) {
-                return mi;
+            if (logStartInvocaMatcher.matches(mi) || logEndInvocaMatcher.matches(mi)) {
+                getCursor().putMessageOnFirstEnclosing(J.MethodDeclaration.class, "appendAnnotation", true);
+                return null;
             }
-            getCursor().putMessageOnFirstEnclosing(J.MethodDeclaration.class, "appendAnnotation", true);
-            return null;
+            return mi;
         }
     }
 }

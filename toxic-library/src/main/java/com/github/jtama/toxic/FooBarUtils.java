@@ -23,7 +23,4 @@ public class FooBarUtils {
         return comparator.compare(o1, o2);
     }
 
-    public static void logStart() {
-        System.out.println("Start");
-    }
 }

@@ -67,16 +67,16 @@ public class RocketReservationServiceTest {
         // Given
         try (MockedStatic<Reservation> reservationMock = mockStatic(Reservation.class);
              MockedStatic<Rocket> rocketMock = mockStatic(Rocket.class)) {
-
+            
             // Configuration des mocks
             doNothing().when(monthValidator).validateMonth(VALID_MONTH);
-
+            
             reservationMock.when(() -> Reservation.findByUserNameAndMonthAndHostelIsNotNull(USER_NAME, VALID_MONTH))
                           .thenReturn(Optional.of(mockReservation));
-
+            
             reservationMock.when(() -> Reservation.existsByMonthAndRocketName(VALID_MONTH, VALID_ROCKET_NAME))
                           .thenReturn(false);
-
+            
             rocketMock.when(() -> Rocket.findByName(VALID_ROCKET_NAME))
                      .thenReturn(Optional.of(mockRocket));
 
@@ -160,7 +160,7 @@ public class RocketReservationServiceTest {
                 // Then
                 String expectedMessage = "No hostel is booked for user %S on month %s".formatted(USER_NAME, VALID_MONTH);
                 assertEquals(expectedMessage, e.getMessage());
-
+                
                 verify(monthValidator).validateMonth(VALID_MONTH);
                 reservationMock.verify(() -> Reservation.findByUserNameAndMonthAndHostelIsNotNull(USER_NAME, VALID_MONTH));
             }
@@ -204,7 +204,7 @@ public class RocketReservationServiceTest {
                 // Then
                 String expectedMessage = "Rocket %s has already been booked for month %s".formatted(VALID_ROCKET_NAME, VALID_MONTH);
                 assertEquals(expectedMessage, e.getMessage());
-
+                
                 verify(monthValidator).validateMonth(VALID_MONTH);
                 reservationMock.verify(() -> Reservation.findByUserNameAndMonthAndHostelIsNotNull(USER_NAME, VALID_MONTH));
                 reservationMock.verify(() -> Reservation.existsByMonthAndRocketName(VALID_MONTH, VALID_ROCKET_NAME));
@@ -219,7 +219,7 @@ public class RocketReservationServiceTest {
         // Given
         try (MockedStatic<Reservation> reservationMock = mockStatic(Reservation.class);
              MockedStatic<Rocket> rocketMock = mockStatic(Rocket.class)) {
-
+            
             doNothing().when(monthValidator).validateMonth(VALID_MONTH);
             reservationMock.when(() -> Reservation.findByUserNameAndMonthAndHostelIsNotNull(USER_NAME, VALID_MONTH))
                           .thenReturn(Optional.of(mockReservation));
@@ -240,7 +240,7 @@ public class RocketReservationServiceTest {
         // Given
         try (MockedStatic<Reservation> reservationMock = mockStatic(Reservation.class);
              MockedStatic<Rocket> rocketMock = mockStatic(Rocket.class)) {
-
+            
             doNothing().when(monthValidator).validateMonth(VALID_MONTH);
             reservationMock.when(() -> Reservation.findByUserNameAndMonthAndHostelIsNotNull(USER_NAME, VALID_MONTH))
                           .thenReturn(Optional.of(mockReservation));
@@ -257,7 +257,7 @@ public class RocketReservationServiceTest {
                 // Then
                 String expectedMessage = "Rocket %s doesn't exists".formatted(INVALID_ROCKET_NAME);
                 assertEquals(expectedMessage, e.getMessage());
-
+                
                 verify(monthValidator).validateMonth(VALID_MONTH);
                 reservationMock.verify(() -> Reservation.findByUserNameAndMonthAndHostelIsNotNull(USER_NAME, VALID_MONTH));
                 reservationMock.verify(() -> Reservation.existsByMonthAndRocketName(VALID_MONTH, INVALID_ROCKET_NAME));
@@ -294,7 +294,7 @@ public class RocketReservationServiceTest {
         String emptyRocketName = "";
         try (MockedStatic<Reservation> reservationMock = mockStatic(Reservation.class);
              MockedStatic<Rocket> rocketMock = mockStatic(Rocket.class)) {
-
+            
             doNothing().when(monthValidator).validateMonth(VALID_MONTH);
             reservationMock.when(() -> Reservation.findByUserNameAndMonthAndHostelIsNotNull(USER_NAME, VALID_MONTH))
                           .thenReturn(Optional.of(mockReservation));
@@ -338,7 +338,7 @@ public class RocketReservationServiceTest {
         // Given
         try (MockedStatic<Reservation> reservationMock = mockStatic(Reservation.class);
              MockedStatic<Rocket> rocketMock = mockStatic(Rocket.class)) {
-
+            
             doNothing().when(monthValidator).validateMonth(VALID_MONTH);
             reservationMock.when(() -> Reservation.findByUserNameAndMonthAndHostelIsNotNull(USER_NAME, VALID_MONTH))
                           .thenReturn(Optional.of(mockReservation));
@@ -352,7 +352,7 @@ public class RocketReservationServiceTest {
 
             // Then
             assertNotNull(result);
-
+            
             // Vérifier l'ordre des appels avec InOrder
             var inOrder = inOrder(monthValidator);
             inOrder.verify(monthValidator).validateMonth(VALID_MONTH);
@@ -366,7 +366,7 @@ public class RocketReservationServiceTest {
         // Given
         try (MockedStatic<Reservation> reservationMock = mockStatic(Reservation.class);
              MockedStatic<Rocket> rocketMock = mockStatic(Rocket.class)) {
-
+            
             // Créer une réservation sans rocket
             Reservation reservationWithoutRocket = new Reservation();
             reservationWithoutRocket.setUserName(USER_NAME);
@@ -374,7 +374,7 @@ public class RocketReservationServiceTest {
             reservationWithoutRocket.setHostel(mockHostel);
             reservationWithoutRocket.id = 4L;
             assertNull("La rocket doit être null initialement", reservationWithoutRocket.getRocket());
-
+            
             doNothing().when(monthValidator).validateMonth(VALID_MONTH);
             reservationMock.when(() -> Reservation.findByUserNameAndMonthAndHostelIsNotNull(USER_NAME, VALID_MONTH))
                           .thenReturn(Optional.of(reservationWithoutRocket));

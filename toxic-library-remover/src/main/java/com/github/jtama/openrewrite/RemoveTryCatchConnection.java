@@ -33,7 +33,6 @@ public class RemoveTryCatchConnection extends Recipe {
 
         public static final String PATH_PARAM = "pathParam";
         public static final String IS_EMPTY_PARAM = "isEmptyParam";
-        public static final String TRY_INSTANCE = "tryInstance";
         private final MethodMatcher isEmptyInvocaMatcher = new MethodMatcher("com.github.jtama.toxic.FooBarUtils isEmpty(java.lang.String)");
         private final MethodMatcher newFileMatcher = new MethodMatcher("java.io.File<constructor>(..)");
         private final JavaTemplate template = JavaTemplate.builder("Path.of(#{any()})")

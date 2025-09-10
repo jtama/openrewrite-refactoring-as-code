@@ -27,13 +27,15 @@ class RemoveLogStartInvocationTest implements RewriteTest {
                 //language=java
                 java(
                         """
-                                import com.github.jtama.toxic.FooBarUtils;
+                                import com.github.jtama.toxic.Timer;
                                 
                                 public class ManualGearCar {
                                 
                                     @Deprecated
                                     public void drift(String param) {
-                                        FooBarUtils.logStart();
+                                        Timer.logStart();
+                                        System.out.println("A very long process");
+                                        Timer.logEnd();
                                     }
                                 
                                     public void hardBreak(Boolean param) {
@@ -49,6 +51,7 @@ class RemoveLogStartInvocationTest implements RewriteTest {
                                     @Deprecated
                                     @Timed
                                     public void drift(String param) {
+                                        System.out.println("A very long process");
                                     }
                                 
                                     public void hardBreak(Boolean param) {

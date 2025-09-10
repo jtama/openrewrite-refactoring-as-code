@@ -51,7 +51,7 @@ public class HostelReservationServiceTest {
         // Given
         try (MockedStatic<Reservation> reservationMock = mockStatic(Reservation.class);
              MockedStatic<Hostel> hostelMock = mockStatic(Hostel.class)) {
-
+            
             // Configuration des mocks
             doNothing().when(monthValidator).validateMonth(VALID_MONTH);
             reservationMock.when(() -> Reservation.existsByUserNameAndMonthAndHostelName(USER_NAME, VALID_MONTH, VALID_HOSTEL_NAME))
@@ -137,7 +137,7 @@ public class HostelReservationServiceTest {
                 // Then
                 String expectedMessage = "Hostel %s is already booked for month %s".formatted(VALID_HOSTEL_NAME, VALID_MONTH);
                 assertEquals(expectedMessage, e.getMessage());
-
+                
                 // Vérification que la validation du mois a été appelée
                 verify(monthValidator).validateMonth(VALID_MONTH);
                 reservationMock.verify(() -> Reservation.existsByUserNameAndMonthAndHostelName(USER_NAME, VALID_MONTH, VALID_HOSTEL_NAME));
@@ -152,7 +152,7 @@ public class HostelReservationServiceTest {
         // Given
         try (MockedStatic<Reservation> reservationMock = mockStatic(Reservation.class);
              MockedStatic<Hostel> hostelMock = mockStatic(Hostel.class)) {
-
+            
             doNothing().when(monthValidator).validateMonth(VALID_MONTH);
             reservationMock.when(() -> Reservation.existsByUserNameAndMonthAndHostelName(USER_NAME, VALID_MONTH, INVALID_HOSTEL_NAME))
                           .thenReturn(false);
@@ -171,7 +171,7 @@ public class HostelReservationServiceTest {
         // Given
         try (MockedStatic<Reservation> reservationMock = mockStatic(Reservation.class);
              MockedStatic<Hostel> hostelMock = mockStatic(Hostel.class)) {
-
+            
             doNothing().when(monthValidator).validateMonth(VALID_MONTH);
             reservationMock.when(() -> Reservation.existsByUserNameAndMonthAndHostelName(USER_NAME, VALID_MONTH, INVALID_HOSTEL_NAME))
                           .thenReturn(false);
@@ -186,7 +186,7 @@ public class HostelReservationServiceTest {
                 // Then
                 String expectedMessage = "The hostel %s doesn't exist".formatted(INVALID_HOSTEL_NAME);
                 assertEquals(expectedMessage, e.getMessage());
-
+                
                 // Vérification des appels
                 verify(monthValidator).validateMonth(VALID_MONTH);
                 reservationMock.verify(() -> Reservation.existsByUserNameAndMonthAndHostelName(USER_NAME, VALID_MONTH, INVALID_HOSTEL_NAME));
@@ -202,7 +202,7 @@ public class HostelReservationServiceTest {
         // Given
         try (MockedStatic<Reservation> reservationMock = mockStatic(Reservation.class);
              MockedStatic<Hostel> hostelMock = mockStatic(Hostel.class)) {
-
+            
             doNothing().when(monthValidator).validateMonth(VALID_MONTH);
             reservationMock.when(() -> Reservation.existsByUserNameAndMonthAndHostelName(null, VALID_MONTH, VALID_HOSTEL_NAME))
                           .thenReturn(false);
@@ -226,7 +226,7 @@ public class HostelReservationServiceTest {
         String emptyHostelName = "";
         try (MockedStatic<Reservation> reservationMock = mockStatic(Reservation.class);
              MockedStatic<Hostel> hostelMock = mockStatic(Hostel.class)) {
-
+            
             doNothing().when(monthValidator).validateMonth(VALID_MONTH);
             reservationMock.when(() -> Reservation.existsByUserNameAndMonthAndHostelName(USER_NAME, VALID_MONTH, emptyHostelName))
                           .thenReturn(false);
@@ -268,7 +268,7 @@ public class HostelReservationServiceTest {
         // Given
         try (MockedStatic<Reservation> reservationMock = mockStatic(Reservation.class);
              MockedStatic<Hostel> hostelMock = mockStatic(Hostel.class)) {
-
+            
             doNothing().when(monthValidator).validateMonth(VALID_MONTH);
             reservationMock.when(() -> Reservation.existsByUserNameAndMonthAndHostelName(USER_NAME, VALID_MONTH, VALID_HOSTEL_NAME))
                           .thenReturn(false);
@@ -280,7 +280,7 @@ public class HostelReservationServiceTest {
 
             // Then
             assertNotNull(result);
-
+            
             // Vérifier l'ordre des appels avec InOrder
             var inOrder = inOrder(monthValidator);
             inOrder.verify(monthValidator).validateMonth(VALID_MONTH);
