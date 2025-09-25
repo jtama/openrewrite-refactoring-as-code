@@ -455,10 +455,10 @@ ul.byline li + li {
 <aside class="notes"><div class="paragraph"><p>Des résultats sous forme de <em>data tables</em>, et le concept de préconditions.</p></div></aside></div></section><section class="columns transparency"><div class="slide-content"><div class="openblock column is-one-third"><div class="content"><div class="imageblock"><img src="images/permis_de_refactoring.png" alt="permis de refactoring"></div></div></div>
 <div class="openblock column"><div class="content"><div class="paragraph"><p>✅ Vue d&#8217;ensemble du véhicule</p></div></div></div></div></section></section>
 <section><section id="_exécution_dune_recette" class="transparency no-transition" data-background-image="images/running.avif" data-background-size="cover"><h2>Exécution d&#8217;une recette</h2><div class="slide-content"></div></section><section id="_via_la_ligne_de_commande" class="transparency blur-background"><div class="slide-content"><aside class="notes"><div class="paragraph"><p>Pareil avec gradle</p></div></aside></div></section><section id="_sans_modifier_vos_poms" class="no-transition"><h2>Sans modifier vos poms</h2><div class="slide-content"><div class="listingblock fragment fragment" data-fragment-index="0"><div class="content"><pre class="highlightjs highlight"><code class="language-console hljs" data-noescape="true" data-line-numbers="1|2,3|4,5" data-lang="console">$ mvn -U org.openrewrite.maven:rewrite-maven-plugin:run \
-  -Drewrite.recipeArtifactCoordinates=\
-   org.openrewrite.recipe:rewrite-testing-frameworks:RELEASE\
-  -Drewrite.activeRecipes=\
-   org.openrewrite.java.testing.junit5.JUnit4to5Migration</code></pre></div></div>
+  -Drewrite.recipeArtifactCoordinates=
+    org.openrewrite.recipe:rewrite-testing-frameworks:RELEASE\
+  -Drewrite.activeRecipes=
+    org.openrewrite.java.testing.junit5.JUnit4to5Migration</code></pre></div></div>
 <div class="paragraph fragment" data-fragment-index="0"><p>Déclaration du plugin</p></div>
 <div class="paragraph fragment" data-fragment-index="1"><p>Ajout de la dépendance de la recette</p></div>
 <div class="paragraph fragment" data-fragment-index="2"><p>Activation des recettes</p></div>
