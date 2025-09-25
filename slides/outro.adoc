@@ -2,13 +2,13 @@
 == Points d'attention
 
 
-image::conclusion.jpg[background, size=cover]
+image::magic/jafar_3.webp[background, size=cover]
 
 [%notitle.transparency.no-transition.blur-background]
 === Points d'attention
 
 
-image::conclusion.jpg[background, size=cover]
+image::magic/jafar_3.webp[background, size=cover]
 
 - Quand on n'a qu'un marteau tout ressemble à un clou.
 
@@ -25,16 +25,14 @@ _java preview feature_
 [.column]
 --
 [.important-text.has-text-left.vertical-align-middle]
-Le dépôt github :
 
-image:qrcode_github.png[alt="https://github.com/jtama/openrewrite-refactor-as-code", width=400]
+image:qrcode_github.png[alt="https://github.com/jtama/openrewrite-refactor-as-code"]
 --
 
 [.column]
 --
 
 [.important-text.has-text-left.vertical-align-middle]
-Feedback :
 
-image:qrcode_feedback.png[width=400]
+image:feedback.png[alt="https://openfeedback.io/devfestnantes2025/2025-10-16/openrewriterefactorascode"]
 --

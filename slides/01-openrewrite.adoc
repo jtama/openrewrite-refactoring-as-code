@@ -89,11 +89,11 @@ Des résultats sous forme de _data tables_, et le concept de préconditions.
 
 [.column.is-one-third]
 --
-image::permis_de_refactoring.png[]
+image::magic/mickey.webp[]
 --
 
 [.column]
 --
-✅ Vue d'ensemble du véhicule
+- ✅ Connaître les ingrédients
 --
 

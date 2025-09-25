@@ -8,7 +8,7 @@ Readable version available on https://jtama.github.io/refactoring-as-code/#/[Git
 [source%linenums,bash]
 ----
 cd slides
-jbang qrcode@maxandersen <open feedback url> -i images/feedback.png -o images/feedback.png
+jbang qrcode@maxandersen https://openfeedback.io/devfestnantes2025/2025-10-16/openrewriterefactorascode -i images/magic/feedback.webp -o images/feedback.png
 jbang qrcode@maxandersen -i image/github.png https://github.com/jtama/openrewrite-refactoring-as-code --qr-colo="linear-gradient(90deg, rgba(36,14,0,1) 0%, rgba(9,121,105,1) 35%, rgba(0,212,255,1) 100%);"
 podman container run --rm -v $(pwd)/slides:/documents -w /documents asciidoctor/docker-asciidoctor:1.80.0 asciidoctor-revealjs -r asciidoctor-diagram index.adoc
 ----
