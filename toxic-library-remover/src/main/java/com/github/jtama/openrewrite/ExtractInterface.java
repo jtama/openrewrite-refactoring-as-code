@@ -8,6 +8,7 @@ import org.jspecify.annotations.NonNull;
 import org.openrewrite.Cursor;
 import org.openrewrite.ExecutionContext;
 import org.openrewrite.Option;
+import org.openrewrite.Recipe;
 import org.openrewrite.ScanningRecipe;
 import org.openrewrite.SourceFile;
 import org.openrewrite.Tree;
@@ -66,6 +67,11 @@ public class ExtractInterface extends ScanningRecipe<ExtractInterface.Accumulato
     @Override
     public Accumulator getInitialValue(ExecutionContext ctx) {
         return new Accumulator();
+    }
+
+    @Override
+    public List<Recipe> getRecipeList() {
+        return List.of(new RemoveUnusedImports());
     }
 
     @Override

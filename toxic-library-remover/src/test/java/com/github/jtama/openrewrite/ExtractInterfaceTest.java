@@ -32,7 +32,6 @@ class ExtractInterfaceTest implements RewriteTest {
                         import com.github.jtama.toxic.FooBarUtils;
                         import com.github.jtama.toxic.LearnToFly;
                         import java.io.File;
-                        import java.io.FileReader;
                         import java.nio.file.Files;
               
                         @LearnToFly
@@ -64,7 +63,6 @@ class ExtractInterfaceTest implements RewriteTest {
               
               import com.github.jtama.toxic.FooBarUtils;
               import java.io.File;
-              import java.io.FileReader;
               import java.nio.file.Files;
               
               public class ManualGearCar implements IManualGearCar {
@@ -125,7 +123,6 @@ class ExtractInterfaceTest implements RewriteTest {
               import com.github.jtama.toxic.FooBarUtils;
               import com.github.jtama.toxic.LearnToFly;
               import java.io.File;
-              import java.io.FileReader;
               import java.nio.file.Files;
               
               @LearnToFly
@@ -150,7 +147,6 @@ class ExtractInterfaceTest implements RewriteTest {
               
               import com.github.jtama.toxic.FooBarUtils;
               import java.io.File;
-              import java.io.FileReader;
               import java.nio.file.Files;
               
               public class ManualGearCar implements IManualGearCar {
@@ -201,7 +197,6 @@ class ExtractInterfaceTest implements RewriteTest {
               
               import com.github.jtama.toxic.FooBarUtils;
               import java.io.File;
-              import java.io.FileReader;
               import java.nio.file.Files;
               
               public class ManualGearCur {

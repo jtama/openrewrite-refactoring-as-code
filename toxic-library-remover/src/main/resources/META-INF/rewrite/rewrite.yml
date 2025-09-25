@@ -14,6 +14,7 @@ recipeList:
       fullyQualifiedTargetTypeName: java.math.BigDecimal
   - com.github.jtama.openrewrite.VousAllezVoirCeQueVousAllezVoir
   - org.openrewrite.java.RemoveUnusedImports
+  - org.openrewrite.staticanalysis.CommonStaticAnalysis
   - org.openrewrite.staticanalysis.RemoveUnusedPrivateFields
   - org.openrewrite.maven.RemoveDependency:
       groupId: com.github.jtama

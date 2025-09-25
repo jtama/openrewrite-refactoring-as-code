@@ -23,9 +23,6 @@ import java.util.Set;
 @ApplicationScoped
 public class NaiveAuth implements HttpAuthenticationMechanism {
 
-    @Inject
-    Logger logger;
-
     private static final String ONERENT_PREFIX = "onerent";
     private static final String LOWERCASE_BASIC_PREFIX = ONERENT_PREFIX.toLowerCase(Locale.ENGLISH);
     protected static final ChallengeData CHALLENGE_DATA = new ChallengeData(
