@@ -73,7 +73,7 @@ $ mvn -U org.openrewrite.maven:rewrite-maven-plugin:run \
       com.github.jtama.openrewrite.RemovesThatToxicDependency
 ----
 
-[.no-transition]
+[.no-transition.transparency]
 === Distribution
 
 image::declarative.jpg[background, size=cover]
@@ -85,13 +85,13 @@ Inclure ce fichier dans un module maven...
 
 [.column.is-one-third]
 --
-image::permis_de_refactoring.png[]
+image::magic/kirikou.png[]
 --
 
 [.column]
 --
-- ✅ Vue d'ensemble du véhicule
-- ✅ Savoir démarrer le véhicule
-- ✅ Savoir lire une carte
-- ✅ Savoir conduire en ville
+- ✅ Connaître les ingrédients
+- ✅ Savoir où les acheter
+- ✅ Savoir lire le grimoire
+- ✅ Savoir jeter un sort
 --

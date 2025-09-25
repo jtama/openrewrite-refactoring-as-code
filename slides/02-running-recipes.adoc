@@ -41,13 +41,13 @@ Il existe aussi une intégration avec IntelliJ qui facilite beaucoup la vie.
 
 [.column.is-one-third]
 --
-image::permis_de_refactoring.png[]
+image::magic/nim.webp[]
 --
 
 [.column]
 --
-- ✅ Vue d'ensemble du véhicule
-- ✅ Savoir démarrer le véhicule
+- ✅ Connaître les ingrédients
+- ✅ Savoir où les acheter
 --
 
 [.notes]

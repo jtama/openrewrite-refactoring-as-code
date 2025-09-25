@@ -11,15 +11,15 @@ Demo time !
 
 [.column.is-one-third]
 --
-image::permis_de_refactoring.png[]
+image::magic/jackjack.webp[]
 --
 
 [.column]
 --
-- ✅ Vue d'ensemble du véhicule
-- ✅ Savoir démarrer le véhicule
-- ✅ Savoir lire une carte
-- ✅ Savoir conduire en ville
-- ✅ Savoir drifter sur la glace
+- ✅ Connaître les ingrédients
+- ✅ Savoir où les acheter
+- ✅ Savoir lire le grimoire
+- ✅ Savoir jeter un sort
+- ✅ Créer vos propres sorts
 --
 
