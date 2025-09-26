@@ -62,8 +62,10 @@ Attention, pas `yaml`
 Et puis un coup de mvn run
 --
 
-[%notitle]
+[%notitle.transparency]
 === Et on l'exécute comme ça
+
+image::declarative.jpg[background, size=cover]
 
 [.fragment]
 [source%linenums,console,highlight="1|2..3"]
@@ -73,15 +75,17 @@ $ mvn -U org.openrewrite.maven:rewrite-maven-plugin:run \
       com.github.jtama.openrewrite.RemovesThatToxicDependency
 ----
 
-[.no-transition.transparency]
+[.no-transition.transparency.blur-background]
 === Distribution
 
 image::declarative.jpg[background, size=cover]
 Inclure ce fichier dans un module maven...
 
 
-[.columns.transparency]
+[.columns.transparency.blur-background]
 === !
+
+image::declarative.jpg[background, size=cover]
 
 [.column.is-one-third]
 --
