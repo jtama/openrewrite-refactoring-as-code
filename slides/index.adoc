@@ -2,6 +2,7 @@
 :docinfo: private
 :source-highlighter: highlight.js
 :highlightjsdir: highlight.js
+:highlightjs-theme: highlight.js/atom-one-light.min.css
 :autofit-option:
 :icons: font
 :favicon: favicon.svg
@@ -10,10 +11,10 @@
 :revealjs_history: true
 :revealjs_pdfseparatefragments: false
 :revealjs_width: 1200
-:title-slide-background-image: title.png
+:title-slide-background-image: title.webp
 :title-slide-background-size: cover
 :title-slide-background-repeat: no-repeat
-:title-slide-filter: blur(4px)
+:title-slide-background-opacity: 0.5
 :customcss: css/meetup.css
 :imagesdir: images
 

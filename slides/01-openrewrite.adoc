@@ -57,8 +57,10 @@ Par exemple 73 points d'extension pour Java...
 
 image::anatomy.png[background, size=cover]
 
-[%notitle]
+[%notitle.transparency]
 === Anatomie d'une recette (2/2)
+
+image::anatomy.png[background, size=cover]
 
 [source,java,highlight="3|5|7|9|11|13"]
 ----
@@ -84,8 +86,10 @@ public abstract class Recipe implements Cloneable {
 Des résultats sous forme de _data tables_, et le concept de préconditions.
 --
 
-[.columns.transparency]
+[.columns.transparency.blur-background]
 === !
+
+image::anatomy.png[background, size=cover]
 
 [.column.is-one-third]
 --

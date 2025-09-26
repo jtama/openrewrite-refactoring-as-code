@@ -46,6 +46,11 @@ audio::sound/punition.mp3[data-autoplay]
 [%notitle.columns.is-vcentered.transparency]
 === Présentation
 
+[.easter-egg]
+--
+image::easter-egg.png[width=400]
+--
+
 [.column.is-one-third]
 --
 image::jta_1.png[]
@@ -55,7 +60,7 @@ image::jta_1.png[]
 --
 Jérôme
 
-Tech Lead/Architecte, Instructeur en permis de réécriture
+Tech Lead/Architecte, Professeur de réécriture à BeauxBâtons
 --
 
 [.column]

@@ -7,14 +7,13 @@ image::running.avif[background, size=cover]
 [%notitle.transparency.blur-background]
 === Via la ligne de commande
 
+image::running.avif[background, size=cover]
 [.notes]
 --
 Pareil avec gradle
 --
 
-[.no-transition]
-=== Sans modifier vos poms
-
+image::running.avif[background, size=cover]
 [.fragment]
 [source%linenums,console,highlight="1|2..3|4..5",step=0]
 ----
@@ -36,8 +35,10 @@ Activation des recettes
 Il existe aussi une intégration avec IntelliJ qui facilite beaucoup la vie.
 --
 
-[.columns.transparency]
+[.columns.transparency.blur-background]
 === !
+
+image::running.avif[background, size=cover]
 
 [.column.is-one-third]
 --

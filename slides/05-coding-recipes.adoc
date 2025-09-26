@@ -1,13 +1,16 @@
-[.no-transition]
+[.no-transition.transparency.blur-background]
 == Ecrire sa propre recette
 
+image::O.png[background, size=cover]
 Demo time !
 
 [%notitle.demo,background-iframe="http://localhost:8443"]
 === GO
 
-[.columns]
+[.columns.transparency.blur-background]
 === !
+
+image::O.png[background, size=cover]
 
 [.column.is-one-third]
 --
