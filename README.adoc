@@ -1,6 +1,6 @@
 = Openrewrite: Refactoring as Code
 
-Readable version available on https://jtama.github.io/refactoring-as-code/#/[Github Pages -> ici]
+Readable version available on https://jtama.github.io/openrewrite-refactoring-as-code/[Github Pages -> ici]
 
 == Slides
 === Generate
