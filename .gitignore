@@ -7,6 +7,7 @@ slides/highlight.js
 *.html
 .asciidoctor
 !index-docinfo-footer.html
+!home.html
 openrewrite-sample-recipes/target/
 toxic-library/target/
 /slides/reveal.js/

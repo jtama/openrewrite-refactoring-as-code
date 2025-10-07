@@ -19,20 +19,7 @@ Composition de recettes complexes.
 _java preview feature_
 
 
-[.transparency.columns.no-transition]
+[.transparency.no-transition]
 === Merci !
 
-[.column]
---
-[.important-text.has-text-left.vertical-align-middle]
-
-image:qrcode_github.png[alt="https://github.com/jtama/openrewrite-refactor-as-code"]
---
-
-[.column]
---
-
-[.important-text.has-text-left.vertical-align-middle]
-
-image:feedback.png[alt="https://openfeedback.io/devfestnantes2025/2025-10-16/openrewriterefactorascode"]
---
+image:qr_home.png[alt="https://jtama.github.io/openrewrite-refactoring-as-code/DevfestNantes25/#/"]
