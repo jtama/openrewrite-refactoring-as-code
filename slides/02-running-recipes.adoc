@@ -35,6 +35,9 @@ Activation des recettes
 Il existe aussi une intégration avec IntelliJ qui facilite beaucoup la vie.
 --
 
+[%notitle.demo,background-iframe="http://localhost:8443"]
+=== GO
+
 [.columns.transparency.blur-background]
 === !
 
