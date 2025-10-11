@@ -174,15 +174,17 @@ body {
         right: 0;
     }
 
-    .easter-egg {
-        position: absolute;
-        right: 380px;
-        bottom: 110px;
-        animation: easteregg 5s ease 0s 1 normal forwards;
-    }
+    section.present:has(.easter-egg) {
+        .easter-egg {
+            position: absolute;
+            right: 380px;
+            bottom: 110px;
+            animation: easteregg 5s ease 0s 1 normal forwards;
+        }
 
-    .easter-egg::after {
-        content: "#dobbycestlemeilleur";
+        .easter-egg::after {
+            content: "#dobbycestlemeilleur";
+        }
     }
 }
 
