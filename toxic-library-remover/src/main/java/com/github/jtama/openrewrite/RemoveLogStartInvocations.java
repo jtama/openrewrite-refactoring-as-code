@@ -29,6 +29,11 @@ public class RemoveLogStartInvocations extends Recipe {
     }
 
     @Override
+    public boolean causesAnotherCycle() {
+        return true;
+    }
+
+    @Override
     public TreeVisitor<?, ExecutionContext> getVisitor() {
         return new Preconditions.Check(new UsesType<>("com.github.jtama.toxic.Timer", true),
                 new ReplaceCompareVisitor());
