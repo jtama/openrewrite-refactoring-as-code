@@ -16,6 +16,7 @@ Une recette déclarative est en fait juste un format de déclaration de recette 
 image::declarative.jpg[background, size=cover]
 
 [source%linenums,yaml,highlight="3|4..10|13..17|12|20|26..28|29..32"]
+.rewrite.yml
 ----
 ---
 type: specs.openrewrite.org/v1beta/recipe
@@ -95,7 +96,7 @@ image::magic/kirikou.png[]
 [.column]
 --
 - ✅ Connaître les ingrédients
-- ✅ Savoir où les acheter
+- ✅ Avoir son chaudron
 - ✅ Savoir lire le grimoire
 - ✅ Savoir jeter un sort
 --
