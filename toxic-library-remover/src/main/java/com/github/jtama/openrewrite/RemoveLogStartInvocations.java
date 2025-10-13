@@ -29,6 +29,11 @@ public class RemoveLogStartInvocations extends Recipe {
     }
 
     @Override
+    public boolean causesAnotherCycle() {
+        return true;
+    }
+
+    @Override
     public TreeVisitor<?, ExecutionContext> getVisitor() {
         return new Preconditions.Check(new UsesType<>("com.github.jtama.toxic.Timer", true),
                 new ReplaceCompareVisitor());
@@ -38,7 +43,7 @@ public class RemoveLogStartInvocations extends Recipe {
 
         private final MethodMatcher logStartInvocaMatcher = new MethodMatcher("com.github.jtama.toxic.Timer logStart()");
         private final MethodMatcher logEndInvocaMatcher = new MethodMatcher("com.github.jtama.toxic.Timer logEnd()");
-        private final AnnotationMatcher logStartMatcher = new AnnotationMatcher("@io.micrometer.core.annotation.Timed");
+        private final AnnotationMatcher timedMatcher = new AnnotationMatcher("@io.micrometer.core.annotation.Timed");
         private final JavaTemplate annotationTemplate = JavaTemplate.builder("@Timed")
                 .imports("io.micrometer.core.annotation.Timed")
                 .javaParser(JavaParser.fromJavaVersion().classpath(JavaParser.runtimeClasspath()))
@@ -54,7 +59,7 @@ public class RemoveLogStartInvocations extends Recipe {
             Cursor cursor = getCursor();
             if (cursor.getMessage("appendAnnotation", false)) {
                 if (md.getLeadingAnnotations().stream()
-                        .noneMatch(logStartMatcher::matches)) {
+                        .noneMatch(timedMatcher::matches)) {
                     maybeAddImport("io.micrometer.core.annotation.Timed");
                     md = annotationTemplate.apply(cursor, method.getCoordinates().addAnnotation(Comparator.comparing(J.Annotation::getSimpleName)));
                 }

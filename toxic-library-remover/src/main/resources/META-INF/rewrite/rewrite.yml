@@ -22,8 +22,7 @@ recipeList:
   - org.openrewrite.maven.RemoveProperty:
       propertyName: toxic.version
   - com.github.jtama.openrewrite.ExtractInterface:
-      sourceModule: .
-      targetModule: .
+      targetAnnotation: com.github.jtama.toxic.LearnToFly
 ---
 type: specs.openrewrite.org/v1beta/recipe
 name: com.github.jtama.openrewrite.VousAllezVoirCeQueVousAllezVoir

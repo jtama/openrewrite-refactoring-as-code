@@ -12,7 +12,7 @@ class ExtractInterfaceTest implements RewriteTest {
 
     @Override
     public void defaults(RecipeSpec spec) {
-        spec.recipe(new ExtractInterface("bar", "fighter"))
+        spec.recipe(new ExtractInterface("com.github.jtama.toxic.LearnToFly"))
           .parser(JavaParser.fromJavaVersion()
             .logCompilationWarningsAndErrors(true)
             .classpath("toxic-library"))
@@ -88,8 +88,7 @@ class ExtractInterfaceTest implements RewriteTest {
                       return 0;
                   }
               }
-              """,
-            spec -> spec.path("foo/bar/src/main/java/tutu/ManualGearCar.java")),
+              """),
           //language=java
           java(null, """
               package tutu;
@@ -105,8 +104,7 @@ class ExtractInterfaceTest implements RewriteTest {
 
                   @Override int compareTo(Integer o);
               }
-              """,
-            spec -> spec.path("foo/fighter/src/main/java/tutu/IManualGearCar.java")
+              """
           )
         );
     }
@@ -165,8 +163,7 @@ class ExtractInterfaceTest implements RewriteTest {
                       // To something
                   }
               }
-              """,
-            spec -> spec.path("foo/bar/src/main/java/tutu/ManualGearCar.java")),
+              """),
           //language=java
           java(null, """
               package tutu;
@@ -180,8 +177,7 @@ class ExtractInterfaceTest implements RewriteTest {
               
                   void doSomething(String param);
               }
-              """,
-            spec -> spec.path("foo/fighter/src/main/java/tutu/IManualGearCar.java")
+              """
           )
         );
     }

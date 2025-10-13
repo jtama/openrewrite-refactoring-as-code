@@ -2,9 +2,6 @@ package com.github.jtama.openrewrite;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.github.jtama.toxic.LearnToFly;
-import org.jetbrains.annotations.NotNull;
-import org.jspecify.annotations.NonNull;
 import org.openrewrite.Cursor;
 import org.openrewrite.ExecutionContext;
 import org.openrewrite.Option;
@@ -26,7 +23,6 @@ import org.openrewrite.java.tree.TypeTree;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,19 +35,13 @@ import static java.util.Collections.emptyList;
 
 public class ExtractInterface extends ScanningRecipe<ExtractInterface.Accumulator> {
 
-    @Option(displayName = "Source module", description = "The source module folder name", example = "foo")
-    @NonNull
-    String sourceModule;
+    @Option(displayName = "The targeted annotation", description = "Interface will be extracted for each class marked by this annotation", example = "jakarta.inject.Singleton")
+    String targetAnnotation;
 
-
-    @Option(displayName = "Target module", description = "The target module folder name", example = "foo")
-    @NonNull
-    String targetModule;
 
     @JsonCreator
-    public ExtractInterface(@NonNull @JsonProperty("sourceModule") String sourceModule, @NonNull @JsonProperty("targetModule") String targetModule) {
-        this.sourceModule = sourceModule;
-        this.targetModule = targetModule;
+    public ExtractInterface(@JsonProperty("targetAnnotation") String targetAnnotation) {
+        this.targetAnnotation = targetAnnotation;
     }
 
     @Override
@@ -77,29 +67,33 @@ public class ExtractInterface extends ScanningRecipe<ExtractInterface.Accumulato
     @Override
     public TreeVisitor<?, ExecutionContext> getScanner(Accumulator acc) {
         return new TreeVisitor<>() {
-
-            AnnotationMatcher matcher = new AnnotationMatcher(LearnToFly.class);
-            Predicate<JavaSourceFile> isClass = javaSourceFile -> !javaSourceFile.getClasses().getFirst().getKind().equals(J.ClassDeclaration.Kind.Type.Interface);
-            BiPredicate<List<TypeTree>, Accumulator.ToDuplicate> alreadyImplementsInterface = (implementList, toDuplicate) -> implementList != null && implementList.stream().anyMatch(tt ->
+            final Predicate<J.ClassDeclaration> isClass =
+                    aClass -> aClass.getKind().equals(J.ClassDeclaration.Kind.Type.Class);
+            final BiPredicate<List<TypeTree>, Accumulator.ToExtract> alreadyImplementsInterface = (implementList, toExtract) -> implementList != null && implementList.stream().anyMatch(tt ->
                     switch (tt) {
                         case J.Identifier identifier ->
-                                identifier.getSimpleName().equals(toDuplicate.extractedInterfaceName());
+                                identifier.getSimpleName().equals(toExtract.extractedInterfaceName());
                         case J.ParameterizedType parameterized ->
-                                parameterized.getType().isAssignableFrom(Pattern.compile(toDuplicate.extractedInterfaceName()));
+                                parameterized.getType().isAssignableFrom(Pattern.compile(toExtract.extractedInterfaceName()));
                         default -> false;
                     }
             );
+            final AnnotationMatcher matcher = new AnnotationMatcher(targetAnnotation);
 
             @Override
             public Tree visit(Tree tree, ExecutionContext executionContext, Cursor parent) {
-                if (tree instanceof JavaSourceFile javaSourceFile && isClass.test(javaSourceFile)) {
-                    String newFQDN = getNewFQDN(javaSourceFile);
-                    List<TypeTree> implementList = javaSourceFile.getClasses().getFirst().getImplements();
-                    Accumulator.ToDuplicate toDuplicate = new Accumulator.ToDuplicate(newFQDN);
-                    if (!alreadyImplementsInterface.test(implementList, toDuplicate) && javaSourceFile.getClasses().getFirst().getLeadingAnnotations().stream().anyMatch(ann -> matcher.matches(ann))) {
-                        toDuplicate.setSourceFileToDuplicate(javaSourceFile);
-                        acc.duplicates().put(newFQDN, toDuplicate);
-                    }
+                if (tree instanceof JavaSourceFile javaSourceFile) {
+                    javaSourceFile.getClasses().stream().filter(isClass).forEach(classDecla -> {
+                        String newFQDN = getNewFQDN(classDecla);
+                        List<TypeTree> implementList = classDecla.getImplements();
+                        Accumulator.ToExtract toExtract = new Accumulator.ToExtract(newFQDN);
+                        toExtract.setFromSourceFile(javaSourceFile);
+                        if (!alreadyImplementsInterface.test(implementList, toExtract) && classDecla.getLeadingAnnotations().stream().anyMatch(ann -> matcher.matches(ann))) {
+                            toExtract.setClassToExtract(classDecla);
+                            acc.duplicates().put(newFQDN, toExtract);
+                        }
+                    });
+
                 }
                 return super.visit(tree, executionContext, parent);
             }
@@ -108,49 +102,41 @@ public class ExtractInterface extends ScanningRecipe<ExtractInterface.Accumulato
 
     public Collection<? extends SourceFile> generate(Accumulator acc, ExecutionContext ctx) {
         if (acc.duplicates.isEmpty()) {
-            return Collections.EMPTY_LIST;
+            return List.of();
         }
-        List<SourceFile> generated = new ArrayList<>();
-        for (Accumulator.ToDuplicate toDuplicate : acc.duplicates.values()) {
-            var sourceFile = toDuplicate.sourceFilesToDuplicate();
-            var withChangedRootPath = sourceFile.getSourcePath().toString().replace(sourceModule, targetModule);
-            var newPath = Path.of(withChangedRootPath.substring(0, withChangedRootPath.lastIndexOf("/")), toDuplicate.extractedInterfaceName() + ".java");
-            toDuplicate.setExtractedInterfacePath(newPath);
-            JavaSourceFile extractedInterface = sourceFile
-                    .withClasses(List.of(getExtractedInterface(toDuplicate, ctx)))
-                    .withSourcePath(newPath)
-                    .withId(UUID.randomUUID());
-            generated.add((JavaSourceFile) new RemoveUnusedImports().getVisitor().visit(extractedInterface, ctx));
-        }
-        return generated;
+        return acc.duplicates().values().stream()
+                .map(item -> mapToSourceFile(item, ctx))
+                .toList();
     }
 
-    private static @NotNull String getNewFQDN(JavaSourceFile sourceFile) {
-        J.ClassDeclaration classDeclaration = sourceFile.getClasses().getFirst();
-        String packageDecalration = sourceFile.getPackageDeclaration() != null ? sourceFile.getPackageDeclaration().getPackageName() : "";
-        return "%s.I%s".formatted(packageDecalration, classDeclaration.getName().getSimpleName());
+    private J.CompilationUnit mapToSourceFile(Accumulator.ToExtract toExtract, ExecutionContext ctx) {
+        String initPath = toExtract.fromSourceFile().getSourcePath().toString();
+        var newPath = Path.of(initPath.substring(0, initPath.lastIndexOf("/")), toExtract.extractedInterfaceName() + ".java");
+        toExtract.setExtractedInterfacePath(newPath);
+        J.CompilationUnit extractedInterface = toExtract.fromSourceFile()
+                .withClasses(List.of(getExtractedInterface(toExtract, ctx)))
+                .withSourcePath(newPath)
+                .withId(UUID.randomUUID());
+        return (J.CompilationUnit) new RemoveUnusedImports().getVisitor().visit(extractedInterface, ctx);
     }
 
-    private J.ClassDeclaration getExtractedInterface(Accumulator.ToDuplicate toDuplicate, ExecutionContext ctx) {
-        J.ClassDeclaration initial = toDuplicate.sourceFilesToDuplicate().getClasses().getFirst();
+    private static String getNewFQDN(J.ClassDeclaration classDeclaration) {
+        String packageDeclaration = classDeclaration.getType() != null ?
+                classDeclaration.getType().getPackageName():
+                "";
+        return "%s.I%s".formatted(packageDeclaration, classDeclaration.getName().getSimpleName());
+    }
+
+    private J.ClassDeclaration getExtractedInterface(Accumulator.ToExtract toExtract, ExecutionContext ctx) {
+        J.ClassDeclaration initial = toExtract.classToExtract();
         J.ClassDeclaration result = initial
                 .withKind(J.ClassDeclaration.Kind.Type.Interface)
-                .withName(TypeTree.build(toDuplicate.extractedInterfaceName()).withPrefix(Space.SINGLE_SPACE))
-                .withType(new JavaType.ShallowClass(null, 1, toDuplicate.extractedInterfaceFQDN(), JavaType.FullyQualified.Kind.Interface, emptyList(), null, null, emptyList(), emptyList(), emptyList(), emptyList()))
+                .withName(TypeTree.build(toExtract.extractedInterfaceName()).withPrefix(Space.SINGLE_SPACE))
+                .withType(new JavaType.ShallowClass(null, 1, toExtract.extractedInterfaceFQDN(), JavaType.FullyQualified.Kind.Interface, emptyList(), null, null, emptyList(), emptyList(), emptyList(), emptyList()))
                 .withId(UUID.randomUUID())
                 .withLeadingAnnotations(new ArrayList<>(initial.getLeadingAnnotations()));
-        result = (J.ClassDeclaration) result.acceptJava(new JavaIsoVisitor<>() {
-            @Override
-            public J.MethodDeclaration visitMethodDeclaration(J.MethodDeclaration method, ExecutionContext executionContext) {
-                return method.withBody(null).withModifiers(List.of()).withReturnTypeExpression(!method.getLeadingAnnotations().isEmpty() ? method.getReturnTypeExpression().withPrefix(Space.SINGLE_SPACE) : method.getReturnTypeExpression().withPrefix(Space.EMPTY));
-            }
-
-            @Override
-            public J.VariableDeclarations visitVariableDeclarations(J.VariableDeclarations multiVariable, ExecutionContext executionContext) {
-                return null;
-            }
-        }, ctx);
-        toDuplicate.setExtractedInterface(result);
+        result = (J.ClassDeclaration) result.acceptJava(new CleanerVisitor(), ctx);
+        toExtract.setExtractedInterface(result);
         return result;
 
     }
@@ -159,28 +145,17 @@ public class ExtractInterface extends ScanningRecipe<ExtractInterface.Accumulato
     public TreeVisitor<?, ExecutionContext> getVisitor(Accumulator acc) {
         return new JavaIsoVisitor<>() {
 
-            AnnotationMatcher matcher = new AnnotationMatcher(LearnToFly.class);
+            AnnotationMatcher targetAnnotationMatcher = new AnnotationMatcher(targetAnnotation);
             public static final String TARGET_CLASS = "TARGET";
 
             @Override
-            public J.CompilationUnit visitCompilationUnit(J.CompilationUnit cu, ExecutionContext executionContext) {
-                String newFQDN = getNewFQDN(cu);
-                Accumulator.ToDuplicate toDuplicate = acc.duplicates.get(newFQDN);
-                if (toDuplicate != null && toDuplicate.sourceFileToDuplicate.getClasses().getFirst().equals(cu.getClasses().getFirst())) {
-                    getCursor().putMessage(TARGET_CLASS, toDuplicate);
-                }
-                return super.visitCompilationUnit(cu, executionContext);
-            }
-
-            @Override
             public J.ClassDeclaration visitClassDeclaration(J.ClassDeclaration cd, ExecutionContext executionContext) {
-
-                cd = super.visitClassDeclaration(cd, executionContext);
-                Accumulator.ToDuplicate target = getCursor().getNearestMessage(TARGET_CLASS);
+                Accumulator.ToExtract target = acc.duplicates.get(getNewFQDN(cd));
                 if (target != null) {
+                    getCursor().putMessage(TARGET_CLASS, target);
                     var annotations = cd.getLeadingAnnotations();
-                    annotations.removeIf(ann -> matcher.matches(ann));
-                    maybeRemoveImport(LearnToFly.class.getCanonicalName());
+                    annotations.removeIf(ann -> targetAnnotationMatcher.matches(ann));
+                    maybeRemoveImport(targetAnnotation);
                     cd = cd.withLeadingAnnotations(annotations)
                             .withImplements(List.of(TypeTree.build(target.extractedInterfaceName())
                                     .withType(target.extractedInterface().getType())
@@ -192,6 +167,7 @@ public class ExtractInterface extends ScanningRecipe<ExtractInterface.Accumulato
                         cd = cd.getPadding().withImplements(cd.getPadding().getImplements().withBefore(Space.SINGLE_SPACE));
                     }
                 }
+                cd = super.visitClassDeclaration(cd, executionContext);
                 return cd;
             }
 
@@ -205,23 +181,39 @@ public class ExtractInterface extends ScanningRecipe<ExtractInterface.Accumulato
         };
     }
 
+    static class CleanerVisitor extends JavaIsoVisitor<ExecutionContext> {
+
+        @Override
+        public J.MethodDeclaration visitMethodDeclaration(J.MethodDeclaration method, ExecutionContext executionContext) {
+            return method
+                    .withBody(null)
+                    .withModifiers(List.of())
+                    .withReturnTypeExpression(!method.getLeadingAnnotations().isEmpty() ? method.getReturnTypeExpression().withPrefix(Space.SINGLE_SPACE) : method.getReturnTypeExpression().withPrefix(Space.EMPTY));
+        }
+
+        @Override
+        public J.VariableDeclarations visitVariableDeclarations(J.VariableDeclarations multiVariable, ExecutionContext executionContext) {
+            return null;
+        }
+    }
 
     public static class Accumulator {
 
-        private Map<String, ToDuplicate> duplicates = new HashMap<>();
+        private final Map<String, ToExtract> duplicates = new HashMap<>();
 
-        public Map<String, ToDuplicate> duplicates() {
+        public Map<String, ToExtract> duplicates() {
             return duplicates;
         }
 
-        public static class ToDuplicate {
-            // The contents of the file we want to duplicate
-            JavaSourceFile sourceFileToDuplicate;
+        public static class ToExtract {
+            // The contents of the file we want to extract
+            JavaSourceFile fromSourceFile;
+            J.ClassDeclaration classToExtract;
             J.ClassDeclaration extractedInterface;
             Path extractedInterfacePath;
             String extractedInterfaceFQDN;
 
-            public ToDuplicate(String extractedInterfaceFQDN) {
+            public ToExtract(String extractedInterfaceFQDN) {
                 this.extractedInterfaceFQDN = extractedInterfaceFQDN;
             }
 
@@ -237,6 +229,14 @@ public class ExtractInterface extends ScanningRecipe<ExtractInterface.Accumulato
                 return extractedInterfacePath;
             }
 
+            public JavaSourceFile fromSourceFile() {
+                return fromSourceFile;
+            }
+
+            public void setFromSourceFile(JavaSourceFile fromSourceFile) {
+                this.fromSourceFile = fromSourceFile;
+            }
+
             public void setExtractedInterfacePath(Path extractedInterfacePath) {
                 this.extractedInterfacePath = extractedInterfacePath;
             }
@@ -247,19 +247,15 @@ public class ExtractInterface extends ScanningRecipe<ExtractInterface.Accumulato
 
             public String extractedInterfaceName() {
                 int lastIndexOfDot = extractedInterfaceFQDN.lastIndexOf(".") + 1;
-                return lastIndexOfDot != -1 ? extractedInterfaceFQDN.substring(lastIndexOfDot) : extractedInterfaceFQDN;
+                return lastIndexOfDot > 0 ? extractedInterfaceFQDN.substring(lastIndexOfDot) : extractedInterfaceFQDN;
             }
 
-            public void setExtractedInterfaceFQDN(String extractedInterfaceFQDN) {
-                this.extractedInterfaceFQDN = extractedInterfaceFQDN;
+            public J.ClassDeclaration classToExtract() {
+                return classToExtract;
             }
 
-            public JavaSourceFile sourceFilesToDuplicate() {
-                return sourceFileToDuplicate;
-            }
-
-            public void setSourceFileToDuplicate(JavaSourceFile sourceFileToDuplicate) {
-                this.sourceFileToDuplicate = sourceFileToDuplicate;
+            public void setClassToExtract(J.ClassDeclaration sourceFileToDuplicate) {
+                this.classToExtract = sourceFileToDuplicate;
             }
         }
     }
