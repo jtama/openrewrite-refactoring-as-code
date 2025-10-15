@@ -29,28 +29,28 @@ class RemoveFooBarIsEmptyTest implements RewriteTest {
           
           import java.util.List;
           
-          public class ForTestingPurpose {
+          public class MickeyTheSorcerersApprentice {
           
-              public void virage(String param) {
-                  System.out.printf("On le prend ce virage ? %s", isEmpty(param));
+              public void abracadabra(String param) {
+                  System.out.printf("On le prend ce tapis volant ? %s", isEmpty(param));
               }
               
-              public void auFreinAMain(List<String> values) {
-                  System.out.printf("Au frein à main ? %s", isEmpty(values));
+              public void shazaam(List<String> values) {
+                  System.out.printf("Et ce nimbus 2000 ? %s", isEmpty(values));
               }
           }
           """,
             """
               import java.util.List;
               
-              public class ForTestingPurpose {
+              public class MickeyTheSorcerersApprentice {
               
-                  public void virage(String param) {
-                      System.out.printf("On le prend ce virage ? %s", param == null || param.isEmpty());
+                  public void abracadabra(String param) {
+                      System.out.printf("On le prend ce tapis volant ? %s", param == null || param.isEmpty());
                   }
                   
-                  public void auFreinAMain(List<String> values) {
-                      System.out.printf("Au frein à main ? %s", values == null || values.isEmpty());
+                  public void shazaam(List<String> values) {
+                      System.out.printf("Et ce nimbus 2000 ? %s", values == null || values.isEmpty());
                   }
               }
               """));
@@ -67,13 +67,13 @@ class RemoveFooBarIsEmptyTest implements RewriteTest {
               
               import java.util.List;
               
-              public class AutomaticCar {
+              public class MickeyTheSorcerersApprentice {
               
-                  public void virage(String param) {
+                  public void abracadabra(String param) {
                       System.out.printf("On le prend ce virage ? %s", isEmpty(param));
                   }
                   
-                  public void auFreinAMain(List<String> values) {
+                  public void shazaam(List<String> values) {
                       System.out.printf("Au frein à main ? %s", isEmpty(values));
                   }
               }
@@ -83,13 +83,13 @@ class RemoveFooBarIsEmptyTest implements RewriteTest {
               
               import java.util.List;
               
-              public class AutomaticCar {
+              public class MickeyTheSorcerersApprentice {
               
-                  public void virage(String param) {
+                  public void abracadabra(String param) {
                       System.out.printf("On le prend ce virage ? %s", isEmpty(param));
                   }
                   
-                  public void auFreinAMain(List<String> values) {
+                  public void shazaam(List<String> values) {
                       System.out.printf("Au frein à main ? %s", values == null || values.isEmpty());
                   }
               }
