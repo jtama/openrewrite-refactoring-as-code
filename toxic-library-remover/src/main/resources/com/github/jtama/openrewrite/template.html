@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project Aerial View</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .links line {
+            stroke-opacity: 0.6;
+        }
+
+        .nodes circle {
+            stroke: #fff;
+            stroke-width: 1.5px;
+            cursor: pointer;
+        }
+
+        .node.selected {
+            stroke: #000;
+            stroke-width: 2px;
+        }
+
+        .node.fade, .links line.fade {
+            opacity: 0.2;
+        }
+
+        .tooltip {
+            position: absolute;
+            text-align: left;
+            padding: 8px;
+            font: 12px sans-serif;
+            background: #eee;
+            border: 1px solid #999;
+            border-radius: 8px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .legend {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #fff;
+            border: 1px solid #999;
+            border-radius: 8px;
+            padding: 10px;
+            font: 12px sans-serif;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .legend-color {
+            width: 15px;
+            height: 15px;
+            margin-right: 5px;
+        }
+
+        .search {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            flex-direction: column;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .search input {
+            margin-bottom: 5px;
+        }
+
+        .range-filter {
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+<div class="search">
+    <input type="text" id="search" placeholder="Search for a class..."> </br>
+    <input type="range" id="weight-filter" min="0" max="100" step="1">
+    <span id="weight-value" style="margin-left: 5px;">100</span> </br>
+    <input type="range" id="color-number" min="0" max="30" step="1">
+    <span id="color-number-value" style="margin-left: 5px;">100</span>
+</div>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script type="module">
+    import jLouvain from 'https://cdn.jsdelivr.net/npm/jlouvain@2.0.0/+esm'
+
+    const originalGraphData = JSON.parse(''{{graphData}}'');
+    let currentNodes = originalGraphData.nodes;
+    let currentLinks = originalGraphData.links;
+    let color;
+    let communityCenters = {};
+
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    // --- Tooltip ---
+    const tooltip = d3.select("body").append("div")
+        .attr("class", "tooltip");
+
+    // --- Legend Container ---
+    const legend = d3.select("body").append("div")
+        .attr("class", "legend");
+
+    const simulation = d3.forceSimulation()
+        .force("link", d3.forceLink().id(d => d.id).distance(100))
+        .force("charge", d3.forceManyBody().strength(-50))
+        .force("center", d3.forceCenter(width / 2, height / 2))
+        // Add community clustering forces
+        .force("x", d3.forceX(d => communityCenters[d.community]?.x || width / 2).strength(0.05))
+        .force("y", d3.forceY(d => communityCenters[d.community]?.y || height / 2).strength(0.05));
+
+    const svg = d3.select("body").append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+
+    const defs = svg.append("defs");
+
+    let allLinks = svg.append("g")
+        .attr("class", "links")
+        .selectAll("line");
+
+    let allNodes = svg.append("g")
+        .attr("class", "nodes")
+        .selectAll("circle");
+
+    let selectedNode = null;
+
+
+    let myZoom = d3.zoom().on('zoom', handleZoom);
+    initZoom();
+
+    // --- Dynamic Range Slider Setup ---
+    const allSizes = originalGraphData.nodes.map(d => d.size);
+    const minSize = d3.min(allSizes) || 0;
+    const maxSize = d3.max(allSizes) || 100;
+    const allColors = ['#e6194b', '#3cb44b', '#ffe119', '#4363d8', '#f58231', '#911eb4', '#46f0f0', '#f032e6', '#bcf60c', '#fabebe', '#008080', '#e6beff', '#9a6324', '#fffac8', '#800000', '#aaffc3', '#808000', '#ffd8b1', '#000075', '#808080', '#ffffff', '#000000'];
+    let currentColors = allColors.slice();
+
+    const weightSlider = d3.select("#weight-filter");
+    const weightValueSpan = d3.select("#weight-value");
+
+    weightSlider
+        .attr("min", minSize)
+        .attr("max", maxSize)
+        .attr("value", maxSize);
+    weightValueSpan.text(maxSize);
+
+    const colorSlider = d3.select("#color-number");
+    const colorValueSpan = d3.select("#color-number-value");
+
+    colorSlider
+        .attr("min", 5)
+        .attr("max", 30)
+        .attr("value", 30);
+    colorValueSpan.text(30);
+
+    d3.select("#search").on("input", function () {
+        const searchTerm = this.value.toLowerCase();
+        allNodes.style("opacity", n => n.id.toLowerCase().includes(searchTerm) ? 1 : 0.1);
+        allLinks.style("opacity", l => l.source.id.toLowerCase().includes(searchTerm) || l.target.id.toLowerCase().includes(searchTerm) ? 1 : 0.1);
+    });
+
+    weightSlider.on("input", function () {
+        const maxWeight = +this.value;
+        weightValueSpan.text(maxWeight); // Update the displayed value
+
+        const filteredNodes = originalGraphData.nodes
+            .filter(n => n.size <= maxWeight)
+            .map(({id, group, size}) => ({id, group, size}));
+        const filteredNodeIds = new Set(filteredNodes.map(n => n.id));
+        const filteredLinks = originalGraphData.links
+            .filter(l => filteredNodeIds.has(l.source.id) && filteredNodeIds.has(l.target.id))
+            .map(({source, target, weight}) => ({source: source.id, target: target.id, weight}));
+
+        currentNodes = filteredNodes;
+        currentLinks = filteredLinks;
+
+        // Recalculate communities and update legend on the filtered data
+        calculateCommunities(currentNodes, currentLinks);
+        updateLegend(currentNodes);
+        updateVisualization();
+    });
+
+    colorSlider.on("input", function () {
+        const colorNumber = +this.value;
+        colorValueSpan.text(colorNumber); // Update the displayed value
+
+        currentColors = allColors.slice(0, colorNumber)
+
+        updateLegend(currentNodes);
+        updateVisualization();
+    });
+
+    // Initial setup
+    calculateCommunities(currentNodes, currentLinks);
+    updateLegend(currentNodes);
+    updateVisualization();
+
+
+    function clickHandler(event, d) {
+        if (selectedNode === d) {
+            selectedNode = null;
+            allNodesclassed('fade', false).classed('selected', false);
+            allLinks.classed('fade', false);
+        } else {
+            selectedNode = d;
+            const linkedNodes = new Set();
+            linkedNodes.add(d.id);
+            currentLinks.forEach(l => {
+                if (l.source.id === d.id) linkedNodes.add(l.target.id);
+                if (l.target.id === d.id) linkedNodes.add(l.source.id);
+            });
+
+            allNodesclassed('fade', n => !linkedNodes.has(n.id));
+            allNodesclassed('selected', n => n.id === d.id);
+            allLinks.classed('fade', l => l.source.id !== d.id && l.target.id !== d.id);
+        }
+    }
+
+    function dblClickHandler(event, d) {
+        if (d.fx === null) {
+            d.fx = d.x;
+            d.fy = d.y;
+
+        } else {
+            d.fx = null;
+            d.fy = null;
+        }
+    }
+
+    function calculateCommunities(nodes, links) {
+        const nodeData = nodes.map(d => d.id);
+        const linkData = links.map(l => ({source: l.source, target: l.target, weight: l.weight || 1}));
+        if (nodeData.length === 0) return;
+
+        const community = jLouvain.jLouvain().nodes(nodeData).edges(linkData);
+        const communityResult = community();
+
+        nodes.forEach(node => {
+            node.community = communityResult[node.id];
+        });
+    }
+
+    function updateLegend(nodes) {
+        let allCommunities = nodes.reduce((allCommunities, item) => {
+            allCommunities[item.community] = allCommunities[item.community] || {community: item.community, weight: 0};
+            allCommunities[item.community].weight++;
+            return allCommunities;
+        }, []);
+        allCommunities.sort((a, b) => b.weight - a.weight);
+        allCommunities.slice(0, 30);
+        allCommunities = allCommunities.map(item => item.community);
+
+        color = allCommunities.map((item, index) => {
+            return {item, color: currentColors[index] || '#9E9E9E'}
+        });
+
+
+        legend.selectAll("*").remove(); // Clear existing legend
+
+        const legendItems = legend.selectAll(".legend-item")
+            .data(allCommunities)
+            .enter().append("div")
+            .attr("class", "legend-item");
+
+        legendItems.append("div")
+            .attr("class", "legend-color")
+            .style("background-color", d => color[d].color);
+
+        legendItems.append("input")
+            .attr("type", "checkbox")
+            .attr("checked", true)
+            .on("change", (event, d) => {
+                const visible = event.target.checked;
+                d3.selectAll(".nodes circle").filter(n => n.community === d).style("display", visible ? "block" : "none");
+            });
+
+        legendItems.append("span").text(d => `Community ${d}`);
+    }
+
+    function updateVisualization() {
+        // Update nodes
+        allNodes = allNodes
+            .data(currentNodes, d => d.id)
+            .join(
+                enter => enter.append("circle")
+                    .attr("r", d => 5 + d.size / 2)
+                    .call(d3.drag()
+                        .on("start", dragstarted)
+                        .on("drag", dragged)
+                        .on("end", dragended))
+                    .on("mouseover", function (event, d) {
+                        tooltip.style("opacity", .9);
+                        tooltip.html(`ID: ${d.id}<br/>Community: ${d.community}<br/>Connections: ${d.size}`)
+                            .style("left", (event.pageX + 10) + "px")
+                            .style("top", (event.pageY - 28) + "px");
+                    })
+                    .on("mouseout", function (d) {
+                        tooltip.style("opacity", 0);
+                    })
+                    .on('click', clickHandler)
+                    .on('dblclick', dblClickHandler),
+                update => update,
+                exit => exit.remove()
+            )
+            .attr("fill", d => color[d.community].color); // Apply color to both enter and update selections
+
+        // Update links
+        allLinks = allLinks
+            .data(currentLinks, d => `${d.source.id}-${d.target.id}`)
+            .join(
+                enter => enter.append("line")
+                    .attr("stroke-width", d => 1 + Math.sqrt(d.weight))
+                    .on("mouseover", function (event, d) {
+                        tooltip.style("opacity", .9);
+                        tooltip.html(`Source: ${d.source.id}<br/>Target: ${d.target.id}<br/>Interactions: ${d.weight}`)
+                            .style("left", (event.pageX + 10) + "px")
+                            .style("top", (event.pageY - 28) + "px");
+                    })
+                    .on("mouseout", function (d) {
+                        tooltip.style("opacity", 0);
+                    }),
+                update => update,
+                exit => exit.remove()
+            )
+            .attr("stroke", d => { // Apply stroke to both enter and update selections
+                const sourceNode = currentNodes.find(n => n.id === d.source.id);
+                const targetNode = currentNodes.find(n => n.id === d.target.id);
+                if (!sourceNode || !targetNode) return "#ccc";
+
+                const id = `gradient-${sourceNode.id}-${targetNode.id}`.replace(/[^a-zA-Z0-9]/g, "-");
+                const gradient = defs.append("linearGradient")
+                    .attr("id", id)
+                    .attr("x1", "0%").attr("y1", "0%").attr("x2", "100%").attr("y2", "0%");
+                gradient.append("stop").attr("offset", "0%").attr("stop-color", color(sourceNode.community));
+                gradient.append("stop").attr("offset", "100%").attr("stop-color", color(targetNode.community));
+                return `url(#${id})`;
+            });
+
+        // Update simulation
+        simulation.nodes(currentNodes)
+        simulation.force("link").links(currentLinks)
+        simulation.alpha(1).restart();
+        simulation.on("tick", ticked);
+    }
+
+
+    function ticked() {
+        allLinks
+            .attr("x1", d => d.source.x)
+            .attr("y1", d => d.source.y)
+            .attr("x2", d => d.target.x)
+            .attr("y2", d => d.target.y);
+
+        allNodes
+            .attr("cx", d => {
+                const radius = 5 + d.size / 2;
+                return d.x = Math.max(radius, Math.min(width - radius, d.x));
+            })
+            .attr("cy", d => {
+                const radius = 5 + d.size / 2;
+                return d.y = Math.max(radius, Math.min(height - radius, d.y));
+            });
+    }
+
+    function dragstarted(event, d) {
+        if (!event.active) simulation.alphaTarget(0.3).restart();
+        d.fx = d.x;
+        d.fy = d.y;
+    }
+
+    function dragged(event, d) {
+        d.fx = event.x;
+        d.fy = event.y;
+    }
+
+    function dragended(event, d) {
+        if (!event.active) simulation.alphaTarget(0);
+        d.fx = null;
+        d.fy = null;
+    }
+
+    function handleZoom(e) {
+        allLinks.attr('transform', e.transform);
+        allNodes.attr('transform', e.transform);
+    }
+
+    function initZoom() {
+        svg.call(myZoom);
+    }
+</script>
+</body>
+</html>
