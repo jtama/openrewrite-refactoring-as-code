@@ -1,0 +1,201 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins");
+
+
+:root {
+    --r-background-color: #EEEEEE;
+    --r-main-color: #111012;
+    --r-main-font: 'Poppins';
+    --r-heading-color: #8FAADC;
+    --r-link-color: #8FAADC;
+}
+
+body {
+    /* Footer styles for devfest-logo if body has .title */
+
+    &.title footer:has(.devfest-logo) {
+        z-index: 10;
+        position: absolute;
+        left: 35%;
+        bottom: 0;
+        min-height: 80px;
+        text-align: center;
+        width: 600px;
+    }
+
+    /* Footer styles for onepoint-logo if body does not have .present.demo or .title */
+
+    &:not(:has(.present.demo)):not(.title) footer:has(.onepoint-logo) {
+        z-index: 10;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        bottom: 0;
+        min-height: 80px;
+        text-align: center;
+    }
+
+    .reveal {
+        h1 {
+            --r-heading1-size: 82px;
+            color: #000000;
+            position: fixed;
+            left: 28px;
+            width: 100%;
+            text-align: center;
+            /*text-shadow: -1px 0 #8FAADC, 0 1px #8FAADC, 1px 0 #8FAADC, 0 -1px #8FAADC;*/
+        }
+
+        .title.present h2 {
+            position: fixed;
+            top: 208px;
+            left: 630px;
+            width: 100%;
+            font-family: var(--r-heading-font);
+            text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
+            /*color: #8FAADC;*/
+            text-transform: none;
+        }
+
+        .to-the-bottom {
+            position: absolute;
+            left: 50%;
+            bottom: 20px;
+            transform: translate(-50%, -50%);
+            margin: 0 auto;
+        }
+
+        h2 {
+            --r-heading-color: #000000;
+            /*text-shadow: -1px 0 #8FAADC, 0 1px #8FAADC, 1px 0 #8FAADC, 0 -1px #8FAADC;*/
+            position: fixed;
+            left: 50%;
+            top: 6px;
+            transform: translateX(-50%);
+            width: 100%;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        .progress {
+            color: #241F35;
+            height: 7px;
+        }
+
+        .blur-background {
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+    }
+
+    .transparency.slide-background.present {
+        opacity: 0.40;
+    }
+
+    .big {
+        font-size: 60px;
+        color: #012d3f;
+    }
+
+    img {
+        border-radius: 10px;
+    }
+
+    .vertical-align-middle > p,
+    .vertical-align-middle > p > span,
+    .vertical-align-middle > p > span > img {
+        vertical-align: middle;
+        margin: 0;
+    }
+
+    .important-text > * {
+        font-size: xxx-large;
+        font-weight: bold;
+        color: #012d3f;
+    }
+
+    .small {
+        font-size: small;
+    }
+
+    .medium {
+        font-size: 38px;
+    }
+
+    .column.has-text-right > div > div.hdlist.small > table {
+        margin-right: 0;
+    }
+
+    .column.has-text-left > div > div.hdlist.small > table {
+        margin-left: 0;
+    }
+
+    .blur {
+        filter: blur(4px);
+    }
+
+    .chercher_remplacer {
+        position: fixed;
+        top: 125px;
+        left: 821px;
+    }
+
+    .regexp {
+        position: fixed;
+        top: 125px;
+        left: 197px;
+    }
+
+    .llm {
+        position: fixed;
+        top: 355px;
+        left: 197px;
+    }
+
+    .click_droit {
+        position: fixed;
+        top: 355px;
+        left: 821px;
+        overflow: hidden;
+    }
+
+    li {
+        list-style-type: none;
+    }
+
+    audio {
+        display: none;
+    }
+
+    .down {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+    }
+
+    .easter-egg {
+        position: absolute;
+        right: 380px;
+        bottom: 110px;
+        animation: easteregg 5s ease 0s 1 normal forwards;
+    }
+
+    .easter-egg::after {
+        content: "#dobbycestlemeilleur";
+    }
+}
+
+@keyframes easteregg {
+    0% {
+        animation-timing-function: ease-in;
+        opacity: 0;
+        transform: scale(0) translateY(-45px) translateX(-80px) rotate(-75deg);
+    }
+
+    100% {
+        animation-timing-function: ease-out;
+        opacity: 1;
+        transform: scale(0.5) rotate(-25deg) translateY(0px) translateX(600px);
+    }
+}
