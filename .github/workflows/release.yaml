@@ -1,0 +1,48 @@
+name: Release toxic-library-remover
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Build with Maven
+        run: mvn -f toxic-library-remover/pom.xml clean install
+
+      - name: Get project version
+        id: get_version
+        run: echo "::set-output name=version::$(mvn -f toxic-library-remover/pom.xml -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)"
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: toxic-library-remover-${{ steps.get_version.outputs.version }}
+          release_name: toxic-library-remover ${{ steps.get_version.outputs.version }}
+          draft: false
+          prerelease: false
+
+      - name: Upload Release Asset
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: toxic-library-remover/target/toxic-library-remover-${{ steps.get_version.outputs.version }}.jar
+          asset_name: toxic-library-remover-${{ steps.get_version.outputs.version }}.jar
+          asset_content_type: application/java-archive
