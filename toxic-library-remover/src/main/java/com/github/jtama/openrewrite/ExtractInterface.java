@@ -122,7 +122,7 @@ public class ExtractInterface extends ScanningRecipe<ExtractInterface.Accumulato
 
     private static String getNewFQDN(J.ClassDeclaration classDeclaration) {
         String packageDeclaration = classDeclaration.getType() != null ?
-                classDeclaration.getType().getPackageName():
+                classDeclaration.getType().getPackageName() :
                 "";
         return "%s.I%s".formatted(packageDeclaration, classDeclaration.getName().getSimpleName());
     }
@@ -154,15 +154,12 @@ public class ExtractInterface extends ScanningRecipe<ExtractInterface.Accumulato
                 if (target != null) {
                     getCursor().putMessage(TARGET_CLASS, target);
                     var annotations = cd.getLeadingAnnotations();
-                    annotations.removeIf(ann -> targetAnnotationMatcher.matches(ann));
-                    maybeRemoveImport(targetAnnotation);
-                    cd = cd.withLeadingAnnotations(annotations)
+                    annotations.forEach(ann -> maybeRemoveImport(ann.getSimpleName()));
+                    cd = cd.withLeadingAnnotations(List.of())
                             .withImplements(List.of(TypeTree.build(target.extractedInterfaceName())
                                     .withType(target.extractedInterface().getType())
-                                    .withPrefix(Space.SINGLE_SPACE)));
-                    if (cd.getLeadingAnnotations().isEmpty()) {
-                        cd = cd.withPrefix(Space.format(System.lineSeparator()));
-                    }
+                                    .withPrefix(Space.SINGLE_SPACE)))
+                            .withPrefix(Space.format(System.lineSeparator()));
                     if (cd.getPadding().getImplements().getBefore().getWhitespace().isEmpty()) {
                         cd = cd.getPadding().withImplements(cd.getPadding().getImplements().withBefore(Space.SINGLE_SPACE));
                     }
