@@ -18,15 +18,14 @@ jobs:
           java-version: '25'
           distribution: 'temurin'
 
-      - name: Build toxic-library
-        run: cd toxic-library && mvn clean install
-
-      - name: Build toxic-library-remover
-        run: cd toxic-library-remover && mvn clean verify
+      - name: Build app-graph-generator
+        working-directory: app-graph-generator
+        run: mvn clean verify
 
       - name: Get project version
         id: get_version
-        run: echo "::set-output name=version::$(mvn -f toxic-library-remover/pom.xml -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)"
+        working-directory: app-graph-generator
+        run: echo "::set-output name=version::$(mvn -f pom.xml -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)"
 
       - name: Create Release
         id: create_release
@@ -34,8 +33,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: toxic-library-remover-${{ steps.get_version.outputs.version }}
-          release_name: toxic-library-remover ${{ steps.get_version.outputs.version }}
+          tag_name: app-graph-generator-${{ steps.get_version.outputs.version }}
+          release_name: app-graph-generator ${{ steps.get_version.outputs.version }}
           draft: false
           prerelease: false
 
@@ -46,6 +45,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: toxic-library-remover/target/toxic-library-remover-${{ steps.get_version.outputs.version }}.jar
-          asset_name: toxic-library-remover-${{ steps.get_version.outputs.version }}.jar
+          asset_path: app-graph-generator/target/app-graph-generator-${{ steps.get_version.outputs.version }}.jar
+          asset_name: app-graph-generator-${{ steps.get_version.outputs.version }}.jar
           asset_content_type: application/java-archive
