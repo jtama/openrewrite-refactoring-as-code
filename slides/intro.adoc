@@ -46,11 +46,6 @@ audio::sound/punition.mp3[data-autoplay]
 [%notitle.columns.is-vcentered.transparency]
 === Présentation
 
-[.easter-egg]
---
-image::easter-egg.png[width=400]
---
-
 [.column.is-one-third]
 --
 image::jta_1.png[]
