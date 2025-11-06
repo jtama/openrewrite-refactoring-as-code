@@ -1,0 +1,132 @@
+#introduction {
+    text-align: center;
+}
+#introduction h1,
+div {
+    color: #cae9f7;
+    font-family: "Montserrat", "Roboto", "Open Sans", sans-serif;
+    z-index: 1001;
+}
+
+a {
+    text-decoration: none;
+    color: aliceblue;
+}
+
+#github {
+    animation: wiggle 8s ease-in-out infinite -0s;
+}
+#feedback {
+    animation: wiggle2 8s ease-in-out infinite -0.8s;
+}
+#jerome {
+    animation: wiggle2 8s ease-in-out infinite -2.4s;
+}
+#onepoint {
+    animation: wiggle 8s ease-in-out infinite -3.2s;
+}
+
+.links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.links>div {
+    margin: 1rem;
+    align-content: center;
+    margin-top: 3rem;
+}
+
+/* Dessin et animation */
+html {
+    height: 100%;
+    background-image:
+        radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%),
+        url("../images/title.webp"),
+        linear-gradient(rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.5) 100%);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: lighten;
+}
+
+.stars-1,
+.stars-2,
+.stars-3 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: transparent;
+    z-index: 900;
+}
+
+.stars-1 {
+    width: 0.15rem;
+    height: 0.15rem;
+    box-shadow: 47vw 88vh #fff, 48vw 82vh #fff, 65vw 88vh #fff, 88vw 91vh #fff,
+    12vw 45vh #fff, 25vw 28vh #fff, 72vw 65vh #fff, 95vw 15vh #fff,
+    5vw 75vh #fff, 35vw 92vh #fff, 15vw 15vh #fff, 85vw 45vh #fff;
+    animation: twinkle 3s ease-in-out infinite;
+}
+
+.stars-2 {
+    width: 0.2rem;
+    height: 0.2rem;
+    box-shadow: 52vw 88vh #fff, 12vw 96vh #fff, 83vw 92vh #fff, 93vw 94vh #fff,
+    42vw 68vh #fff, 62vw 35vh #fff, 82vw 15vh #fff, 22vw 52vh #fff,
+    32vw 78vh #fff, 92vw 25vh #fff, 8vw 35vh #fff, 68vw 75vh #fff;
+    animation: twinkle 3s ease-in-out infinite -1s;
+}
+
+.stars-3 {
+    width: 0.18rem;
+    height: 0.18rem;
+    box-shadow: 58vw 91vh #fff, 58vw 67vh #fff, 93vw 87vh #fff, 28vw 48vh #fff,
+    38vw 28vh #fff, 78vw 85vh #fff, 48vw 12vh #fff, 18vw 82vh #fff,
+    88vw 42vh #fff, 8vw 92vh #fff, 75vw 32vh #fff, 65vw 62vh #fff;
+    animation: twinkle 3s ease-in-out infinite -2s;
+}
+
+@keyframes twinkle {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.2;
+    }
+}
+
+@keyframes float {
+    100% {
+        offset-distance: 100%;
+    }
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes wiggle {
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-5px) rotate(2deg);
+    }
+    75% {
+        transform: translateY(5px) rotate(-2deg);
+    }
+}
+
+@keyframes wiggle2 {
+    0%,
+    100% {
+        transform: translateY(0) rotate(2deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(-1deg);
+    }
+}
