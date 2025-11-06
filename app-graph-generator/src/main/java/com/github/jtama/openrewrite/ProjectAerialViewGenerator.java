@@ -39,11 +39,13 @@ public class ProjectAerialViewGenerator extends ScanningRecipe<ProjectAerialView
             required = false)
     private Integer maxNodes;
 
-    @Option(displayName = "Base Packages",
+    @Option(displayName = "Base packages",
             description = "A list of base packages to scan for imports.",
             example = "[\"com.yourorg.project\"]",
             required = false)
-    private List<String> basePackages;
+    private String basePackages;
+
+    private List<String> packages;
 
     public ProjectAerialViewGenerator() {
     }
@@ -55,9 +57,9 @@ public class ProjectAerialViewGenerator extends ScanningRecipe<ProjectAerialView
      * @param basePackages A list of base packages to scan for imports.
      */
     @JsonCreator
-    public ProjectAerialViewGenerator(@JsonProperty("maxNodes") Integer maxNodes, @JsonProperty("basePackages") List<String> basePackages) {
+    public ProjectAerialViewGenerator(@JsonProperty("maxNodes") Integer maxNodes, @JsonProperty("basePackages") String basePackages) {
         this.maxNodes = maxNodes;
-        this.basePackages = basePackages;
+        this.packages = basePackages != null ? List.of(basePackages.split(",")) : null;
     }
 
 
@@ -100,9 +102,9 @@ public class ProjectAerialViewGenerator extends ScanningRecipe<ProjectAerialView
             public J preVisit(J tree, ExecutionContext ctx) {
                 if (tree instanceof JavaSourceFile) {
                     tree.getMarkers().findFirst(JavaProject.class).ifPresent(javaProject -> {
-                        if (basePackages == null || basePackages.isEmpty()) {
-                            basePackages = new ArrayList<>();
-                            basePackages.add(javaProject.getPublication().getGroupId());
+                        if (packages == null || packages.isEmpty()) {
+                            packages = new ArrayList<>();
+                            packages.add(javaProject.getPublication().getGroupId());
                         }
                     });
                 }
@@ -155,7 +157,7 @@ public class ProjectAerialViewGenerator extends ScanningRecipe<ProjectAerialView
             }
 
             private void addLink(JavaType.FullyQualified targetType) {
-                if (!basePackages.stream().anyMatch(basePackage -> targetType.getPackageName().contains(basePackage)))
+                if (packages.stream().noneMatch(basePackage -> targetType.getPackageName().contains(basePackage)))
                     return;
                 J.ClassDeclaration enclosingClass = getCursor().firstEnclosing(J.ClassDeclaration.class);
                 if (enclosingClass == null) {
@@ -163,7 +165,7 @@ public class ProjectAerialViewGenerator extends ScanningRecipe<ProjectAerialView
                     return;
                 }
                 JavaType.FullyQualified sourceType = enclosingClass.getType();
-                if (sourceType != null && targetType != null && !sourceType.equals(targetType)) {
+                if (sourceType != null && !sourceType.equals(targetType)) {
                     String sourceFq = sourceType.getFullyQualifiedName();
                     String targetFq = targetType.getFullyQualifiedName();
 
@@ -194,11 +196,10 @@ public class ProjectAerialViewGenerator extends ScanningRecipe<ProjectAerialView
 
     @Override
     public Collection<J.CompilationUnit> generate(Graph graph, ExecutionContext ctx) {
-        try {
+
+        try (InputStream templateStream = getClass().getResourceAsStream("template.html")) {
             Graph finalGraph = filterGraph(graph);
             String json = new ObjectMapper().writeValueAsString(finalGraph);
-
-            InputStream templateStream = getClass().getResourceAsStream("template.html");
             if (templateStream == null) {
                 throw new IllegalStateException("template.html not found");
             }
@@ -206,8 +207,7 @@ public class ProjectAerialViewGenerator extends ScanningRecipe<ProjectAerialView
             String html = template.replace("'{{graphData}}'", json);
 
             Path projectDir = Paths.get(System.getProperty("user.dir"));
-            Files.write(projectDir.resolve("class-diagram.html"), html.getBytes(StandardCharsets.UTF_8));
-
+            Files.writeString(projectDir.resolve("class-diagram.html"), html);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
