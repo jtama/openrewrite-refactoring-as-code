@@ -1,16 +1,14 @@
 [.no-transition.transparency.blur-background]
 == Ecrire sa propre recette
 
-image::O.png[background, size=cover]
-Demo time !
+image::coding.avif[background, size=cover]
+👉
 
-[%notitle.demo,background-iframe="http://localhost:8443"]
-=== GO
 
 [.columns.transparency.blur-background]
 === !
 
-image::O.png[background, size=cover]
+image::coding.avif[background, size=cover]
 
 [.column.is-one-third]
 --
@@ -20,7 +18,7 @@ image::magic/jackjack.webp[]
 [.column]
 --
 - ✅ Connaître les ingrédients
-- ✅ Savoir où les acheter
+- ✅ Avoir son chaudron
 - ✅ Savoir lire le grimoire
 - ✅ Savoir jeter un sort
 - ✅ Créer vos propres sorts

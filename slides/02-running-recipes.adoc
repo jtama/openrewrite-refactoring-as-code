@@ -13,7 +13,6 @@ image::running.avif[background, size=cover]
 Pareil avec gradle
 --
 
-image::running.avif[background, size=cover]
 [.fragment]
 [source%linenums,console,highlight="1|2..3|4..5",step=0]
 ----
@@ -35,6 +34,12 @@ Activation des recettes
 Il existe aussi une intégration avec IntelliJ qui facilite beaucoup la vie.
 --
 
+[.no-transition.transparency.blur-background]
+=== GO
+
+image::running.avif[background, size=cover]
+👉
+
 [.columns.transparency.blur-background]
 === !
 
@@ -48,7 +53,7 @@ image::magic/nim.webp[]
 [.column]
 --
 - ✅ Connaître les ingrédients
-- ✅ Savoir où les acheter
+- ✅ Avoir son chaudron
 --
 
 [.notes]

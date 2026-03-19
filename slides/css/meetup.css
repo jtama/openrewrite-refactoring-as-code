@@ -173,29 +173,4 @@ body {
         bottom: 0;
         right: 0;
     }
-
-    .easter-egg {
-        position: absolute;
-        right: 380px;
-        bottom: 110px;
-        animation: easteregg 5s ease 0s 1 normal forwards;
-    }
-
-    .easter-egg::after {
-        content: "#dobbycestlemeilleur";
-    }
-}
-
-@keyframes easteregg {
-    0% {
-        animation-timing-function: ease-in;
-        opacity: 0;
-        transform: scale(0) translateY(-45px) translateX(-80px) rotate(-75deg);
-    }
-
-    100% {
-        animation-timing-function: ease-out;
-        opacity: 1;
-        transform: scale(0.5) rotate(-25deg) translateY(0px) translateX(600px);
-    }
 }
