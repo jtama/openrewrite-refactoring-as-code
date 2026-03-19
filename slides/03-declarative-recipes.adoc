@@ -95,7 +95,7 @@ image::magic/kirikou.png[]
 [.column]
 --
 - ✅ Connaître les ingrédients
-- ✅ Savoir où les acheter
+- ✅ Avoir son chaudron
 - ✅ Savoir lire le grimoire
 - ✅ Savoir jeter un sort
 --

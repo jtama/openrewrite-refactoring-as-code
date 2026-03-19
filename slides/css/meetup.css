@@ -2,6 +2,7 @@
 
 
 :root {
+
     --r-background-color: #EEEEEE;
     --r-main-color: #111012;
     --r-main-font: 'Poppins';
@@ -10,17 +11,6 @@
 }
 
 body {
-    /* Footer styles for devfest-logo if body has .title */
-
-    &.title footer:has(.devfest-logo) {
-        z-index: 10;
-        position: absolute;
-        left: 35%;
-        bottom: 0;
-        min-height: 80px;
-        text-align: center;
-        width: 600px;
-    }
 
     /* Footer styles for onepoint-logo if body does not have .present.demo or .title */
 
@@ -172,30 +162,5 @@ body {
         position: fixed;
         bottom: 0;
         right: 0;
-    }
-
-    .easter-egg {
-        position: absolute;
-        right: 380px;
-        bottom: 110px;
-        animation: easteregg 5s ease 0s 1 normal forwards;
-    }
-
-    .easter-egg::after {
-        content: "#dobbycestlemeilleur";
-    }
-}
-
-@keyframes easteregg {
-    0% {
-        animation-timing-function: ease-in;
-        opacity: 0;
-        transform: scale(0) translateY(-45px) translateX(-80px) rotate(-75deg);
-    }
-
-    100% {
-        animation-timing-function: ease-out;
-        opacity: 1;
-        transform: scale(0.5) rotate(-25deg) translateY(0px) translateX(600px);
     }
 }
