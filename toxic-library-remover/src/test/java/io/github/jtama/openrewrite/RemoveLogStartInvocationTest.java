@@ -29,16 +29,16 @@ class RemoveLogStartInvocationTest implements RewriteTest {
                         """
                                 import com.github.jtama.toxic.Timer;
                                 
-                                public class ManualGearCar {
+                                public class Maleficent {
                                 
                                     @Deprecated
-                                    public void drift(String param) {
+                                    public void randomMagic(String param) {
                                         Timer.logStart();
                                         System.out.println("A very long process");
                                         Timer.logEnd();
                                     }
                                 
-                                    public void hardBreak(Boolean param) {
+                                    public void poo(Boolean param) {
                                         // do nothing
                                     }
                                 }
@@ -46,15 +46,15 @@ class RemoveLogStartInvocationTest implements RewriteTest {
                         """
                                 import io.micrometer.core.annotation.Timed;
                                 
-                                public class ManualGearCar {
+                                public class Maleficent {
                                 
                                     @Deprecated
                                     @Timed
-                                    public void drift(String param) {
+                                    public void randomMagic(String param) {
                                         System.out.println("A very long process");
                                     }
                                 
-                                    public void hardBreak(Boolean param) {
+                                    public void poo(Boolean param) {
                                         // do nothing
                                     }
                                 }

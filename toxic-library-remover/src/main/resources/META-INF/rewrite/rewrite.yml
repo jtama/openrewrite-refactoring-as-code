@@ -1,6 +1,6 @@
 ---
 type: specs.openrewrite.org/v1beta/recipe
-name: com.github.jtama.openrewrite.RemovesThatToxicDependency
+name: io.github.jtama.openrewrite.RemovesThatToxicDependency
 displayName: Removes that toxic dependency
 description: |
   Migrate from AcmeToxic ☠️ to AcmeHealthy 😇,
@@ -12,7 +12,7 @@ recipeList:
   - org.openrewrite.java.ChangeMethodTargetToStatic:
       methodPattern: com.github.jtama.toxic.BigDecimalUtils valueOf(..)
       fullyQualifiedTargetTypeName: java.math.BigDecimal
-  - com.github.jtama.openrewrite.VousAllezVoirCeQueVousAllezVoir
+  - io.github.jtama.openrewrite.VousAllezVoirCeQueVousAllezVoir
   - org.openrewrite.java.RemoveUnusedImports
   - org.openrewrite.staticanalysis.CommonStaticAnalysis
   - org.openrewrite.staticanalysis.RemoveUnusedPrivateFields
@@ -21,18 +21,18 @@ recipeList:
       artifactId: toxic-library
   - org.openrewrite.maven.RemoveProperty:
       propertyName: toxic.version
-  - com.github.jtama.openrewrite.ExtractInterface:
+  - io.github.jtama.openrewrite.ExtractInterface:
       targetAnnotation: com.github.jtama.toxic.LearnToFly
 ---
 type: specs.openrewrite.org/v1beta/recipe
-name: com.github.jtama.openrewrite.VousAllezVoirCeQueVousAllezVoir
+name: io.github.jtama.openrewrite.VousAllezVoirCeQueVousAllezVoir
 displayName: Ça va vous épater
 description: |
   Rech. proj. pr proj. priv. Self Dem. Brt. Poss. S’adr. à l’hô. Mart
 tags:
   - acme
 recipeList:
-  - com.github.jtama.openrewrite.RemoveFooBarUtilsIsEmptyRecipes
-  - com.github.jtama.openrewrite.RemoveFooBarUtilsStringFormatted
-  - com.github.jtama.openrewrite.RemoveLogStartInvocations
-  - com.github.jtama.openrewrite.UseObjectsCompare
+  - io.github.jtama.openrewrite.RemoveFooBarUtilsIsEmptyRecipes
+  - io.github.jtama.openrewrite.RemoveFooBarUtilsStringFormatted
+  - io.github.jtama.openrewrite.RemoveLogStartInvocations
+  - io.github.jtama.openrewrite.UseObjectsCompare

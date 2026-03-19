@@ -28,7 +28,7 @@ class RemoveFooBarUtilsStringFormattedTest implements RewriteTest {
                 """
               import com.github.jtama.toxic.FooBarUtils;
               
-              public class FullDriftCar {
+              public class Karaba {
               
                   public String foo() {
                       return new FooBarUtils().stringFormatted("Hello %s %s %s", 2L,
@@ -40,7 +40,7 @@ class RemoveFooBarUtilsStringFormattedTest implements RewriteTest {
               }
               """,
             """
-              public class FullDriftCar {
+              public class Karaba {
              
                   public String foo() {
                       return "Hello %s %s %s".formatted(2L,
