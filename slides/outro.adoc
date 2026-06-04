@@ -23,4 +23,4 @@ _java preview feature_
 === Merci !
 
 
-image::qrcode_github.png[alt="https://github.com/jtama/openrewrite-refactor-as-code"]
+image:qr_home.png[alt="https://github.com/jtama/openrewrite-refactor-as-code"]
