@@ -27,12 +27,12 @@ class RemoveFooBarCompareTest implements RewriteTest {
             """
               import com.github.jtama.toxic.FooBarUtils;
               
-              public class ManualGearCar {
+              public class Nim {
                   private static final FooBarUtils UTILS = new FooBarUtils();
               
-                  public void virage(String param) {
+                  public void depart(String param) {
                       int val = UTILS.compare(param, 
-                      "au frein à main ?", 
+                      "en tapis volant ?", 
                              (o1,o2) -> o1.compareTo(o2));
                   }
               }
@@ -42,12 +42,12 @@ class RemoveFooBarCompareTest implements RewriteTest {
               
               import java.util.Objects;
               
-              public class ManualGearCar {
+              public class Nim {
                   private static final FooBarUtils UTILS = new FooBarUtils();
               
-                  public void virage(String param) {
+                  public void depart(String param) {
                       //Comparing java.lang.String using java.util.Comparator<java.lang.String>
-                      int val = Objects.compare(param, "au frein à main ?", (o1, o2) -> o1.compareTo(o2));
+                      int val = Objects.compare(param, "en tapis volant ?", (o1, o2) -> o1.compareTo(o2));
                   }
               }
               """));
@@ -61,10 +61,10 @@ class RemoveFooBarCompareTest implements RewriteTest {
             """
               import com.github.jtama.toxic.FooBarUtils;
               
-              public class ManualGearCar {
+              public class Nim {
                   private static final FooBarUtils UTILS = new FooBarUtils();
               
-                  public void virage(String param) {
+                  public void depart(String param) {
                       int val;
                       val = UTILS.compare(param, 
                       "au frein à main ?", 
@@ -77,10 +77,10 @@ class RemoveFooBarCompareTest implements RewriteTest {
               
               import java.util.Objects;
               
-              public class ManualGearCar {
+              public class Nim {
                   private static final FooBarUtils UTILS = new FooBarUtils();
               
-                  public void virage(String param) {
+                  public void depart(String param) {
                       int val;
                       //Comparing java.lang.String using java.util.Comparator<java.lang.String>
                       val = Objects.compare(param, "au frein à main ?", (o1, o2) -> o1.compareTo(o2));
@@ -97,10 +97,10 @@ class RemoveFooBarCompareTest implements RewriteTest {
             """
               import com.github.jtama.toxic.FooBarUtils;
               
-              public class ManualGearCar {
+              public class Nim {
                   private static final FooBarUtils UTILS = new FooBarUtils();
               
-                  public int virage(String param) {
+                  public int depart(String param) {
                       return UTILS.compare(param, 
                       "au frein à main ?", 
                              (o1,o2) -> o1.compareTo(o2));
@@ -112,10 +112,10 @@ class RemoveFooBarCompareTest implements RewriteTest {
               
               import java.util.Objects;
               
-              public class ManualGearCar {
+              public class Nim {
                   private static final FooBarUtils UTILS = new FooBarUtils();
               
-                  public int virage(String param) {
+                  public int depart(String param) {
                       //Comparing java.lang.String using java.util.Comparator<java.lang.String>
                       return Objects.compare(param, "au frein à main ?", (o1, o2) -> o1.compareTo(o2));
                   }
@@ -131,10 +131,10 @@ class RemoveFooBarCompareTest implements RewriteTest {
             """
               import com.github.jtama.toxic.FooBarUtils;
               
-              public class ManualGearCar {
+              public class Nim {
                   private static final FooBarUtils UTILS = new FooBarUtils();
               
-                  public void virage(String param) {
+                  public void depart(String param) {
                       UTILS.compare(param, 
                       "au frein à main ?", 
                              (o1,o2) -> o1.compareTo(o2));
@@ -146,10 +146,10 @@ class RemoveFooBarCompareTest implements RewriteTest {
               
               import java.util.Objects;
               
-              public class ManualGearCar {
+              public class Nim {
                   private static final FooBarUtils UTILS = new FooBarUtils();
               
-                  public void virage(String param) {
+                  public void depart(String param) {
                       //Comparing java.lang.String using java.util.Comparator<java.lang.String>
                       Objects.compare(param, "au frein à main ?", (o1, o2) -> o1.compareTo(o2));
                   }
