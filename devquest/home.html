@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title>
         Openrewrite: Refactoring as code
     </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link
             rel="stylesheet"
             type="text/css"
@@ -15,35 +15,31 @@
     />
 </head>
 <body>
-<section id="introduction">
+<main>
     <h1>Openrewrite: Refactoring as code</h1>
     <div class="links">
-        <div id="feedback">
+        <div class="card feedback">
             <a href="https://openfeedback.io/X6Zd1NPDkMkDZHl003Yu/0/cmmchm620025401nslo5uqdw1" target="_blank">
                 <img src="images/magic/feedback.png" alt="Open feedback">
                 <p>Feeeeeeeedback</p>
             </a>
         </div>
-        <div id="github">
-            <a
-                    href="https://github.com/jtama/openrewrite-refactoring-as-code"
-                    target="_blank"
-            >
-                <img src="images/github_mark.svg" alt="Icone Github">
+        <div class="card github">
+            <a href="https://github.com/jtama/openrewrite-refactoring-as-code"
+               target="_blank">
+                <img src="./images/github_mark.svg" alt="Icone Github">
                 <p>Github</p>
             </a>
         </div>
-        <div id="jerome">
-            <a
-                    href="https://www.linkedin.com/in/j%C3%A9r%C3%B4me-tama-591699/"
-                    target="_blank"
-            >
-                <img src="images/magic/mickey.png" alt="Avatar Jérôme">
-                <p>Jérôme</p></a
-            >
+        <div class="card avatar">
+            <a href="https://www.linkedin.com/in/j%C3%A9r%C3%B4me-tama-591699/"
+               target="_blank">
+                <img src="images/avatar.png" alt="Avatar Jérôme TAMA">
+                <p>Jérôme</p>
+            </a>
         </div>
 
-        <div id="onepoint">
+        <div class="card onepoint">
             <a href="https://www.groupeonepoint.com/fr/" target="_blank">
                 <svg aria-hidden="true" focusable="false" height="36" width="140" xmlns="http://www.w3.org/2000/svg">
                     <path d="M7.8 3.246C3.247 3.246 0 6.638 0 10.66c0 4.022 3.246 7.365 7.752 7.365 4.555 0 7.801-3.392 7.801-7.413 0-4.022-3.246-7.365-7.752-7.365Zm0 10.563c-1.743 0-3.003-1.502-3.003-3.198S5.96 7.46 7.752 7.46c1.745 0 3.004 1.502 3.004 3.198s-1.162 3.15-2.955 3.15ZM70.691 3.246c-4.554 0-7.8 3.392-7.8 7.413 0 4.022 3.246 7.365 7.752 7.365 4.555 0 7.8-3.392 7.8-7.413 0-4.022-3.245-7.365-7.752-7.365Zm0 10.563c-1.744 0-3.004-1.502-3.004-3.198s1.163-3.15 2.956-3.15c1.744 0 3.004 1.502 3.004 3.198-.048 1.696-1.163 3.15-2.956 3.15ZM16.62 3.586h4.941v1.986c.92-1.163 2.23-2.277 4.216-2.277 3.004 0 4.796 1.986 4.796 5.184v9.255h-4.942V10.03c0-1.55-.823-2.374-1.986-2.374-1.212 0-2.084.823-2.084 2.374v7.655H16.62v-14.1ZM45.787 10.998c0-4.167-2.229-7.704-7.123-7.704-4.215-.048-7.122 3.247-7.122 7.365 0 4.36 3.15 7.365 7.558 7.365 2.81 0 4.797-1.163 6.154-2.859l-2.762-2.277c-1.017.97-1.938 1.454-3.15 1.454-1.55 0-2.664-.776-3.052-2.326h9.449c.048-.34.048-.727.048-1.018Zm-9.594-1.55c.243-1.55 1.163-2.568 2.471-2.568 1.357 0 2.278.969 2.471 2.568h-4.942ZM56.06 3.246c-2.133 0-3.295 1.018-4.264 2.18v-1.89h-4.943v18.267h4.943v-5.862c.92 1.065 2.18 2.035 4.312 2.035 3.343 0 6.25-2.81 6.25-7.414-.048-4.506-2.907-7.316-6.299-7.316Zm-1.503 10.611c-1.599 0-2.858-1.356-2.858-3.246 0-1.841 1.26-3.198 2.858-3.198 1.6 0 2.908 1.357 2.908 3.198 0 1.89-1.309 3.246-2.908 3.246ZM84.549 3.586h-4.943v14.1h4.943v-14.1ZM86.245 3.586h4.942v1.986c.92-1.163 2.229-2.277 4.216-2.277 3.004 0 4.796 1.986 4.796 5.184v9.255h-4.942V10.03c0-1.55-.824-2.374-1.986-2.374-1.212 0-2.084.823-2.084 2.374v7.655h-4.942v-14.1ZM102.719 17.685V7.56h-1.648V3.585h1.648V0h4.99v3.585h3.295V7.56h-3.295v10.126h-4.99Z" fill="currentColor"></path>
@@ -53,7 +49,7 @@
             </a>
         </div>
     </div>
-</section>
+</main>
 <div class="stars-1"></div>
 <div class="stars-2"></div>
 <div class="stars-3"></div>
