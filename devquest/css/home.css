@@ -1,5 +1,14 @@
 #introduction {
     text-align: center;
+    padding: 2rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+#introduction h1 {
+    font-size: calc(1.8rem + 1.5vw);
+    line-height: 1.2;
+    margin-bottom: 2rem;
 }
 #introduction h1,
 div {
@@ -35,6 +44,24 @@ a {
     margin: 1rem;
     align-content: center;
     margin-top: 3rem;
+}
+
+.links a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.links img {
+    max-width: 100%;
+    height: auto;
+}
+
+.links svg {
+    max-width: 100%;
+    height: auto;
 }
 
 /* Dessin et animation */
@@ -128,5 +155,23 @@ html {
     }
     50% {
         transform: translateY(-10px) rotate(-1deg);
+    }
+}
+
+@media (max-width: 600px) {
+    .links {
+        grid-template-columns: 1fr;
+    }
+    
+    .links>div {
+        margin-top: 1.5rem;
+    }
+    
+    #introduction {
+        padding: 1rem 0.5rem;
+    }
+
+    .links img {
+        max-height: 120px;
     }
 }
