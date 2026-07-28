@@ -1,7 +1,7 @@
 [source%linenums, console]
 ----
-mvn -U org.openrewrite.maven:rewrite-maven-plugin:6.27.0:run \
--Drewrite.recipeArtifactCoordinates=org.openrewrite.recipe:rewrite-testing-frameworks:3.21.3 \
+mvn -U org.openrewrite.maven:rewrite-maven-plugin:RELEASE:run \
+-Drewrite.recipeArtifactCoordinates=org.openrewrite.recipe:rewrite-testing-frameworks:RELEASE \
 -Drewrite.activeRecipes=org.openrewrite.java.testing.junit5.JUnit4to5Migration
 ----
 
