@@ -1,49 +1,111 @@
-#introduction {
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Noto Sans", ui-sans-serif, system-ui, sans-serif;
+    --r-main-color: 36, 31, 53;
+}
+
+main {
     text-align: center;
-}
-#introduction h1,
-div {
-    color: #cae9f7;
-    font-family: "Montserrat", "Roboto", "Open Sans", sans-serif;
-    z-index: 1001;
-}
+    padding: 2rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
 
-a {
-    text-decoration: none;
-    color: aliceblue;
-}
+    h1 {
+        font-size: calc(1.8rem + 1.5vw);
+        line-height: 1.2;
+        margin-bottom: 2rem;
+    }
 
-#github {
-    animation: wiggle 8s ease-in-out infinite -0s;
-}
-#feedback {
-    animation: wiggle2 8s ease-in-out infinite -0.8s;
-}
-#jerome {
-    animation: wiggle2 8s ease-in-out infinite -2.4s;
-}
-#onepoint {
-    animation: wiggle 8s ease-in-out infinite -3.2s;
-}
+    h1, div {
+        color: #cae9f7;
+        font-family: "Montserrat", "Roboto", "Open Sans", sans-serif;
+        z-index: 1001;
+    }
 
-.links {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-}
+    img {
+        border-radius: 50%;
+    }
 
-.links>div {
-    margin: 1rem;
-    align-content: center;
-    margin-top: 3rem;
+    .card {
+        padding: 1em;
+        background: linear-gradient(rgba(var(--r-main-color), 0.8) 100%);
+        width: 300px;
+        height: 300px;
+        border-radius: 100%;
+        justify-self: center;
+    }
+
+    .github {
+        animation: wiggle 8s ease-in-out infinite -0s;
+    }
+
+    .feedback {
+        animation: wiggle2 8s ease-in-out infinite -0.8s;
+
+        a {
+            p {
+                border-radius: 1em;
+                padding: 0.1em;
+                background: linear-gradient(rgba(var(--r-main-color), 0.8) 100%);
+            }
+        }
+    }
+
+    .avatar {
+        animation: wiggle2 8s ease-in-out infinite -2.4s;
+    }
+
+    .onepoint {
+        animation: wiggle 8s ease-in-out infinite -3.2s;
+    }
+
+    a {
+        text-decoration: none;
+        color: aliceblue;
+    }
+
+    .links {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: center;
+
+        & > div {
+            margin: 1rem;
+            align-content: center;
+            margin-top: 3rem;
+        }
+
+        a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        svg {
+            max-width: 100%;
+            height: auto;
+        }
+    }
 }
 
 /* Dessin et animation */
+
 html {
     height: 100%;
-    background-image:
-        radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%),
-        url("../images/title.webp"),
-        linear-gradient(rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.5) 100%);
+    background-image: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%),
+    url("../images/title.webp"),
+    linear-gradient(rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.5) 100%);
     background-size: cover;
     background-repeat: no-repeat;
     background-blend-mode: lighten;
@@ -128,5 +190,30 @@ html {
     }
     50% {
         transform: translateY(-10px) rotate(-1deg);
+    }
+}
+
+@media (max-width: 600px) {
+
+    main {
+        padding: 1rem 0.5rem;
+
+        .card {
+            padding: 1em;
+            width: 100px;
+            height: 100px;
+        }
+
+        .links {
+            grid-template-columns: 1fr;
+
+            & > div {
+                margin-top: 1.5rem;
+            }
+
+            img {
+                max-height: 120px;
+            }
+        }
     }
 }
