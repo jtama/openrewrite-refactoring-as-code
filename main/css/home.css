@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Noto Sans", ui-sans-serif, system-ui, sans-serif;
+    --r-main-color: 36, 31, 53;
+}
+
+main {
+    text-align: center;
+    padding: 2rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+
+    h1 {
+        font-size: calc(1.8rem + 1.5vw);
+        line-height: 1.2;
+        margin-bottom: 2rem;
+    }
+
+    h1, div {
+        color: #cae9f7;
+        font-family: "Montserrat", "Roboto", "Open Sans", sans-serif;
+        z-index: 1001;
+    }
+
+    img {
+        border-radius: 50%;
+    }
+
+    .card {
+        padding: 1em;
+        background: linear-gradient(rgba(var(--r-main-color), 0.8) 100%);
+        width: 300px;
+        height: 300px;
+        border-radius: 100%;
+        justify-self: center;
+    }
+
+    .github {
+        animation: wiggle 8s ease-in-out infinite -0s;
+    }
+
+    .feedback {
+        animation: wiggle2 8s ease-in-out infinite -0.8s;
+
+        a {
+            p {
+                border-radius: 1em;
+                padding: 0.1em;
+                background: linear-gradient(rgba(var(--r-main-color), 0.8) 100%);
+            }
+        }
+    }
+
+    .avatar {
+        animation: wiggle2 8s ease-in-out infinite -2.4s;
+    }
+
+    .onepoint {
+        animation: wiggle 8s ease-in-out infinite -3.2s;
+    }
+
+    a {
+        text-decoration: none;
+        color: aliceblue;
+    }
+
+    .links {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: center;
+
+        & > div {
+            margin: 1rem;
+            align-content: center;
+            margin-top: 3rem;
+        }
+
+        a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        svg {
+            max-width: 100%;
+            height: auto;
+        }
+    }
+}
+
+/* Dessin et animation */
+
+html {
+    height: 100%;
+    background-image: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%),
+    url("../images/title.webp"),
+    linear-gradient(rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.5) 100%);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: lighten;
+}
+
+.stars-1,
+.stars-2,
+.stars-3 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: transparent;
+    z-index: 900;
+}
+
+.stars-1 {
+    width: 0.15rem;
+    height: 0.15rem;
+    box-shadow: 47vw 88vh #fff, 48vw 82vh #fff, 65vw 88vh #fff, 88vw 91vh #fff,
+    12vw 45vh #fff, 25vw 28vh #fff, 72vw 65vh #fff, 95vw 15vh #fff,
+    5vw 75vh #fff, 35vw 92vh #fff, 15vw 15vh #fff, 85vw 45vh #fff;
+    animation: twinkle 3s ease-in-out infinite;
+}
+
+.stars-2 {
+    width: 0.2rem;
+    height: 0.2rem;
+    box-shadow: 52vw 88vh #fff, 12vw 96vh #fff, 83vw 92vh #fff, 93vw 94vh #fff,
+    42vw 68vh #fff, 62vw 35vh #fff, 82vw 15vh #fff, 22vw 52vh #fff,
+    32vw 78vh #fff, 92vw 25vh #fff, 8vw 35vh #fff, 68vw 75vh #fff;
+    animation: twinkle 3s ease-in-out infinite -1s;
+}
+
+.stars-3 {
+    width: 0.18rem;
+    height: 0.18rem;
+    box-shadow: 58vw 91vh #fff, 58vw 67vh #fff, 93vw 87vh #fff, 28vw 48vh #fff,
+    38vw 28vh #fff, 78vw 85vh #fff, 48vw 12vh #fff, 18vw 82vh #fff,
+    88vw 42vh #fff, 8vw 92vh #fff, 75vw 32vh #fff, 65vw 62vh #fff;
+    animation: twinkle 3s ease-in-out infinite -2s;
+}
+
+@keyframes twinkle {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.2;
+    }
+}
+
+@keyframes float {
+    100% {
+        offset-distance: 100%;
+    }
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes wiggle {
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-5px) rotate(2deg);
+    }
+    75% {
+        transform: translateY(5px) rotate(-2deg);
+    }
+}
+
+@keyframes wiggle2 {
+    0%,
+    100% {
+        transform: translateY(0) rotate(2deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(-1deg);
+    }
+}
+
+@media (max-width: 600px) {
+
+    main {
+        padding: 1rem 0.5rem;
+
+        .card {
+            padding: 1em;
+            width: 100px;
+            height: 100px;
+        }
+
+        .links {
+            grid-template-columns: 1fr;
+
+            & > div {
+                margin-top: 1.5rem;
+            }
+
+            img {
+                max-height: 120px;
+            }
+        }
+    }
+}
