@@ -1,5 +1,28 @@
+[%notitle.transparency]
+== MERCI !!!!
+
+image::logo-bdxio.svg[background, size=contain]
+[.photo-grid]
+--
+image::aida.png[]
+image::elodie.png[]
+image::melina.png[]
+image::amelie.png[]
+image::farsen.png[]
+image::chloe_mo.png[]
+image::Florian.png[]
+image::chloe_ma.png[]
+image::maxime.png[]
+--
+
 [%notitle]
-== Openrewrite
+=== MERCI !!!!
+
+image::title.webp[background, size=contain]
+
+
+[%notitle]
+=== Openrewrite
 
 image::mr_patate.png[background, size=contain]
 
